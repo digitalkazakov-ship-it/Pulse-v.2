@@ -1105,7 +1105,6 @@ JSON-объект ровно с {n} ключами ({keys_str}). Каждое з
             {"role": "user", "content": prompt},
         ],
         response_format={"type": "json_object"},
-        temperature=0.2,
     )
     result = json.loads(response.choices[0].message.content)
     return {k: _to_prose(v) for k, v in result.items()}
