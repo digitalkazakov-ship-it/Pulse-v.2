@@ -22,3 +22,8 @@ frontend/.env.production.local
 # OS
 .DS_Store
 Thumbs.db
+
+# Debug / temp files
+_*.json
+_*.txt
+tmp_*.txt
