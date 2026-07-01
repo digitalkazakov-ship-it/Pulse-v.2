@@ -1,0 +1,1620 @@
+{
+  "generated": "2026-05",
+  "brands": [
+    "Narzan",
+    "Borjomi",
+    "Senezhskaya",
+    "Svyatoy"
+  ],
+  "brandNames": {
+    "Narzan": "Нарзан",
+    "Borjomi": "Боржоми",
+    "Senezhskaya": "Сенежская",
+    "Svyatoy": "Святой источник"
+  },
+  "months": [
+    "Фев",
+    "Мар",
+    "Апр",
+    "Май",
+    "Июн",
+    "Июл",
+    "Авг",
+    "Сен",
+    "Окт",
+    "Ноя",
+    "Дек"
+  ],
+  "charts": {
+    "skuCount": {
+      "ozon": [
+        {
+          "month": "Фев",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Мар",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Апр",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Май",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июн",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июл",
+          "Narzan": 210,
+          "Borjomi": 424,
+          "Senezhskaya": 398,
+          "Svyatoy": 48
+        },
+        {
+          "month": "Авг",
+          "Narzan": 273,
+          "Borjomi": 569,
+          "Senezhskaya": 413,
+          "Svyatoy": 55
+        },
+        {
+          "month": "Сен",
+          "Narzan": 251,
+          "Borjomi": 519,
+          "Senezhskaya": 376,
+          "Svyatoy": 57
+        },
+        {
+          "month": "Окт",
+          "Narzan": 243,
+          "Borjomi": 504,
+          "Senezhskaya": 369,
+          "Svyatoy": 53
+        },
+        {
+          "month": "Ноя",
+          "Narzan": 227,
+          "Borjomi": 471,
+          "Senezhskaya": 332,
+          "Svyatoy": 52
+        },
+        {
+          "month": "Дек",
+          "Narzan": 236,
+          "Borjomi": 503,
+          "Senezhskaya": 343,
+          "Svyatoy": 68
+        }
+      ],
+      "wb": [
+        {
+          "month": "Фев",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Мар",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Апр",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Май",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июн",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июл",
+          "Narzan": 145,
+          "Borjomi": 307,
+          "Senezhskaya": 307,
+          "Svyatoy": 42
+        },
+        {
+          "month": "Авг",
+          "Narzan": 169,
+          "Borjomi": 394,
+          "Senezhskaya": 313,
+          "Svyatoy": 42
+        },
+        {
+          "month": "Сен",
+          "Narzan": 174,
+          "Borjomi": 429,
+          "Senezhskaya": 310,
+          "Svyatoy": 39
+        },
+        {
+          "month": "Окт",
+          "Narzan": 165,
+          "Borjomi": 398,
+          "Senezhskaya": 264,
+          "Svyatoy": 41
+        },
+        {
+          "month": "Ноя",
+          "Narzan": 159,
+          "Borjomi": 366,
+          "Senezhskaya": 269,
+          "Svyatoy": 41
+        },
+        {
+          "month": "Дек",
+          "Narzan": 182,
+          "Borjomi": 404,
+          "Senezhskaya": 300,
+          "Svyatoy": 45
+        }
+      ],
+      "ym": [
+        {
+          "month": "Фев",
+          "Narzan": 147,
+          "Borjomi": 650,
+          "Senezhskaya": null,
+          "Svyatoy": 17
+        },
+        {
+          "month": "Мар",
+          "Narzan": 147,
+          "Borjomi": 650,
+          "Senezhskaya": null,
+          "Svyatoy": 17
+        },
+        {
+          "month": "Апр",
+          "Narzan": 147,
+          "Borjomi": 650,
+          "Senezhskaya": null,
+          "Svyatoy": 17
+        },
+        {
+          "month": "Май",
+          "Narzan": 147,
+          "Borjomi": 650,
+          "Senezhskaya": null,
+          "Svyatoy": 17
+        },
+        {
+          "month": "Июн",
+          "Narzan": 147,
+          "Borjomi": 650,
+          "Senezhskaya": null,
+          "Svyatoy": 17
+        },
+        {
+          "month": "Июл",
+          "Narzan": 147,
+          "Borjomi": 650,
+          "Senezhskaya": null,
+          "Svyatoy": 17
+        },
+        {
+          "month": "Авг",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Сен",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Окт",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Ноя",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Дек",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        }
+      ],
+      "all": [
+        {
+          "month": "Фев",
+          "Narzan": 147,
+          "Borjomi": 650,
+          "Senezhskaya": null,
+          "Svyatoy": 17
+        },
+        {
+          "month": "Мар",
+          "Narzan": 147,
+          "Borjomi": 650,
+          "Senezhskaya": null,
+          "Svyatoy": 17
+        },
+        {
+          "month": "Апр",
+          "Narzan": 147,
+          "Borjomi": 650,
+          "Senezhskaya": null,
+          "Svyatoy": 17
+        },
+        {
+          "month": "Май",
+          "Narzan": 147,
+          "Borjomi": 650,
+          "Senezhskaya": null,
+          "Svyatoy": 17
+        },
+        {
+          "month": "Июн",
+          "Narzan": 147,
+          "Borjomi": 650,
+          "Senezhskaya": null,
+          "Svyatoy": 17
+        },
+        {
+          "month": "Июл",
+          "Narzan": 502,
+          "Borjomi": 1381,
+          "Senezhskaya": 705,
+          "Svyatoy": 107
+        },
+        {
+          "month": "Авг",
+          "Narzan": 442,
+          "Borjomi": 963,
+          "Senezhskaya": 726,
+          "Svyatoy": 97
+        },
+        {
+          "month": "Сен",
+          "Narzan": 425,
+          "Borjomi": 948,
+          "Senezhskaya": 686,
+          "Svyatoy": 96
+        },
+        {
+          "month": "Окт",
+          "Narzan": 408,
+          "Borjomi": 902,
+          "Senezhskaya": 633,
+          "Svyatoy": 94
+        },
+        {
+          "month": "Ноя",
+          "Narzan": 386,
+          "Borjomi": 837,
+          "Senezhskaya": 601,
+          "Svyatoy": 93
+        },
+        {
+          "month": "Дек",
+          "Narzan": 418,
+          "Borjomi": 907,
+          "Senezhskaya": 643,
+          "Svyatoy": 113
+        }
+      ]
+    },
+    "skuShare": {
+      "ozon": [
+        {
+          "month": "Фев",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Мар",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Апр",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Май",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июн",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июл",
+          "Narzan": 0.001138,
+          "Borjomi": 0.002298,
+          "Senezhskaya": 0.002157,
+          "Svyatoy": 0.00026
+        },
+        {
+          "month": "Авг",
+          "Narzan": 0.00185,
+          "Borjomi": 0.003855,
+          "Senezhskaya": 0.002798,
+          "Svyatoy": 0.000373
+        },
+        {
+          "month": "Сен",
+          "Narzan": 0.001415,
+          "Borjomi": 0.002926,
+          "Senezhskaya": 0.00212,
+          "Svyatoy": 0.000321
+        },
+        {
+          "month": "Окт",
+          "Narzan": 0.001388,
+          "Borjomi": 0.002879,
+          "Senezhskaya": 0.002108,
+          "Svyatoy": 0.000303
+        },
+        {
+          "month": "Ноя",
+          "Narzan": 0.001388,
+          "Borjomi": 0.00288,
+          "Senezhskaya": 0.00203,
+          "Svyatoy": 0.000318
+        },
+        {
+          "month": "Дек",
+          "Narzan": 0.001638,
+          "Borjomi": 0.003491,
+          "Senezhskaya": 0.00238,
+          "Svyatoy": 0.000472
+        }
+      ],
+      "wb": [
+        {
+          "month": "Фев",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Мар",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Апр",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Май",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июн",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июл",
+          "Narzan": 0.002336,
+          "Borjomi": 0.004946,
+          "Senezhskaya": 0.004946,
+          "Svyatoy": 0.000677
+        },
+        {
+          "month": "Авг",
+          "Narzan": 0.002252,
+          "Borjomi": 0.005251,
+          "Senezhskaya": 0.004171,
+          "Svyatoy": 0.00056
+        },
+        {
+          "month": "Сен",
+          "Narzan": 0.002413,
+          "Borjomi": 0.00595,
+          "Senezhskaya": 0.004299,
+          "Svyatoy": 0.000541
+        },
+        {
+          "month": "Окт",
+          "Narzan": 0.00317,
+          "Borjomi": 0.007648,
+          "Senezhskaya": 0.005073,
+          "Svyatoy": 0.000788
+        },
+        {
+          "month": "Ноя",
+          "Narzan": 0.002946,
+          "Borjomi": 0.006782,
+          "Senezhskaya": 0.004984,
+          "Svyatoy": 0.00076
+        },
+        {
+          "month": "Дек",
+          "Narzan": 0.00308,
+          "Borjomi": 0.006838,
+          "Senezhskaya": 0.005078,
+          "Svyatoy": 0.000762
+        }
+      ],
+      "ym": [
+        {
+          "month": "Фев",
+          "Narzan": 0.000559,
+          "Borjomi": 0.002472,
+          "Senezhskaya": null,
+          "Svyatoy": 6.5e-05
+        },
+        {
+          "month": "Мар",
+          "Narzan": 0.000559,
+          "Borjomi": 0.002472,
+          "Senezhskaya": null,
+          "Svyatoy": 6.5e-05
+        },
+        {
+          "month": "Апр",
+          "Narzan": 0.000559,
+          "Borjomi": 0.002472,
+          "Senezhskaya": null,
+          "Svyatoy": 6.5e-05
+        },
+        {
+          "month": "Май",
+          "Narzan": 0.000559,
+          "Borjomi": 0.002472,
+          "Senezhskaya": null,
+          "Svyatoy": 6.5e-05
+        },
+        {
+          "month": "Июн",
+          "Narzan": 0.000559,
+          "Borjomi": 0.002472,
+          "Senezhskaya": null,
+          "Svyatoy": 6.5e-05
+        },
+        {
+          "month": "Июл",
+          "Narzan": 0.000559,
+          "Borjomi": 0.002472,
+          "Senezhskaya": null,
+          "Svyatoy": 6.5e-05
+        },
+        {
+          "month": "Авг",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Сен",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Окт",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Ноя",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Дек",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        }
+      ],
+      "all": [
+        {
+          "month": "Фев",
+          "Narzan": 0.000559,
+          "Borjomi": 0.002472,
+          "Senezhskaya": null,
+          "Svyatoy": 6.5e-05
+        },
+        {
+          "month": "Мар",
+          "Narzan": 0.000559,
+          "Borjomi": 0.002472,
+          "Senezhskaya": null,
+          "Svyatoy": 6.5e-05
+        },
+        {
+          "month": "Апр",
+          "Narzan": 0.000559,
+          "Borjomi": 0.002472,
+          "Senezhskaya": null,
+          "Svyatoy": 6.5e-05
+        },
+        {
+          "month": "Май",
+          "Narzan": 0.000559,
+          "Borjomi": 0.002472,
+          "Senezhskaya": null,
+          "Svyatoy": 6.5e-05
+        },
+        {
+          "month": "Июн",
+          "Narzan": 0.000559,
+          "Borjomi": 0.002472,
+          "Senezhskaya": null,
+          "Svyatoy": 6.5e-05
+        },
+        {
+          "month": "Июл",
+          "Narzan": 0.004033,
+          "Borjomi": 0.009716,
+          "Senezhskaya": 0.007103,
+          "Svyatoy": 0.001001
+        },
+        {
+          "month": "Авг",
+          "Narzan": 0.004102,
+          "Borjomi": 0.009106,
+          "Senezhskaya": 0.00697,
+          "Svyatoy": 0.000932
+        },
+        {
+          "month": "Сен",
+          "Narzan": 0.003828,
+          "Borjomi": 0.008876,
+          "Senezhskaya": 0.006419,
+          "Svyatoy": 0.000862
+        },
+        {
+          "month": "Окт",
+          "Narzan": 0.004558,
+          "Borjomi": 0.010526,
+          "Senezhskaya": 0.00718,
+          "Svyatoy": 0.001091
+        },
+        {
+          "month": "Ноя",
+          "Narzan": 0.004334,
+          "Borjomi": 0.009661,
+          "Senezhskaya": 0.007014,
+          "Svyatoy": 0.001078
+        },
+        {
+          "month": "Дек",
+          "Narzan": 0.004718,
+          "Borjomi": 0.010329,
+          "Senezhskaya": 0.007458,
+          "Svyatoy": 0.001234
+        }
+      ]
+    },
+    "revenue": {
+      "ozon": [
+        {
+          "month": "Фев",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Мар",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Апр",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Май",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июн",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июл",
+          "Narzan": 74.67,
+          "Borjomi": 205.96,
+          "Senezhskaya": 55.52,
+          "Svyatoy": 209.3
+        },
+        {
+          "month": "Авг",
+          "Narzan": 87.44,
+          "Borjomi": 263.5,
+          "Senezhskaya": 52.23,
+          "Svyatoy": 121.68
+        },
+        {
+          "month": "Сен",
+          "Narzan": 88.04,
+          "Borjomi": 293.6,
+          "Senezhskaya": 48.56,
+          "Svyatoy": 168.99
+        },
+        {
+          "month": "Окт",
+          "Narzan": 98.85,
+          "Borjomi": 341.37,
+          "Senezhskaya": 71.62,
+          "Svyatoy": 219.92
+        },
+        {
+          "month": "Ноя",
+          "Narzan": 97.37,
+          "Borjomi": 367.51,
+          "Senezhskaya": 64.26,
+          "Svyatoy": 246.32
+        },
+        {
+          "month": "Дек",
+          "Narzan": 155.01,
+          "Borjomi": 510.69,
+          "Senezhskaya": 94.3,
+          "Svyatoy": 307.41
+        }
+      ],
+      "wb": [
+        {
+          "month": "Фев",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Мар",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Апр",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Май",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июн",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июл",
+          "Narzan": 155.17,
+          "Borjomi": 545.44,
+          "Senezhskaya": 40.73,
+          "Svyatoy": 517.0
+        },
+        {
+          "month": "Авг",
+          "Narzan": 165.59,
+          "Borjomi": 585.84,
+          "Senezhskaya": 31.8,
+          "Svyatoy": 421.99
+        },
+        {
+          "month": "Сен",
+          "Narzan": 160.68,
+          "Borjomi": 744.66,
+          "Senezhskaya": 30.47,
+          "Svyatoy": 445.52
+        },
+        {
+          "month": "Окт",
+          "Narzan": 228.95,
+          "Borjomi": 846.58,
+          "Senezhskaya": 67.8,
+          "Svyatoy": 692.21
+        },
+        {
+          "month": "Ноя",
+          "Narzan": 201.87,
+          "Borjomi": 699.9,
+          "Senezhskaya": 52.39,
+          "Svyatoy": 573.67
+        },
+        {
+          "month": "Дек",
+          "Narzan": 212.13,
+          "Borjomi": 754.56,
+          "Senezhskaya": 68.58,
+          "Svyatoy": 448.12
+        }
+      ],
+      "ym": [
+        {
+          "month": "Фев",
+          "Narzan": 1.94,
+          "Borjomi": 20.94,
+          "Senezhskaya": null,
+          "Svyatoy": 0.0
+        },
+        {
+          "month": "Мар",
+          "Narzan": 5.18,
+          "Borjomi": 21.45,
+          "Senezhskaya": null,
+          "Svyatoy": 0.0
+        },
+        {
+          "month": "Апр",
+          "Narzan": 2.06,
+          "Borjomi": 16.38,
+          "Senezhskaya": null,
+          "Svyatoy": 0.0
+        },
+        {
+          "month": "Май",
+          "Narzan": 3.22,
+          "Borjomi": 3.25,
+          "Senezhskaya": null,
+          "Svyatoy": 0.04
+        },
+        {
+          "month": "Июн",
+          "Narzan": 2.19,
+          "Borjomi": 11.21,
+          "Senezhskaya": null,
+          "Svyatoy": 1.99
+        },
+        {
+          "month": "Июл",
+          "Narzan": 3.21,
+          "Borjomi": 2.95,
+          "Senezhskaya": null,
+          "Svyatoy": 2.09
+        },
+        {
+          "month": "Авг",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Сен",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Окт",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Ноя",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Дек",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        }
+      ],
+      "all": [
+        {
+          "month": "Фев",
+          "Narzan": 1.94,
+          "Borjomi": 20.94,
+          "Senezhskaya": null,
+          "Svyatoy": 0.0
+        },
+        {
+          "month": "Мар",
+          "Narzan": 5.18,
+          "Borjomi": 21.45,
+          "Senezhskaya": null,
+          "Svyatoy": 0.0
+        },
+        {
+          "month": "Апр",
+          "Narzan": 2.06,
+          "Borjomi": 16.38,
+          "Senezhskaya": null,
+          "Svyatoy": 0.0
+        },
+        {
+          "month": "Май",
+          "Narzan": 3.22,
+          "Borjomi": 3.25,
+          "Senezhskaya": null,
+          "Svyatoy": 0.04
+        },
+        {
+          "month": "Июн",
+          "Narzan": 2.19,
+          "Borjomi": 11.21,
+          "Senezhskaya": null,
+          "Svyatoy": 1.99
+        },
+        {
+          "month": "Июл",
+          "Narzan": 233.04,
+          "Borjomi": 754.35,
+          "Senezhskaya": 96.25,
+          "Svyatoy": 728.4
+        },
+        {
+          "month": "Авг",
+          "Narzan": 253.04,
+          "Borjomi": 849.35,
+          "Senezhskaya": 84.03,
+          "Svyatoy": 543.66
+        },
+        {
+          "month": "Сен",
+          "Narzan": 248.72,
+          "Borjomi": 1038.25,
+          "Senezhskaya": 79.03,
+          "Svyatoy": 614.51
+        },
+        {
+          "month": "Окт",
+          "Narzan": 327.8,
+          "Borjomi": 1187.95,
+          "Senezhskaya": 139.42,
+          "Svyatoy": 912.13
+        },
+        {
+          "month": "Ноя",
+          "Narzan": 299.24,
+          "Borjomi": 1067.4,
+          "Senezhskaya": 116.65,
+          "Svyatoy": 820.0
+        },
+        {
+          "month": "Дек",
+          "Narzan": 367.14,
+          "Borjomi": 1265.25,
+          "Senezhskaya": 162.88,
+          "Svyatoy": 755.53
+        }
+      ]
+    },
+    "sales": {
+      "ozon": [
+        {
+          "month": "Фев",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Мар",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Апр",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Май",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июн",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июл",
+          "Narzan": 93739,
+          "Borjomi": 337145,
+          "Senezhskaya": 84503,
+          "Svyatoy": 484304
+        },
+        {
+          "month": "Авг",
+          "Narzan": 107643,
+          "Borjomi": 440169,
+          "Senezhskaya": 81600,
+          "Svyatoy": 224914
+        },
+        {
+          "month": "Сен",
+          "Narzan": 108927,
+          "Borjomi": 470107,
+          "Senezhskaya": 68360,
+          "Svyatoy": 326418
+        },
+        {
+          "month": "Окт",
+          "Narzan": 118976,
+          "Borjomi": 477843,
+          "Senezhskaya": 111459,
+          "Svyatoy": 416993
+        },
+        {
+          "month": "Ноя",
+          "Narzan": 118591,
+          "Borjomi": 691310,
+          "Senezhskaya": 91316,
+          "Svyatoy": 471204
+        },
+        {
+          "month": "Дек",
+          "Narzan": 175497,
+          "Borjomi": 811803,
+          "Senezhskaya": 140811,
+          "Svyatoy": 549525
+        }
+      ],
+      "wb": [
+        {
+          "month": "Фев",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Мар",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Апр",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Май",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июн",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июл",
+          "Narzan": 197300,
+          "Borjomi": 905815,
+          "Senezhskaya": 65266,
+          "Svyatoy": 1165660
+        },
+        {
+          "month": "Авг",
+          "Narzan": 201300,
+          "Borjomi": 984614,
+          "Senezhskaya": 52116,
+          "Svyatoy": 754287
+        },
+        {
+          "month": "Сен",
+          "Narzan": 205892,
+          "Borjomi": 1441304,
+          "Senezhskaya": 46619,
+          "Svyatoy": 835153
+        },
+        {
+          "month": "Окт",
+          "Narzan": 289946,
+          "Borjomi": 1515254,
+          "Senezhskaya": 103396,
+          "Svyatoy": 1330777
+        },
+        {
+          "month": "Ноя",
+          "Narzan": 287441,
+          "Borjomi": 1354772,
+          "Senezhskaya": 84813,
+          "Svyatoy": 1151408
+        },
+        {
+          "month": "Дек",
+          "Narzan": 270404,
+          "Borjomi": 1312563,
+          "Senezhskaya": 114250,
+          "Svyatoy": 778847
+        }
+      ],
+      "ym": [
+        {
+          "month": "Фев",
+          "Narzan": 2766,
+          "Borjomi": 43476,
+          "Senezhskaya": null,
+          "Svyatoy": 0
+        },
+        {
+          "month": "Мар",
+          "Narzan": 8242,
+          "Borjomi": 42164,
+          "Senezhskaya": null,
+          "Svyatoy": 0
+        },
+        {
+          "month": "Апр",
+          "Narzan": 2900,
+          "Borjomi": 30406,
+          "Senezhskaya": null,
+          "Svyatoy": 0
+        },
+        {
+          "month": "Май",
+          "Narzan": 4572,
+          "Borjomi": 5839,
+          "Senezhskaya": null,
+          "Svyatoy": 60
+        },
+        {
+          "month": "Июн",
+          "Narzan": 2500,
+          "Borjomi": 17082,
+          "Senezhskaya": null,
+          "Svyatoy": 3960
+        },
+        {
+          "month": "Июл",
+          "Narzan": 3496,
+          "Borjomi": 3795,
+          "Senezhskaya": null,
+          "Svyatoy": 4169
+        },
+        {
+          "month": "Авг",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Сен",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Окт",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Ноя",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Дек",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        }
+      ],
+      "all": [
+        {
+          "month": "Фев",
+          "Narzan": 2766,
+          "Borjomi": 43476,
+          "Senezhskaya": null,
+          "Svyatoy": 0
+        },
+        {
+          "month": "Мар",
+          "Narzan": 8242,
+          "Borjomi": 42164,
+          "Senezhskaya": null,
+          "Svyatoy": 0
+        },
+        {
+          "month": "Апр",
+          "Narzan": 2900,
+          "Borjomi": 30406,
+          "Senezhskaya": null,
+          "Svyatoy": 0
+        },
+        {
+          "month": "Май",
+          "Narzan": 4572,
+          "Borjomi": 5839,
+          "Senezhskaya": null,
+          "Svyatoy": 60
+        },
+        {
+          "month": "Июн",
+          "Narzan": 2500,
+          "Borjomi": 17082,
+          "Senezhskaya": null,
+          "Svyatoy": 3960
+        },
+        {
+          "month": "Июл",
+          "Narzan": 294535,
+          "Borjomi": 1246755,
+          "Senezhskaya": 149769,
+          "Svyatoy": 1654133
+        },
+        {
+          "month": "Авг",
+          "Narzan": 308943,
+          "Borjomi": 1424783,
+          "Senezhskaya": 133716,
+          "Svyatoy": 979201
+        },
+        {
+          "month": "Сен",
+          "Narzan": 314819,
+          "Borjomi": 1911411,
+          "Senezhskaya": 114979,
+          "Svyatoy": 1161571
+        },
+        {
+          "month": "Окт",
+          "Narzan": 408922,
+          "Borjomi": 1993097,
+          "Senezhskaya": 214855,
+          "Svyatoy": 1747770
+        },
+        {
+          "month": "Ноя",
+          "Narzan": 406032,
+          "Borjomi": 2046082,
+          "Senezhskaya": 176129,
+          "Svyatoy": 1622612
+        },
+        {
+          "month": "Дек",
+          "Narzan": 445901,
+          "Borjomi": 2124366,
+          "Senezhskaya": 255061,
+          "Svyatoy": 1328372
+        }
+      ]
+    },
+    "salesShare": {
+      "ozon": [
+        {
+          "month": "Фев",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Мар",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Апр",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Май",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июн",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июл",
+          "Narzan": 0.0705,
+          "Borjomi": 0.2536,
+          "Senezhskaya": 0.0636,
+          "Svyatoy": 0.3643
+        },
+        {
+          "month": "Авг",
+          "Narzan": 0.083,
+          "Borjomi": 0.3395,
+          "Senezhskaya": 0.0629,
+          "Svyatoy": 0.1735
+        },
+        {
+          "month": "Сен",
+          "Narzan": 0.0839,
+          "Borjomi": 0.3622,
+          "Senezhskaya": 0.0527,
+          "Svyatoy": 0.2515
+        },
+        {
+          "month": "Окт",
+          "Narzan": 0.0812,
+          "Borjomi": 0.3259,
+          "Senezhskaya": 0.076,
+          "Svyatoy": 0.2844
+        },
+        {
+          "month": "Ноя",
+          "Narzan": 0.0697,
+          "Borjomi": 0.4062,
+          "Senezhskaya": 0.0537,
+          "Svyatoy": 0.2769
+        },
+        {
+          "month": "Дек",
+          "Narzan": 0.0844,
+          "Borjomi": 0.3904,
+          "Senezhskaya": 0.0677,
+          "Svyatoy": 0.2643
+        }
+      ],
+      "wb": [
+        {
+          "month": "Фев",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Мар",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Апр",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Май",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июн",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Июл",
+          "Narzan": 0.0999,
+          "Borjomi": 0.4588,
+          "Senezhskaya": 0.0331,
+          "Svyatoy": 0.5904
+        },
+        {
+          "month": "Авг",
+          "Narzan": 0.0934,
+          "Borjomi": 0.4567,
+          "Senezhskaya": 0.0242,
+          "Svyatoy": 0.3499
+        },
+        {
+          "month": "Сен",
+          "Narzan": 0.0785,
+          "Borjomi": 0.5494,
+          "Senezhskaya": 0.0178,
+          "Svyatoy": 0.3183
+        },
+        {
+          "month": "Окт",
+          "Narzan": 0.0982,
+          "Borjomi": 0.5129,
+          "Senezhskaya": 0.035,
+          "Svyatoy": 0.4505
+        },
+        {
+          "month": "Ноя",
+          "Narzan": 0.1067,
+          "Borjomi": 0.5028,
+          "Senezhskaya": 0.0315,
+          "Svyatoy": 0.4273
+        },
+        {
+          "month": "Дек",
+          "Narzan": 0.093,
+          "Borjomi": 0.4515,
+          "Senezhskaya": 0.0393,
+          "Svyatoy": 0.2679
+        }
+      ],
+      "ym": [
+        {
+          "month": "Фев",
+          "Narzan": 0.0235,
+          "Borjomi": 0.3689,
+          "Senezhskaya": null,
+          "Svyatoy": 0
+        },
+        {
+          "month": "Мар",
+          "Narzan": 0.069,
+          "Borjomi": 0.3527,
+          "Senezhskaya": null,
+          "Svyatoy": 0
+        },
+        {
+          "month": "Апр",
+          "Narzan": 0.0175,
+          "Borjomi": 0.1837,
+          "Senezhskaya": null,
+          "Svyatoy": 0
+        },
+        {
+          "month": "Май",
+          "Narzan": 0.0993,
+          "Borjomi": 0.1268,
+          "Senezhskaya": null,
+          "Svyatoy": 0.0013
+        },
+        {
+          "month": "Июн",
+          "Narzan": 0.0132,
+          "Borjomi": 0.09,
+          "Senezhskaya": null,
+          "Svyatoy": 0.0209
+        },
+        {
+          "month": "Июл",
+          "Narzan": 0.0488,
+          "Borjomi": 0.0529,
+          "Senezhskaya": null,
+          "Svyatoy": 0.0581
+        },
+        {
+          "month": "Авг",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Сен",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Окт",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Ноя",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        },
+        {
+          "month": "Дек",
+          "Narzan": null,
+          "Borjomi": null,
+          "Senezhskaya": null,
+          "Svyatoy": null
+        }
+      ],
+      "all": [
+        {
+          "month": "Фев",
+          "Narzan": 0.0235,
+          "Borjomi": 0.3689,
+          "Senezhskaya": null,
+          "Svyatoy": 0
+        },
+        {
+          "month": "Мар",
+          "Narzan": 0.069,
+          "Borjomi": 0.3527,
+          "Senezhskaya": null,
+          "Svyatoy": 0
+        },
+        {
+          "month": "Апр",
+          "Narzan": 0.0175,
+          "Borjomi": 0.1837,
+          "Senezhskaya": null,
+          "Svyatoy": 0
+        },
+        {
+          "month": "Май",
+          "Narzan": 0.0993,
+          "Borjomi": 0.1268,
+          "Senezhskaya": null,
+          "Svyatoy": 0.0013
+        },
+        {
+          "month": "Июн",
+          "Narzan": 0.0132,
+          "Borjomi": 0.09,
+          "Senezhskaya": null,
+          "Svyatoy": 0.0209
+        },
+        {
+          "month": "Июл",
+          "Narzan": 0.2192,
+          "Borjomi": 0.7653,
+          "Senezhskaya": 0.0966,
+          "Svyatoy": 1.0128
+        },
+        {
+          "month": "Авг",
+          "Narzan": 0.1764,
+          "Borjomi": 0.7962,
+          "Senezhskaya": 0.0871,
+          "Svyatoy": 0.5234
+        },
+        {
+          "month": "Сен",
+          "Narzan": 0.1624,
+          "Borjomi": 0.9116,
+          "Senezhskaya": 0.0704,
+          "Svyatoy": 0.5699
+        },
+        {
+          "month": "Окт",
+          "Narzan": 0.1793,
+          "Borjomi": 0.8389,
+          "Senezhskaya": 0.111,
+          "Svyatoy": 0.7349
+        },
+        {
+          "month": "Ноя",
+          "Narzan": 0.1764,
+          "Borjomi": 0.909,
+          "Senezhskaya": 0.0851,
+          "Svyatoy": 0.7042
+        },
+        {
+          "month": "Дек",
+          "Narzan": 0.1774,
+          "Borjomi": 0.8419,
+          "Senezhskaya": 0.107,
+          "Svyatoy": 0.5322
+        }
+      ]
+    }
+  }
+}

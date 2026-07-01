@@ -1,0 +1,745 @@
+{
+  "generated": "2026-05",
+  "brands": [
+    "Narzan",
+    "Borjomi",
+    "Senezhskaya",
+    "Svyatoy"
+  ],
+  "brandNames": {
+    "Narzan": "Нарзан",
+    "Borjomi": "Боржоми",
+    "Senezhskaya": "Сенежская",
+    "Svyatoy": "Святой источник"
+  },
+  "sl": {
+    "assortment": {
+      "label": "Ассортимент",
+      "params": [
+        {
+          "key": "total",
+          "label": "Все параметры"
+        },
+        {
+          "key": "p0",
+          "label": "Уникальные и эксклюзивные продукты"
+        },
+        {
+          "key": "p1",
+          "label": "Широкий ассортимент"
+        },
+        {
+          "key": "p2",
+          "label": "Высокое качество товаров"
+        },
+        {
+          "key": "p3",
+          "label": "Высокое качество упаковки"
+        }
+      ],
+      "chartData": {
+        "p0": [
+          {
+            "brand": "Narzan",
+            "brandName": "Нарзан",
+            "pos": 31,
+            "neg": 4
+          },
+          {
+            "brand": "Borjomi",
+            "brandName": "Боржоми",
+            "pos": 96,
+            "neg": 6
+          },
+          {
+            "brand": "Senezhskaya",
+            "brandName": "Сенежская",
+            "pos": 3,
+            "neg": 2
+          },
+          {
+            "brand": "Svyatoy",
+            "brandName": "Святой источник",
+            "pos": 22,
+            "neg": 4
+          }
+        ],
+        "p1": [
+          {
+            "brand": "Narzan",
+            "brandName": "Нарзан",
+            "pos": 68,
+            "neg": 1
+          },
+          {
+            "brand": "Borjomi",
+            "brandName": "Боржоми",
+            "pos": 170,
+            "neg": 14
+          },
+          {
+            "brand": "Senezhskaya",
+            "brandName": "Сенежская",
+            "pos": 14,
+            "neg": 2
+          },
+          {
+            "brand": "Svyatoy",
+            "brandName": "Святой источник",
+            "pos": 76,
+            "neg": 1
+          }
+        ],
+        "p2": [
+          {
+            "brand": "Narzan",
+            "brandName": "Нарзан",
+            "pos": 306,
+            "neg": 113
+          },
+          {
+            "brand": "Borjomi",
+            "brandName": "Боржоми",
+            "pos": 251,
+            "neg": 264
+          },
+          {
+            "brand": "Senezhskaya",
+            "brandName": "Сенежская",
+            "pos": 46,
+            "neg": 18
+          },
+          {
+            "brand": "Svyatoy",
+            "brandName": "Святой источник",
+            "pos": 223,
+            "neg": 96
+          }
+        ],
+        "p3": [
+          {
+            "brand": "Narzan",
+            "brandName": "Нарзан",
+            "pos": 142,
+            "neg": 36
+          },
+          {
+            "brand": "Borjomi",
+            "brandName": "Боржоми",
+            "pos": 102,
+            "neg": 26
+          },
+          {
+            "brand": "Senezhskaya",
+            "brandName": "Сенежская",
+            "pos": 25,
+            "neg": 4
+          },
+          {
+            "brand": "Svyatoy",
+            "brandName": "Святой источник",
+            "pos": 142,
+            "neg": 22
+          }
+        ],
+        "total": [
+          {
+            "brand": "Narzan",
+            "brandName": "Нарзан",
+            "pos": 547,
+            "neg": 154
+          },
+          {
+            "brand": "Borjomi",
+            "brandName": "Боржоми",
+            "pos": 619,
+            "neg": 310
+          },
+          {
+            "brand": "Senezhskaya",
+            "brandName": "Сенежская",
+            "pos": 88,
+            "neg": 26
+          },
+          {
+            "brand": "Svyatoy",
+            "brandName": "Святой источник",
+            "pos": 463,
+            "neg": 123
+          }
+        ]
+      }
+    },
+    "price": {
+      "label": "Цена",
+      "params": [
+        {
+          "key": "total",
+          "label": "Все параметры"
+        },
+        {
+          "key": "p0",
+          "label": "Конкурентоспособные и выгодные цены"
+        },
+        {
+          "key": "p1",
+          "label": "Наличие скидок и промо"
+        }
+      ],
+      "chartData": {
+        "p0": [
+          {
+            "brand": "Narzan",
+            "brandName": "Нарзан",
+            "pos": 224,
+            "neg": 105
+          },
+          {
+            "brand": "Borjomi",
+            "brandName": "Боржоми",
+            "pos": 458,
+            "neg": 369
+          },
+          {
+            "brand": "Senezhskaya",
+            "brandName": "Сенежская",
+            "pos": 106,
+            "neg": 31
+          },
+          {
+            "brand": "Svyatoy",
+            "brandName": "Святой источник",
+            "pos": 284,
+            "neg": 161
+          }
+        ],
+        "p1": [
+          {
+            "brand": "Narzan",
+            "brandName": "Нарзан",
+            "pos": 192,
+            "neg": 1
+          },
+          {
+            "brand": "Borjomi",
+            "brandName": "Боржоми",
+            "pos": 164,
+            "neg": 12
+          },
+          {
+            "brand": "Senezhskaya",
+            "brandName": "Сенежская",
+            "pos": 28,
+            "neg": 0
+          },
+          {
+            "brand": "Svyatoy",
+            "brandName": "Святой источник",
+            "pos": 104,
+            "neg": 3
+          }
+        ],
+        "total": [
+          {
+            "brand": "Narzan",
+            "brandName": "Нарзан",
+            "pos": 416,
+            "neg": 106
+          },
+          {
+            "brand": "Borjomi",
+            "brandName": "Боржоми",
+            "pos": 622,
+            "neg": 381
+          },
+          {
+            "brand": "Senezhskaya",
+            "brandName": "Сенежская",
+            "pos": 134,
+            "neg": 31
+          },
+          {
+            "brand": "Svyatoy",
+            "brandName": "Святой источник",
+            "pos": 388,
+            "neg": 164
+          }
+        ]
+      }
+    },
+    "product": {
+      "label": "Продукт",
+      "params": [
+        {
+          "key": "total",
+          "label": "Все параметры"
+        },
+        {
+          "key": "p0",
+          "label": "Приятный вкус"
+        },
+        {
+          "key": "p1",
+          "label": "Польза от употребления"
+        },
+        {
+          "key": "p2",
+          "label": "Можно часто пить"
+        }
+      ],
+      "chartData": {
+        "p0": [
+          {
+            "brand": "Narzan",
+            "brandName": "Нарзан",
+            "pos": 1247,
+            "neg": 134
+          },
+          {
+            "brand": "Borjomi",
+            "brandName": "Боржоми",
+            "pos": 1212,
+            "neg": 240
+          },
+          {
+            "brand": "Senezhskaya",
+            "brandName": "Сенежская",
+            "pos": 446,
+            "neg": 113
+          },
+          {
+            "brand": "Svyatoy",
+            "brandName": "Святой источник",
+            "pos": 1487,
+            "neg": 222
+          }
+        ],
+        "p1": [
+          {
+            "brand": "Narzan",
+            "brandName": "Нарзан",
+            "pos": 559,
+            "neg": 27
+          },
+          {
+            "brand": "Borjomi",
+            "brandName": "Боржоми",
+            "pos": 1036,
+            "neg": 93
+          },
+          {
+            "brand": "Senezhskaya",
+            "brandName": "Сенежская",
+            "pos": 24,
+            "neg": 3
+          },
+          {
+            "brand": "Svyatoy",
+            "brandName": "Святой источник",
+            "pos": 187,
+            "neg": 17
+          }
+        ],
+        "p2": [
+          {
+            "brand": "Narzan",
+            "brandName": "Нарзан",
+            "pos": 166,
+            "neg": 4
+          },
+          {
+            "brand": "Borjomi",
+            "brandName": "Боржоми",
+            "pos": 411,
+            "neg": 7
+          },
+          {
+            "brand": "Senezhskaya",
+            "brandName": "Сенежская",
+            "pos": 42,
+            "neg": 1
+          },
+          {
+            "brand": "Svyatoy",
+            "brandName": "Святой источник",
+            "pos": 167,
+            "neg": 2
+          }
+        ],
+        "total": [
+          {
+            "brand": "Narzan",
+            "brandName": "Нарзан",
+            "pos": 1972,
+            "neg": 165
+          },
+          {
+            "brand": "Borjomi",
+            "brandName": "Боржоми",
+            "pos": 2659,
+            "neg": 340
+          },
+          {
+            "brand": "Senezhskaya",
+            "brandName": "Сенежская",
+            "pos": 512,
+            "neg": 117
+          },
+          {
+            "brand": "Svyatoy",
+            "brandName": "Святой источник",
+            "pos": 1841,
+            "neg": 241
+          }
+        ]
+      }
+    }
+  },
+  "sentiment": [
+    {
+      "period": "2026-05",
+      "month": "Май",
+      "Narzan": 74.7,
+      "Borjomi": 58.2,
+      "Senezhskaya": 61.7,
+      "Svyatoy": 67.2
+    }
+  ],
+  "imageChars": [
+    {
+      "label": "Надежный",
+      "Narzan": 111,
+      "Borjomi": 322,
+      "Senezhskaya": 35,
+      "Svyatoy": 233
+    },
+    {
+      "label": "Доступный",
+      "Narzan": 224,
+      "Borjomi": 459,
+      "Senezhskaya": 107,
+      "Svyatoy": 284
+    },
+    {
+      "label": "Дорогой",
+      "Narzan": 104,
+      "Borjomi": 367,
+      "Senezhskaya": 31,
+      "Svyatoy": 159
+    },
+    {
+      "label": "Современный",
+      "Narzan": 88,
+      "Borjomi": 231,
+      "Senezhskaya": 17,
+      "Svyatoy": 93
+    },
+    {
+      "label": "Натуральный",
+      "Narzan": 1367,
+      "Borjomi": 548,
+      "Senezhskaya": 55,
+      "Svyatoy": 446
+    },
+    {
+      "label": "Вкусный",
+      "Narzan": 1247,
+      "Borjomi": 1212,
+      "Senezhskaya": 446,
+      "Svyatoy": 1487
+    },
+    {
+      "label": "Лечебный",
+      "Narzan": 559,
+      "Borjomi": 1036,
+      "Senezhskaya": 24,
+      "Svyatoy": 187
+    }
+  ],
+  "matrix": {
+    "absolute": [
+      {
+        "label": "Надежный",
+        "Narzan": 111,
+        "Borjomi": 322,
+        "Senezhskaya": 35,
+        "Svyatoy": 233
+      },
+      {
+        "label": "Ненадежный",
+        "Narzan": 67,
+        "Borjomi": 250,
+        "Senezhskaya": 17,
+        "Svyatoy": 78
+      },
+      {
+        "label": "Доступный",
+        "Narzan": 224,
+        "Borjomi": 459,
+        "Senezhskaya": 107,
+        "Svyatoy": 284
+      },
+      {
+        "label": "Дорогой",
+        "Narzan": 104,
+        "Borjomi": 367,
+        "Senezhskaya": 31,
+        "Svyatoy": 159
+      },
+      {
+        "label": "Универсальный",
+        "Narzan": 141,
+        "Borjomi": 424,
+        "Senezhskaya": 38,
+        "Svyatoy": 192
+      },
+      {
+        "label": "Ограниченный",
+        "Narzan": 7,
+        "Borjomi": 29,
+        "Senezhskaya": 1,
+        "Svyatoy": 24
+      },
+      {
+        "label": "Современный",
+        "Narzan": 88,
+        "Borjomi": 231,
+        "Senezhskaya": 17,
+        "Svyatoy": 93
+      },
+      {
+        "label": "Устаревший",
+        "Narzan": 16,
+        "Borjomi": 78,
+        "Senezhskaya": 1,
+        "Svyatoy": 26
+      },
+      {
+        "label": "Натуральный",
+        "Narzan": 1367,
+        "Borjomi": 548,
+        "Senezhskaya": 55,
+        "Svyatoy": 446
+      },
+      {
+        "label": "Ненатуральный",
+        "Narzan": 64,
+        "Borjomi": 68,
+        "Senezhskaya": 4,
+        "Svyatoy": 32
+      },
+      {
+        "label": "Престижный",
+        "Narzan": 19,
+        "Borjomi": 45,
+        "Senezhskaya": 5,
+        "Svyatoy": 23
+      },
+      {
+        "label": "Непрестижный",
+        "Narzan": 10,
+        "Borjomi": 13,
+        "Senezhskaya": 3,
+        "Svyatoy": 5
+      },
+      {
+        "label": "Эксклюзивный",
+        "Narzan": 26,
+        "Borjomi": 66,
+        "Senezhskaya": 0,
+        "Svyatoy": 33
+      },
+      {
+        "label": "Неэксклюзивный",
+        "Narzan": 4,
+        "Borjomi": 6,
+        "Senezhskaya": 2,
+        "Svyatoy": 4
+      },
+      {
+        "label": "Популярный",
+        "Narzan": 71,
+        "Borjomi": 227,
+        "Senezhskaya": 13,
+        "Svyatoy": 70
+      },
+      {
+        "label": "Непопулярный",
+        "Narzan": 12,
+        "Borjomi": 35,
+        "Senezhskaya": 3,
+        "Svyatoy": 13
+      },
+      {
+        "label": "Вкусный",
+        "Narzan": 1247,
+        "Borjomi": 1212,
+        "Senezhskaya": 446,
+        "Svyatoy": 1487
+      },
+      {
+        "label": "Невкусный",
+        "Narzan": 134,
+        "Borjomi": 240,
+        "Senezhskaya": 113,
+        "Svyatoy": 222
+      },
+      {
+        "label": "Лечебный",
+        "Narzan": 559,
+        "Borjomi": 1036,
+        "Senezhskaya": 24,
+        "Svyatoy": 187
+      },
+      {
+        "label": "Без лечебных свойств",
+        "Narzan": 27,
+        "Borjomi": 93,
+        "Senezhskaya": 3,
+        "Svyatoy": 17
+      }
+    ],
+    "median": [
+      {
+        "label": "Надежный",
+        "Narzan": 152.1,
+        "Borjomi": 441.1,
+        "Senezhskaya": 47.9,
+        "Svyatoy": 319.2
+      },
+      {
+        "label": "Ненадежный",
+        "Narzan": 159.5,
+        "Borjomi": 595.2,
+        "Senezhskaya": 40.5,
+        "Svyatoy": 185.7
+      },
+      {
+        "label": "Доступный",
+        "Narzan": 135.3,
+        "Borjomi": 277.3,
+        "Senezhskaya": 64.7,
+        "Svyatoy": 171.6
+      },
+      {
+        "label": "Дорогой",
+        "Narzan": 154.1,
+        "Borjomi": 543.7,
+        "Senezhskaya": 45.9,
+        "Svyatoy": 235.6
+      },
+      {
+        "label": "Универсальный",
+        "Narzan": 157.5,
+        "Borjomi": 473.7,
+        "Senezhskaya": 42.5,
+        "Svyatoy": 214.5
+      },
+      {
+        "label": "Ограниченный",
+        "Narzan": 140.0,
+        "Borjomi": 580.0,
+        "Senezhskaya": 20.0,
+        "Svyatoy": 480.0
+      },
+      {
+        "label": "Современный",
+        "Narzan": 161.5,
+        "Borjomi": 423.9,
+        "Senezhskaya": 31.2,
+        "Svyatoy": 170.6
+      },
+      {
+        "label": "Устаревший",
+        "Narzan": 177.8,
+        "Borjomi": 866.7,
+        "Senezhskaya": 11.1,
+        "Svyatoy": 288.9
+      },
+      {
+        "label": "Натуральный",
+        "Narzan": 541.4,
+        "Borjomi": 217.0,
+        "Senezhskaya": 21.8,
+        "Svyatoy": 176.6
+      },
+      {
+        "label": "Ненатуральный",
+        "Narzan": 355.6,
+        "Borjomi": 377.8,
+        "Senezhskaya": 22.2,
+        "Svyatoy": 177.8
+      },
+      {
+        "label": "Престижный",
+        "Narzan": 158.3,
+        "Borjomi": 375.0,
+        "Senezhskaya": 41.7,
+        "Svyatoy": 191.7
+      },
+      {
+        "label": "Непрестижный",
+        "Narzan": 250.0,
+        "Borjomi": 325.0,
+        "Senezhskaya": 75.0,
+        "Svyatoy": 125.0
+      },
+      {
+        "label": "Эксклюзивный",
+        "Narzan": 157.6,
+        "Borjomi": 400.0,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 200.0
+      },
+      {
+        "label": "Неэксклюзивный",
+        "Narzan": 133.3,
+        "Borjomi": 200.0,
+        "Senezhskaya": 66.7,
+        "Svyatoy": 133.3
+      },
+      {
+        "label": "Популярный",
+        "Narzan": 151.1,
+        "Borjomi": 483.0,
+        "Senezhskaya": 27.7,
+        "Svyatoy": 148.9
+      },
+      {
+        "label": "Непопулярный",
+        "Narzan": 160.0,
+        "Borjomi": 466.7,
+        "Senezhskaya": 40.0,
+        "Svyatoy": 173.3
+      },
+      {
+        "label": "Вкусный",
+        "Narzan": 150.4,
+        "Borjomi": 146.2,
+        "Senezhskaya": 53.8,
+        "Svyatoy": 179.4
+      },
+      {
+        "label": "Невкусный",
+        "Narzan": 108.5,
+        "Borjomi": 194.3,
+        "Senezhskaya": 91.5,
+        "Svyatoy": 179.8
+      },
+      {
+        "label": "Лечебный",
+        "Narzan": 354.9,
+        "Borjomi": 657.8,
+        "Senezhskaya": 15.2,
+        "Svyatoy": 118.7
+      },
+      {
+        "label": "Без лечебных свойств",
+        "Narzan": 270.0,
+        "Borjomi": 930.0,
+        "Senezhskaya": 30.0,
+        "Svyatoy": 170.0
+      }
+    ]
+  }
+}

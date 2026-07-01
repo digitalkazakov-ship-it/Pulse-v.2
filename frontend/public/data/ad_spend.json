@@ -1,0 +1,202 @@
+{
+  "generated": "2026-04",
+  "brands": [
+    "Narzan",
+    "Borjomi",
+    "Senezhskaya",
+    "Svyatoy"
+  ],
+  "brandNames": {
+    "Narzan": "Нарзан",
+    "Borjomi": "Боржоми",
+    "Senezhskaya": "Сенежская",
+    "Svyatoy": "Святой источник"
+  },
+  "channels": {
+    "total": [
+      {
+        "month": "Дек '25",
+        "Narzan": 5.15,
+        "Borjomi": 154.0,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Янв",
+        "Narzan": 0.0,
+        "Borjomi": 8.04,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Фев",
+        "Narzan": 0.0,
+        "Borjomi": 0.0,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Мар",
+        "Narzan": 0.0,
+        "Borjomi": 0.25,
+        "Senezhskaya": 3.12,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Апр",
+        "Narzan": 0.0,
+        "Borjomi": 50.3,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      }
+    ],
+    "tv": [
+      {
+        "month": "Дек '25",
+        "Narzan": 4.28,
+        "Borjomi": 126.44,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Янв",
+        "Narzan": 0.0,
+        "Borjomi": 7.69,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Фев",
+        "Narzan": 0.0,
+        "Borjomi": 0.0,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Мар",
+        "Narzan": 0.0,
+        "Borjomi": 0.24,
+        "Senezhskaya": 3.12,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Апр",
+        "Narzan": 0.0,
+        "Borjomi": 47.81,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      }
+    ],
+    "radio": [
+      {
+        "month": "Дек '25",
+        "Narzan": 0.0,
+        "Borjomi": 0.0,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Янв",
+        "Narzan": 0.0,
+        "Borjomi": 0.0,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Фев",
+        "Narzan": 0.0,
+        "Borjomi": 0.0,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Мар",
+        "Narzan": 0.0,
+        "Borjomi": 0.0,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Апр",
+        "Narzan": 0.0,
+        "Borjomi": 0.0,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      }
+    ],
+    "outdoor": [
+      {
+        "month": "Дек '25",
+        "Narzan": 0.0,
+        "Borjomi": 24.54,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Янв",
+        "Narzan": 0.0,
+        "Borjomi": 0.0,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Фев",
+        "Narzan": 0.0,
+        "Borjomi": 0.0,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Мар",
+        "Narzan": 0.0,
+        "Borjomi": 0.0,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Апр",
+        "Narzan": 0.0,
+        "Borjomi": 0.0,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      }
+    ],
+    "digital": [
+      {
+        "month": "Дек '25",
+        "Narzan": 0.87,
+        "Borjomi": 3.01,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Янв",
+        "Narzan": 0.0,
+        "Borjomi": 0.36,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Фев",
+        "Narzan": 0.0,
+        "Borjomi": 0.0,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Мар",
+        "Narzan": 0.0,
+        "Borjomi": 0.01,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      },
+      {
+        "month": "Апр",
+        "Narzan": 0.0,
+        "Borjomi": 2.5,
+        "Senezhskaya": 0.0,
+        "Svyatoy": 0.0
+      }
+    ]
+  }
+}

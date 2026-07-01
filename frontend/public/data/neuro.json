@@ -1,0 +1,54 @@
+{
+  "google": [
+    {
+      "brand": "Narzan",
+      "brandName": "Нарзан",
+      "impressions": 26.04,
+      "voice": 65.87
+    },
+    {
+      "brand": "Borjomi",
+      "brandName": "Боржоми",
+      "impressions": 25.54,
+      "voice": 64.6
+    },
+    {
+      "brand": "Senezhskaya",
+      "brandName": "Сенежская",
+      "impressions": 25.51,
+      "voice": 64.52
+    },
+    {
+      "brand": "Svyatoy",
+      "brandName": "Святой источник",
+      "impressions": 22.9,
+      "voice": 57.92
+    }
+  ],
+  "yandex": [
+    {
+      "brand": "Narzan",
+      "brandName": "Нарзан",
+      "impressions": 33.24,
+      "voice": 67.91
+    },
+    {
+      "brand": "Borjomi",
+      "brandName": "Боржоми",
+      "impressions": 33.21,
+      "voice": 67.84
+    },
+    {
+      "brand": "Senezhskaya",
+      "brandName": "Сенежская",
+      "impressions": 24.92,
+      "voice": 50.9
+    },
+    {
+      "brand": "Svyatoy",
+      "brandName": "Святой источник",
+      "impressions": 8.63,
+      "voice": 17.64
+    }
+  ]
+}

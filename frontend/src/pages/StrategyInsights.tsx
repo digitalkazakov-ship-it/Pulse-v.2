@@ -1,0 +1,257 @@
+import { useState, useEffect, useRef } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { ChevronDown, AlertCircle, Sparkles, RefreshCw, Clock9 } from 'lucide-react';
+import { api, type InsightsData } from '@/lib/api';
+import { useProject } from '@/contexts/ProjectContext';
+
+// ── Types ──────────────────────────────────────────────────────────────────────
+
+interface SectionDef {
+  title: string;
+  tag: string;
+  questions: { id: string; q: string }[];
+}
+
+// ── Data ───────────────────────────────────────────────────────────────────────
+
+const SECTIONS: SectionDef[] = [
+  {
+    title: 'Медиабюджеты: размер, динамика, структура',
+    tag: 'B1',
+    questions: [
+      { id: 'B1.1', q: 'Общий медиабюджет категории. Динамика. Сопоставление брендов по размеру инвестиций.' },
+      { id: 'B1.2', q: 'Распределение бюджета по брендам. Где растёт, где сокращается?' },
+      { id: 'B1.3', q: 'Структура по каналам: ТВ, digital, OOH, радио. Кто доминирует в каком канале?' },
+      { id: 'B1.4', q: 'Есть ли признаки перераспределения бюджета между каналами за период?' },
+    ],
+  },
+  {
+    title: 'ТВ-стратегия: флайты, каналы, аудиторный профиль',
+    tag: 'B2',
+    questions: [
+      { id: 'B2.1', q: 'Burst или always-on стратегия у каждого бренда? Сколько активных месяцев в ТВ?' },
+      { id: 'B2.2', q: 'Топ-каналы по WRP: соответствует ли сплит задекларированной ЦА?' },
+      { id: 'B2.3', q: 'Есть ли ТВ-спонсорство? Какую роль оно играет в стратегии?' },
+      { id: 'B2.4', q: 'Одинаковый ли ТВ-сплит у разных брендов? Если да — это проблема для всех.' },
+    ],
+  },
+  {
+    title: 'Эффективность медиа: знание, потребление, конверсия',
+    tag: 'B3',
+    questions: [
+      { id: 'B3.1', q: 'TOM (первое упоминание) по брендам. Динамика по кварталам. Кто лидирует и почему.' },
+      { id: 'B3.2', q: 'Частота потребления total и по брендам. Связь с медиаинвестициями.' },
+      { id: 'B3.3', q: 'Потребительская база: где самый сильный возрастной профиль у каждого бренда?' },
+      { id: 'B3.4', q: 'Высокий TOM при низкой доле рынка — коммуникационная ли это проблема или дистрибуционная?' },
+      { id: 'B3.5', q: 'Падает ли знание в паузах флайтов? Тренды между кварталами.' },
+    ],
+  },
+  {
+    title: 'Коммуникации и креатив',
+    tag: 'B4',
+    questions: [
+      { id: 'B4.1', q: 'Текущее позиционирование каждого бренда. Насколько сообщения дифференцированы?' },
+      { id: 'B4.2', q: 'Последние кампании: идея, доминирующий канал, масштаб активности по количеству креативов.' },
+      { id: 'B4.3', q: 'Коллаборации, инфлюенсеры, спонсорство — есть ли связная коммуникационная территория?' },
+      { id: 'B4.4', q: 'Что конкуренты делают принципиально иначе в коммуникациях? Где разрыв с клиентским брендом?' },
+    ],
+  },
+  {
+    title: 'Еком: присутствие, представленность, разрывы',
+    tag: 'B5',
+    questions: [
+      { id: 'B5.1', q: 'Кто лидирует по онлайн-выручке? На каких маркетплейсах разрыв наибольший?' },
+      { id: 'B5.2', q: 'Доля каждого бренда на Ozon, WB, ЯМ vs конкуренты. Где отставание наиболее критично?' },
+      { id: 'B5.3', q: 'Маркетплейсы (Ozon+WB) vs е-гросери (ЯМ): в каком канале каждый бренд сильнее?' },
+      { id: 'B5.4', q: 'Есть ли признаки проблем с дистрибуцией в конкретных розничных сетях?' },
+    ],
+  },
+];
+
+// ── Sub-components ─────────────────────────────────────────────────────────────
+
+function Section({ title, tag, children }: { title: string; tag: string; children: React.ReactNode }) {
+  const [open, setOpen] = useState(true);
+  return (
+    <div className="border border-border rounded-lg overflow-hidden">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center gap-3 px-5 py-4 bg-card hover:bg-accent/30 transition-colors text-left"
+      >
+        <span className="text-xs font-mono text-primary bg-primary/10 px-2 py-0.5 rounded">{tag}</span>
+        <span className="font-semibold text-foreground flex-1">{title}</span>
+        <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+      {open && (
+        <div className="px-5 py-4 space-y-5 border-t border-border bg-background">
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function AnswerBlock({ id, q, answer }: { id: string; q: string; answer: unknown }) {
+  const text: string | undefined = typeof answer === 'string' ? answer
+    : answer != null && typeof answer === 'object' ? JSON.stringify(answer, null, 0)
+    : undefined;
+  const isNoData = text?.startsWith('Данных недостаточно');
+  return (
+    <div className="space-y-1.5">
+      <div className="flex items-start gap-2">
+        <span className="text-[10px] font-mono text-muted-foreground bg-muted/50 px-1.5 py-0.5 rounded shrink-0 mt-0.5">
+          {id}
+        </span>
+        <p className="text-xs font-semibold text-muted-foreground leading-snug">{q}</p>
+      </div>
+      {text ? (
+        isNoData ? (
+          <div className="flex items-start gap-2 text-xs text-muted-foreground bg-muted/40 rounded-md p-3 ml-7">
+            <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+            <span>{text}</span>
+          </div>
+        ) : (
+          <div className="ml-7 text-sm text-foreground leading-relaxed prose prose-sm prose-neutral dark:prose-invert max-w-none
+            prose-p:my-1 prose-ul:my-1 prose-li:my-0.5 prose-table:text-xs
+            prose-th:px-2 prose-th:py-1 prose-td:px-2 prose-td:py-1
+            prose-strong:text-foreground prose-headings:text-foreground">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
+          </div>
+        )
+      ) : (
+        <div className="ml-7 h-4 bg-muted/30 rounded animate-pulse" />
+      )}
+    </div>
+  );
+}
+
+// ── Main page ──────────────────────────────────────────────────────────────────
+
+export default function StrategyInsights() {
+  const { projectId, isReadonly } = useProject();
+  const [insights, setInsights] = useState<InsightsData | null>(null);
+  const [generating, setGenerating] = useState(false);
+  const [genSeconds, setGenSeconds] = useState(0);
+  const [ready, setReady] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    if (projectId === null) return;
+    setInsights(null);
+    setReady(false);
+    setError(null);
+    api.getInsights(projectId)
+      .then(d => { if (d.available) setInsights(d); })
+      .catch(() => {})
+      .finally(() => setReady(true));
+  }, [projectId]);
+
+  async function handleGenerate() {
+    if (projectId === null) return;
+    setGenerating(true);
+    setGenSeconds(0);
+    setError(null);
+    timerRef.current = setInterval(() => setGenSeconds(s => s + 1), 1000);
+    try {
+      const d = await api.generateInsights(projectId);
+      setInsights(d);
+    } catch (e) {
+      setError(String(e));
+    } finally {
+      setGenerating(false);
+      if (timerRef.current) clearInterval(timerRef.current);
+    }
+  }
+
+  if (projectId === null) {
+    return (
+      <div className="flex items-center justify-center h-64 text-muted-foreground text-sm">
+        Сначала выберите или создайте проект.
+      </div>
+    );
+  }
+
+  if (!ready) {
+    return (
+      <div className="flex items-center justify-center h-64 text-muted-foreground text-sm">
+        Загрузка…
+      </div>
+    );
+  }
+
+  const hasInsights = insights?.available === true;
+
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold text-foreground">Стратегические выводы</h1>
+          <p className="text-sm text-muted-foreground mt-1">
+            Ответы на ключевые вопросы по медиастратегии и коммуникациям на основе загруженных данных
+          </p>
+          {hasInsights && insights!.generatedAt && (
+            <p className="flex items-center gap-1.5 text-xs text-muted-foreground mt-1">
+              <Clock9 className="w-3 h-3" />
+              Сгенерировано:{' '}
+              {new Date(insights!.generatedAt as string).toLocaleString('ru-RU', {
+                day: '2-digit', month: '2-digit', year: 'numeric',
+                hour: '2-digit', minute: '2-digit',
+              })}
+            </p>
+          )}
+        </div>
+
+        {!isReadonly && (
+          <button
+            onClick={handleGenerate}
+            disabled={generating}
+            className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-60"
+          >
+            {generating
+              ? <RefreshCw className="w-4 h-4 animate-spin" />
+              : <Sparkles className="w-4 h-4" />}
+            {generating
+              ? `Генерация… ${genSeconds}с`
+              : hasInsights ? 'Обновить выводы' : 'Сгенерировать выводы'}
+          </button>
+        )}
+      </div>
+
+      {error && (
+        <div className="flex items-start gap-2 text-xs text-red-600 bg-red-50 border border-red-200 rounded-md p-3">
+          <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+          <span>{error}</span>
+        </div>
+      )}
+
+      {!hasInsights && !generating && (
+        <div className="flex items-start gap-2 text-xs text-muted-foreground bg-muted/40 rounded-md p-4">
+          <Sparkles className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+          <span>
+            Нажмите «Сгенерировать выводы» — система проанализирует все загруженные данные
+            и сформулирует ответы на каждый вопрос. Займёт ~15–30 секунд.
+          </span>
+        </div>
+      )}
+
+      {/* Sections */}
+      <div className="space-y-4">
+        {SECTIONS.map(section => (
+          <Section key={section.tag} title={section.title} tag={section.tag}>
+            {section.questions.map(({ id, q }) => (
+              <AnswerBlock
+                key={id}
+                id={id}
+                q={q}
+                answer={generating ? undefined : insights?.[id]}
+              />
+            ))}
+          </Section>
+        ))}
+      </div>
+    </div>
+  );
+}

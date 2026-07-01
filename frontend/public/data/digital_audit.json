@@ -1,0 +1,675 @@
+{
+  "generated": "2026-04",
+  "brands": [
+    "BrandX",
+    "CompA",
+    "CompB",
+    "CompC"
+  ],
+  "brandNames": {
+    "BrandX": "The Act",
+    "CompA": "Librederm",
+    "CompB": "Mixit",
+    "CompC": "Vois"
+  },
+  "metrics": [
+    {
+      "key": "visits",
+      "metric": "Monthly Visits (K)",
+      "BrandX": 20.2,
+      "CompA": 83.5,
+      "CompB": 203.0,
+      "CompC": 49.1,
+      "mom": 73.4,
+      "yoy": 240.5,
+      "trend": [
+        {
+          "month": "Ноя '25",
+          "BrandX": 16.6,
+          "CompA": 103.1,
+          "CompB": 128.3,
+          "CompC": 19.1
+        },
+        {
+          "month": "Дек '25",
+          "BrandX": 88.2,
+          "CompA": 107.8,
+          "CompB": 168.0,
+          "CompC": 19.4
+        },
+        {
+          "month": "Янв",
+          "BrandX": 66.6,
+          "CompA": 135.7,
+          "CompB": 205.3,
+          "CompC": 21.4
+        },
+        {
+          "month": "Фев",
+          "BrandX": 10.2,
+          "CompA": 83.2,
+          "CompB": 152.6,
+          "CompC": 13.5
+        },
+        {
+          "month": "Мар",
+          "BrandX": 11.6,
+          "CompA": 65.8,
+          "CompB": 186.5,
+          "CompC": 29.8
+        },
+        {
+          "month": "Апр",
+          "BrandX": 20.2,
+          "CompA": 83.5,
+          "CompB": 203.0,
+          "CompC": 49.1
+        }
+      ]
+    },
+    {
+      "key": "uniques",
+      "metric": "Unique Visitors (K)",
+      "BrandX": 10.1,
+      "CompA": 54.3,
+      "CompB": 56.1,
+      "CompC": 31.1,
+      "mom": 48.9,
+      "yoy": 190.1,
+      "trend": [
+        {
+          "month": "Ноя '25",
+          "BrandX": 8.3,
+          "CompA": 74.7,
+          "CompB": 46.0,
+          "CompC": 10.0
+        },
+        {
+          "month": "Дек '25",
+          "BrandX": 24.9,
+          "CompA": 75.7,
+          "CompB": 71.0,
+          "CompC": 10.4
+        },
+        {
+          "month": "Янв",
+          "BrandX": 22.4,
+          "CompA": 89.5,
+          "CompB": 79.7,
+          "CompC": 12.1
+        },
+        {
+          "month": "Фев",
+          "BrandX": 5.8,
+          "CompA": 57.1,
+          "CompB": 67.7,
+          "CompC": 7.2
+        },
+        {
+          "month": "Мар",
+          "BrandX": 6.8,
+          "CompA": 42.4,
+          "CompB": 70.8,
+          "CompC": 17.5
+        },
+        {
+          "month": "Апр",
+          "BrandX": 10.1,
+          "CompA": 54.3,
+          "CompB": 56.1,
+          "CompC": 31.1
+        }
+      ]
+    },
+    {
+      "key": "pages",
+      "metric": "Pages/Visit",
+      "BrandX": 1.87,
+      "CompA": 2.7,
+      "CompB": 5.57,
+      "CompC": 1.84,
+      "mom": 4.3,
+      "yoy": -14.1,
+      "trend": [
+        {
+          "month": "Ноя '25",
+          "BrandX": 6.13,
+          "CompA": 2.12,
+          "CompB": 2.06,
+          "CompC": 3.38
+        },
+        {
+          "month": "Дек '25",
+          "BrandX": 3.52,
+          "CompA": 2.47,
+          "CompB": 2.96,
+          "CompC": 2.32
+        },
+        {
+          "month": "Янв",
+          "BrandX": 2.44,
+          "CompA": 2.83,
+          "CompB": 2.62,
+          "CompC": 2.89
+        },
+        {
+          "month": "Фев",
+          "BrandX": 1.96,
+          "CompA": 2.65,
+          "CompB": 3.47,
+          "CompC": 1.94
+        },
+        {
+          "month": "Мар",
+          "BrandX": 1.79,
+          "CompA": 2.69,
+          "CompB": 2.43,
+          "CompC": 1.58
+        },
+        {
+          "month": "Апр",
+          "BrandX": 1.87,
+          "CompA": 2.7,
+          "CompB": 5.57,
+          "CompC": 1.84
+        }
+      ]
+    },
+    {
+      "key": "duration",
+      "metric": "Avg Duration (min)",
+      "BrandX": 2.1,
+      "CompA": 3.9,
+      "CompB": 6.2,
+      "CompC": 1.2,
+      "mom": 368.3,
+      "yoy": -72.7,
+      "trend": [
+        {
+          "month": "Ноя '25",
+          "BrandX": 5.1,
+          "CompA": 2.4,
+          "CompB": 1.5,
+          "CompC": 1.5
+        },
+        {
+          "month": "Дек '25",
+          "BrandX": 2.1,
+          "CompA": 2.0,
+          "CompB": 3.0,
+          "CompC": 1.2
+        },
+        {
+          "month": "Янв",
+          "BrandX": 1.4,
+          "CompA": 1.8,
+          "CompB": 2.8,
+          "CompC": 1.2
+        },
+        {
+          "month": "Фев",
+          "BrandX": 0.7,
+          "CompA": 1.8,
+          "CompB": 2.6,
+          "CompC": 0.9
+        },
+        {
+          "month": "Мар",
+          "BrandX": 0.5,
+          "CompA": 2.4,
+          "CompB": 1.8,
+          "CompC": 0.8
+        },
+        {
+          "month": "Апр",
+          "BrandX": 2.1,
+          "CompA": 3.9,
+          "CompB": 6.2,
+          "CompC": 1.2
+        }
+      ]
+    },
+    {
+      "key": "bounce",
+      "metric": "Bounce Rate (%)",
+      "BrandX": 39.2,
+      "CompA": 69.9,
+      "CompB": 38.7,
+      "CompC": 46.7,
+      "mom": 7.7,
+      "yoy": -11.4,
+      "trend": [
+        {
+          "month": "Ноя '25",
+          "BrandX": 37.0,
+          "CompA": 75.4,
+          "CompB": 46.0,
+          "CompC": 43.8
+        },
+        {
+          "month": "Дек '25",
+          "BrandX": 53.0,
+          "CompA": 71.9,
+          "CompB": 37.8,
+          "CompC": 27.8
+        },
+        {
+          "month": "Янв",
+          "BrandX": 51.3,
+          "CompA": 69.6,
+          "CompB": 46.1,
+          "CompC": 41.4
+        },
+        {
+          "month": "Фев",
+          "BrandX": 34.4,
+          "CompA": 65.9,
+          "CompB": 48.4,
+          "CompC": 39.8
+        },
+        {
+          "month": "Мар",
+          "BrandX": 36.4,
+          "CompA": 69.4,
+          "CompB": 44.7,
+          "CompC": 48.5
+        },
+        {
+          "month": "Апр",
+          "BrandX": 39.2,
+          "CompA": 69.9,
+          "CompB": 38.7,
+          "CompC": 46.7
+        }
+      ]
+    }
+  ],
+  "visitsTrend": [
+    {
+      "month": "Май '25",
+      "BrandX": 6.8,
+      "CompA": 93.0,
+      "CompB": 125.7,
+      "CompC": 0.0
+    },
+    {
+      "month": "Июн '25",
+      "BrandX": 4.2,
+      "CompA": 75.7,
+      "CompB": 137.9,
+      "CompC": 0.0
+    },
+    {
+      "month": "Июл '25",
+      "BrandX": 5.4,
+      "CompA": 92.9,
+      "CompB": 139.8,
+      "CompC": 0.0
+    },
+    {
+      "month": "Авг '25",
+      "BrandX": 6.8,
+      "CompA": 67.0,
+      "CompB": 217.9,
+      "CompC": 30.1
+    },
+    {
+      "month": "Сен '25",
+      "BrandX": 11.6,
+      "CompA": 58.8,
+      "CompB": 162.6,
+      "CompC": 59.3
+    },
+    {
+      "month": "Окт '25",
+      "BrandX": 13.6,
+      "CompA": 98.8,
+      "CompB": 134.4,
+      "CompC": 29.1
+    },
+    {
+      "month": "Ноя '25",
+      "BrandX": 16.6,
+      "CompA": 103.1,
+      "CompB": 128.3,
+      "CompC": 19.1
+    },
+    {
+      "month": "Дек '25",
+      "BrandX": 88.2,
+      "CompA": 107.8,
+      "CompB": 168.0,
+      "CompC": 19.4
+    },
+    {
+      "month": "Янв",
+      "BrandX": 66.6,
+      "CompA": 135.7,
+      "CompB": 205.3,
+      "CompC": 21.4
+    },
+    {
+      "month": "Фев",
+      "BrandX": 10.2,
+      "CompA": 83.2,
+      "CompB": 152.6,
+      "CompC": 13.5
+    },
+    {
+      "month": "Мар",
+      "BrandX": 11.6,
+      "CompA": 65.8,
+      "CompB": 186.5,
+      "CompC": 29.8
+    },
+    {
+      "month": "Апр",
+      "BrandX": 20.2,
+      "CompA": 83.5,
+      "CompB": 203.0,
+      "CompC": 49.1
+    }
+  ],
+  "trafficSourcesDesktop": {
+    "CompA": [
+      {
+        "source": "Search",
+        "organic": 9946,
+        "paid": 3013,
+        "total": 12959
+      },
+      {
+        "source": "Direct",
+        "organic": 5108,
+        "paid": 0,
+        "total": 5108
+      },
+      {
+        "source": "Referrals",
+        "organic": 2953,
+        "paid": 0,
+        "total": 2953
+      },
+      {
+        "source": "Mail",
+        "organic": 470,
+        "paid": 0,
+        "total": 470
+      },
+      {
+        "source": "Social",
+        "organic": 200,
+        "paid": 0,
+        "total": 200
+      },
+      {
+        "source": "Display Ads",
+        "organic": 0,
+        "paid": 61,
+        "total": 61
+      }
+    ],
+    "CompB": [
+      {
+        "source": "Direct",
+        "organic": 52826,
+        "paid": 0,
+        "total": 52826
+      },
+      {
+        "source": "Search",
+        "organic": 41654,
+        "paid": 0,
+        "total": 41654
+      },
+      {
+        "source": "Referrals",
+        "organic": 4728,
+        "paid": 0,
+        "total": 4728
+      },
+      {
+        "source": "Social",
+        "organic": 625,
+        "paid": 0,
+        "total": 625
+      },
+      {
+        "source": "Mail",
+        "organic": 587,
+        "paid": 0,
+        "total": 587
+      },
+      {
+        "source": "Display Ads",
+        "organic": 0,
+        "paid": 179,
+        "total": 179
+      }
+    ],
+    "BrandX": [
+      {
+        "source": "Search",
+        "organic": 4722,
+        "paid": 514,
+        "total": 5236
+      },
+      {
+        "source": "Direct",
+        "organic": 2590,
+        "paid": 0,
+        "total": 2590
+      },
+      {
+        "source": "Referrals",
+        "organic": 591,
+        "paid": 0,
+        "total": 591
+      },
+      {
+        "source": "Social",
+        "organic": 131,
+        "paid": 0,
+        "total": 131
+      },
+      {
+        "source": "Display Ads",
+        "organic": 0,
+        "paid": 58,
+        "total": 58
+      },
+      {
+        "source": "Mail",
+        "organic": 41,
+        "paid": 0,
+        "total": 41
+      }
+    ],
+    "CompC": [
+      {
+        "source": "Display Ads",
+        "organic": 0,
+        "paid": 2636,
+        "total": 2636
+      },
+      {
+        "source": "Search",
+        "organic": 2034,
+        "paid": 0,
+        "total": 2034
+      },
+      {
+        "source": "Direct",
+        "organic": 935,
+        "paid": 0,
+        "total": 935
+      },
+      {
+        "source": "Referrals",
+        "organic": 438,
+        "paid": 0,
+        "total": 438
+      },
+      {
+        "source": "Social",
+        "organic": 117,
+        "paid": 0,
+        "total": 117
+      },
+      {
+        "source": "Mail",
+        "organic": 25,
+        "paid": 0,
+        "total": 25
+      }
+    ]
+  },
+  "trafficSourcesMobile": {
+    "CompA": [
+      {
+        "source": "Search",
+        "organic": 19887,
+        "paid": 12985,
+        "total": 32872
+      },
+      {
+        "source": "Direct",
+        "organic": 24261,
+        "paid": 0,
+        "total": 24261
+      },
+      {
+        "source": "Social",
+        "organic": 2252,
+        "paid": 0,
+        "total": 2252
+      },
+      {
+        "source": "Referrals",
+        "organic": 2250,
+        "paid": 0,
+        "total": 2250
+      },
+      {
+        "source": "Display Ads",
+        "organic": 0,
+        "paid": 102,
+        "total": 102
+      },
+      {
+        "source": "Mail",
+        "organic": 51,
+        "paid": 0,
+        "total": 51
+      }
+    ],
+    "CompB": [
+      {
+        "source": "Direct",
+        "organic": 62415,
+        "paid": 0,
+        "total": 62415
+      },
+      {
+        "source": "Search",
+        "organic": 21080,
+        "paid": 6711,
+        "total": 27791
+      },
+      {
+        "source": "Social",
+        "organic": 10035,
+        "paid": 0,
+        "total": 10035
+      },
+      {
+        "source": "Referrals",
+        "organic": 2112,
+        "paid": 0,
+        "total": 2112
+      },
+      {
+        "source": "Display Ads",
+        "organic": 0,
+        "paid": 12,
+        "total": 12
+      },
+      {
+        "source": "Mail",
+        "organic": 12,
+        "paid": 0,
+        "total": 12
+      }
+    ],
+    "BrandX": [
+      {
+        "source": "Search",
+        "organic": 6946,
+        "paid": 0,
+        "total": 6946
+      },
+      {
+        "source": "Direct",
+        "organic": 3900,
+        "paid": 0,
+        "total": 3900
+      },
+      {
+        "source": "Social",
+        "organic": 479,
+        "paid": 0,
+        "total": 479
+      },
+      {
+        "source": "Referrals",
+        "organic": 207,
+        "paid": 0,
+        "total": 207
+      },
+      {
+        "source": "Display Ads",
+        "organic": 0,
+        "paid": 3,
+        "total": 3
+      },
+      {
+        "source": "Mail",
+        "organic": 0,
+        "paid": 0,
+        "total": 0
+      }
+    ],
+    "CompC": [
+      {
+        "source": "Search",
+        "organic": 28321,
+        "paid": 0,
+        "total": 28321
+      },
+      {
+        "source": "Direct",
+        "organic": 10425,
+        "paid": 0,
+        "total": 10425
+      },
+      {
+        "source": "Social",
+        "organic": 2335,
+        "paid": 0,
+        "total": 2335
+      },
+      {
+        "source": "Referrals",
+        "organic": 1365,
+        "paid": 0,
+        "total": 1365
+      },
+      {
+        "source": "Display Ads",
+        "organic": 0,
+        "paid": 512,
+        "total": 512
+      }
+    ]
+  }
+}

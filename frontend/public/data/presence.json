@@ -1,0 +1,88 @@
+{
+  "brands": [
+    "Narzan",
+    "Borjomi",
+    "Senezhskaya",
+    "Svyatoy"
+  ],
+  "brandNames": {
+    "Narzan": "Нарзан",
+    "Borjomi": "Боржоми",
+    "Senezhskaya": "Сенежская",
+    "Svyatoy": "Святой источник"
+  },
+  "retail": [
+    {
+      "retailer": "Перекресток",
+      "Narzan": 2.34,
+      "Borjomi": 3.51,
+      "Senezhskaya": 4.68,
+      "Svyatoy": 15.2
+    },
+    {
+      "retailer": "Пятерочка",
+      "Narzan": 3.53,
+      "Borjomi": 4.71,
+      "Senezhskaya": 1.18,
+      "Svyatoy": 12.94
+    },
+    {
+      "retailer": "Лента",
+      "Narzan": 1.5,
+      "Borjomi": 3.01,
+      "Senezhskaya": 1.5,
+      "Svyatoy": 6.02
+    },
+    {
+      "retailer": "Красное и белое",
+      "Narzan": 0.0,
+      "Borjomi": 0.0,
+      "Senezhskaya": 6.38,
+      "Svyatoy": 0.0
+    },
+    {
+      "retailer": "Дикси",
+      "Narzan": 1.28,
+      "Borjomi": 3.21,
+      "Senezhskaya": 4.49,
+      "Svyatoy": 19.23
+    },
+    {
+      "retailer": "Магнит",
+      "Narzan": 2.6,
+      "Borjomi": 5.19,
+      "Senezhskaya": 5.19,
+      "Svyatoy": 13.64
+    }
+  ],
+  "delivery": [
+    {
+      "retailer": "Самокат",
+      "Narzan": 1.27,
+      "Borjomi": 5.06,
+      "Senezhskaya": 7.59,
+      "Svyatoy": 15.19
+    },
+    {
+      "retailer": "Купер",
+      "Narzan": 0.0,
+      "Borjomi": 0.0,
+      "Senezhskaya": 0.0,
+      "Svyatoy": 0.0
+    },
+    {
+      "retailer": "Лавка",
+      "Narzan": 2.48,
+      "Borjomi": 2.48,
+      "Senezhskaya": 4.96,
+      "Svyatoy": 9.09
+    },
+    {
+      "retailer": "Озон фреш",
+      "Narzan": 0.5,
+      "Borjomi": 1.5,
+      "Senezhskaya": 2.5,
+      "Svyatoy": 6.0
+    }
+  ]
+}

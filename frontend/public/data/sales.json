@@ -1,0 +1,480 @@
+{
+  "generated": "2026-04",
+  "brands": [
+    "Narzan",
+    "Borjomi",
+    "Senezhskaya",
+    "Svyatoy"
+  ],
+  "brandNames": {
+    "Narzan": "Нарзан",
+    "Borjomi": "Боржоми",
+    "Senezhskaya": "Сенежская",
+    "Svyatoy": "Святой источник"
+  },
+  "salesIndex": [
+    {
+      "month": "Апр '25",
+      "Narzan": 0.01923,
+      "Borjomi": 0.0334,
+      "Senezhskaya": 0.04977,
+      "Svyatoy": 0.10509
+    },
+    {
+      "month": "Май '25",
+      "Narzan": 0.01996,
+      "Borjomi": 0.03572,
+      "Senezhskaya": 0.051,
+      "Svyatoy": 0.12567
+    },
+    {
+      "month": "Июн '25",
+      "Narzan": 0.01826,
+      "Borjomi": 0.03291,
+      "Senezhskaya": 0.05243,
+      "Svyatoy": 0.137
+    },
+    {
+      "month": "Июл '25",
+      "Narzan": 0.02005,
+      "Borjomi": 0.03762,
+      "Senezhskaya": 0.05483,
+      "Svyatoy": 0.16833
+    },
+    {
+      "month": "Авг '25",
+      "Narzan": 0.0158,
+      "Borjomi": 0.0318,
+      "Senezhskaya": 0.04345,
+      "Svyatoy": 0.13292
+    },
+    {
+      "month": "Сен '25",
+      "Narzan": 0.01334,
+      "Borjomi": 0.02601,
+      "Senezhskaya": 0.03471,
+      "Svyatoy": 0.10488
+    },
+    {
+      "month": "Окт '25",
+      "Narzan": 0.01392,
+      "Borjomi": 0.02503,
+      "Senezhskaya": 0.03114,
+      "Svyatoy": 0.09475
+    },
+    {
+      "month": "Ноя '25",
+      "Narzan": 0.01377,
+      "Borjomi": 0.02482,
+      "Senezhskaya": 0.02924,
+      "Svyatoy": 0.08684
+    },
+    {
+      "month": "Дек '25",
+      "Narzan": 0.01571,
+      "Borjomi": 0.03155,
+      "Senezhskaya": 0.02967,
+      "Svyatoy": 0.08495
+    },
+    {
+      "month": "Янв",
+      "Narzan": 0.014,
+      "Borjomi": 0.02587,
+      "Senezhskaya": 0.02496,
+      "Svyatoy": 0.07626
+    },
+    {
+      "month": "Фев",
+      "Narzan": 0.01354,
+      "Borjomi": 0.02317,
+      "Senezhskaya": 0.02383,
+      "Svyatoy": 0.07485
+    },
+    {
+      "month": "Мар",
+      "Narzan": 0.01684,
+      "Borjomi": 0.02695,
+      "Senezhskaya": 0.03065,
+      "Svyatoy": 0.09537
+    },
+    {
+      "month": "Апр",
+      "Narzan": 0.01432,
+      "Borjomi": 0.02543,
+      "Senezhskaya": 0.02764,
+      "Svyatoy": 0.09848
+    }
+  ],
+  "salesYoY": [
+    {
+      "month": "Апр '25",
+      "Narzan": 22.77,
+      "Borjomi": -5.81,
+      "Senezhskaya": 8.39,
+      "Svyatoy": -10.18
+    },
+    {
+      "month": "Май '25",
+      "Narzan": 46.87,
+      "Borjomi": -6.29,
+      "Senezhskaya": -3.74,
+      "Svyatoy": -5.62
+    },
+    {
+      "month": "Июн '25",
+      "Narzan": 13.58,
+      "Borjomi": -22.48,
+      "Senezhskaya": -12.09,
+      "Svyatoy": -21.14
+    },
+    {
+      "month": "Июл '25",
+      "Narzan": 12.94,
+      "Borjomi": -21.12,
+      "Senezhskaya": -21.89,
+      "Svyatoy": -9.07
+    },
+    {
+      "month": "Авг '25",
+      "Narzan": -0.5,
+      "Borjomi": -19.1,
+      "Senezhskaya": -23.39,
+      "Svyatoy": -11.15
+    },
+    {
+      "month": "Сен '25",
+      "Narzan": -9.22,
+      "Borjomi": -23.31,
+      "Senezhskaya": -28.93,
+      "Svyatoy": -17.22
+    },
+    {
+      "month": "Окт '25",
+      "Narzan": 1.51,
+      "Borjomi": -12.76,
+      "Senezhskaya": -19.98,
+      "Svyatoy": -2.4
+    },
+    {
+      "month": "Ноя '25",
+      "Narzan": -2.96,
+      "Borjomi": -15.24,
+      "Senezhskaya": -18.91,
+      "Svyatoy": 0.1
+    },
+    {
+      "month": "Дек '25",
+      "Narzan": -16.29,
+      "Borjomi": -27.95,
+      "Senezhskaya": -21.59,
+      "Svyatoy": -4.69
+    },
+    {
+      "month": "Янв",
+      "Narzan": -12.77,
+      "Borjomi": -20.74,
+      "Senezhskaya": -25.91,
+      "Svyatoy": -3.48
+    },
+    {
+      "month": "Фев",
+      "Narzan": -9.4,
+      "Borjomi": -17.83,
+      "Senezhskaya": -24.08,
+      "Svyatoy": 3.61
+    },
+    {
+      "month": "Мар",
+      "Narzan": -12.67,
+      "Borjomi": -18.29,
+      "Senezhskaya": -28.95,
+      "Svyatoy": 2.81
+    },
+    {
+      "month": "Апр",
+      "Narzan": -25.55,
+      "Borjomi": -23.87,
+      "Senezhskaya": -44.46,
+      "Svyatoy": -6.29
+    }
+  ],
+  "marketShare": [
+    {
+      "month": "Апр '25",
+      "Narzan": 1.428,
+      "Borjomi": 2.481,
+      "Senezhskaya": 3.697,
+      "Svyatoy": 7.806
+    },
+    {
+      "month": "Май '25",
+      "Narzan": 1.335,
+      "Borjomi": 2.389,
+      "Senezhskaya": 3.411,
+      "Svyatoy": 8.405
+    },
+    {
+      "month": "Июн '25",
+      "Narzan": 1.167,
+      "Borjomi": 2.103,
+      "Senezhskaya": 3.351,
+      "Svyatoy": 8.756
+    },
+    {
+      "month": "Июл '25",
+      "Narzan": 1.115,
+      "Borjomi": 2.093,
+      "Senezhskaya": 3.051,
+      "Svyatoy": 9.365
+    },
+    {
+      "month": "Авг '25",
+      "Narzan": 1.021,
+      "Borjomi": 2.056,
+      "Senezhskaya": 2.809,
+      "Svyatoy": 8.593
+    },
+    {
+      "month": "Сен '25",
+      "Narzan": 1.077,
+      "Borjomi": 2.099,
+      "Senezhskaya": 2.802,
+      "Svyatoy": 8.466
+    },
+    {
+      "month": "Окт '25",
+      "Narzan": 1.199,
+      "Borjomi": 2.155,
+      "Senezhskaya": 2.681,
+      "Svyatoy": 8.159
+    },
+    {
+      "month": "Ноя '25",
+      "Narzan": 1.255,
+      "Borjomi": 2.263,
+      "Senezhskaya": 2.665,
+      "Svyatoy": 7.915
+    },
+    {
+      "month": "Дек '25",
+      "Narzan": 1.371,
+      "Borjomi": 2.752,
+      "Senezhskaya": 2.588,
+      "Svyatoy": 7.41
+    },
+    {
+      "month": "Янв",
+      "Narzan": 1.353,
+      "Borjomi": 2.5,
+      "Senezhskaya": 2.411,
+      "Svyatoy": 7.368
+    },
+    {
+      "month": "Фев",
+      "Narzan": 1.344,
+      "Borjomi": 2.3,
+      "Senezhskaya": 2.365,
+      "Svyatoy": 7.429
+    },
+    {
+      "month": "Мар",
+      "Narzan": 1.349,
+      "Borjomi": 2.159,
+      "Senezhskaya": 2.456,
+      "Svyatoy": 7.641
+    },
+    {
+      "month": "Апр",
+      "Narzan": 1.153,
+      "Borjomi": 2.048,
+      "Senezhskaya": 2.227,
+      "Svyatoy": 7.933
+    }
+  ],
+  "price": [
+    {
+      "month": "Апр '25",
+      "Narzan": 84.52,
+      "Borjomi": 165.12,
+      "Senezhskaya": 46.26,
+      "Svyatoy": 69.14
+    },
+    {
+      "month": "Май '25",
+      "Narzan": 87.31,
+      "Borjomi": 171.91,
+      "Senezhskaya": 51.27,
+      "Svyatoy": 70.18
+    },
+    {
+      "month": "Июн '25",
+      "Narzan": 89.8,
+      "Borjomi": 175.59,
+      "Senezhskaya": 52.43,
+      "Svyatoy": 70.38
+    },
+    {
+      "month": "Июл '25",
+      "Narzan": 92.92,
+      "Borjomi": 177.66,
+      "Senezhskaya": 56.37,
+      "Svyatoy": 71.29
+    },
+    {
+      "month": "Авг '25",
+      "Narzan": 93.95,
+      "Borjomi": 182.01,
+      "Senezhskaya": 56.87,
+      "Svyatoy": 73.73
+    },
+    {
+      "month": "Сен '25",
+      "Narzan": 92.21,
+      "Borjomi": 180.63,
+      "Senezhskaya": 55.22,
+      "Svyatoy": 72.15
+    },
+    {
+      "month": "Окт '25",
+      "Narzan": 91.36,
+      "Borjomi": 182.38,
+      "Senezhskaya": 56.14,
+      "Svyatoy": 72.5
+    },
+    {
+      "month": "Ноя '25",
+      "Narzan": 91.2,
+      "Borjomi": 184.21,
+      "Senezhskaya": 56.55,
+      "Svyatoy": 72.04
+    },
+    {
+      "month": "Дек '25",
+      "Narzan": 94.33,
+      "Borjomi": 198.35,
+      "Senezhskaya": 56.88,
+      "Svyatoy": 75.94
+    },
+    {
+      "month": "Янв",
+      "Narzan": 93.1,
+      "Borjomi": 188.03,
+      "Senezhskaya": 58.73,
+      "Svyatoy": 77.33
+    },
+    {
+      "month": "Фев",
+      "Narzan": 94.03,
+      "Borjomi": 194.95,
+      "Senezhskaya": 60.48,
+      "Svyatoy": 77.32
+    },
+    {
+      "month": "Мар",
+      "Narzan": 96.2,
+      "Borjomi": 197.19,
+      "Senezhskaya": 62.96,
+      "Svyatoy": 77.55
+    },
+    {
+      "month": "Апр",
+      "Narzan": 100.19,
+      "Borjomi": 204.74,
+      "Senezhskaya": 64.64,
+      "Svyatoy": 77.47
+    }
+  ],
+  "distribution": [
+    {
+      "month": "Апр '25",
+      "Narzan": 13.67,
+      "Borjomi": 18.42,
+      "Senezhskaya": 9.36,
+      "Svyatoy": 27.98
+    },
+    {
+      "month": "Май '25",
+      "Narzan": 13.62,
+      "Borjomi": 19.09,
+      "Senezhskaya": 10.42,
+      "Svyatoy": 30.75
+    },
+    {
+      "month": "Июн '25",
+      "Narzan": 12.9,
+      "Borjomi": 17.88,
+      "Senezhskaya": 11.21,
+      "Svyatoy": 31.51
+    },
+    {
+      "month": "Июл '25",
+      "Narzan": 12.55,
+      "Borjomi": 17.22,
+      "Senezhskaya": 9.04,
+      "Svyatoy": 30.84
+    },
+    {
+      "month": "Авг '25",
+      "Narzan": 11.89,
+      "Borjomi": 17.05,
+      "Senezhskaya": 8.52,
+      "Svyatoy": 30.03
+    },
+    {
+      "month": "Сен '25",
+      "Narzan": 11.66,
+      "Borjomi": 16.27,
+      "Senezhskaya": 8.44,
+      "Svyatoy": 29.38
+    },
+    {
+      "month": "Окт '25",
+      "Narzan": 12.05,
+      "Borjomi": 16.17,
+      "Senezhskaya": 7.92,
+      "Svyatoy": 29.44
+    },
+    {
+      "month": "Ноя '25",
+      "Narzan": 12.47,
+      "Borjomi": 16.71,
+      "Senezhskaya": 7.93,
+      "Svyatoy": 29.69
+    },
+    {
+      "month": "Дек '25",
+      "Narzan": 12.82,
+      "Borjomi": 17.81,
+      "Senezhskaya": 7.75,
+      "Svyatoy": 29.75
+    },
+    {
+      "month": "Янв",
+      "Narzan": 13.46,
+      "Borjomi": 18.1,
+      "Senezhskaya": 7.52,
+      "Svyatoy": 30.52
+    },
+    {
+      "month": "Фев",
+      "Narzan": 13.38,
+      "Borjomi": 17.71,
+      "Senezhskaya": 7.18,
+      "Svyatoy": 29.65
+    },
+    {
+      "month": "Мар",
+      "Narzan": 3.15,
+      "Borjomi": 4.11,
+      "Senezhskaya": 1.91,
+      "Svyatoy": 8.6
+    },
+    {
+      "month": "Апр",
+      "Narzan": 2.47,
+      "Borjomi": 3.43,
+      "Senezhskaya": 1.65,
+      "Svyatoy": 7.91
+    }
+  ]
+}

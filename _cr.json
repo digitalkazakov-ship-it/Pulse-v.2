@@ -1,0 +1,268 @@
+{
+  "brands": [
+    "БРЕСТЛИТОВСК",
+    "СЕЛОЗЕЛЕНОЕ",
+    "БЕЛЕБЕЕВСКИЙ",
+    "LIEBENDORF",
+    "NATURA",
+    "СЫРОБОГАТОВ",
+    "РАДОСТЬВКУСА",
+    "ФЕТАКСА",
+    "PRETTO",
+    "ЛАМБЕР"
+  ],
+  "brandNames": {
+    "БРЕСТЛИТОВСК": "Брест-Литовск",
+    "СЕЛОЗЕЛЕНОЕ": "Село Зеленое",
+    "БЕЛЕБЕЕВСКИЙ": "Белебеевский",
+    "LIEBENDORF": "Liebendorf",
+    "NATURA": "Natura",
+    "СЫРОБОГАТОВ": "Сыробогатов",
+    "РАДОСТЬВКУСА": "Радость Вкуса",
+    "ФЕТАКСА": "Фетакса",
+    "PRETTO": "Pretto",
+    "ЛАМБЕР": "Ламбер"
+  },
+  "monitoring": [
+    {
+      "brand": "БРЕСТЛИТОВСК",
+      "brandName": "Брест-Литовск",
+      "tv": {
+        "image": 3,
+        "promo": 228,
+        "product": 3
+      },
+      "radio": {
+        "image": 0,
+        "promo": 26,
+        "product": 0
+      },
+      "outdoor": {
+        "image": 1,
+        "promo": 0,
+        "product": 0
+      },
+      "digital": {
+        "image": 13,
+        "promo": 28,
+        "product": 43
+      }
+    },
+    {
+      "brand": "СЕЛОЗЕЛЕНОЕ",
+      "brandName": "Село Зеленое",
+      "tv": {
+        "image": 1,
+        "promo": 150,
+        "product": 16
+      },
+      "radio": {
+        "image": 0,
+        "promo": 8,
+        "product": 1
+      },
+      "outdoor": {
+        "image": 0,
+        "promo": 0,
+        "product": 0
+      },
+      "digital": {
+        "image": 18,
+        "promo": 20,
+        "product": 72
+      }
+    },
+    {
+      "brand": "БЕЛЕБЕЕВСКИЙ",
+      "brandName": "Белебеевский",
+      "tv": {
+        "image": 1,
+        "promo": 84,
+        "product": 9
+      },
+      "radio": {
+        "image": 0,
+        "promo": 4,
+        "product": 0
+      },
+      "outdoor": {
+        "image": 0,
+        "promo": 0,
+        "product": 7
+      },
+      "digital": {
+        "image": 0,
+        "promo": 3,
+        "product": 6
+      }
+    },
+    {
+      "brand": "LIEBENDORF",
+      "brandName": "Liebendorf",
+      "tv": {
+        "image": 0,
+        "promo": 118,
+        "product": 0
+      },
+      "radio": {
+        "image": 0,
+        "promo": 0,
+        "product": 0
+      },
+      "outdoor": {
+        "image": 0,
+        "promo": 0,
+        "product": 0
+      },
+      "digital": {
+        "image": 0,
+        "promo": 4,
+        "product": 0
+      }
+    },
+    {
+      "brand": "NATURA",
+      "brandName": "Natura",
+      "tv": {
+        "image": 0,
+        "promo": 68,
+        "product": 2
+      },
+      "radio": {
+        "image": 0,
+        "promo": 25,
+        "product": 0
+      },
+      "outdoor": {
+        "image": 0,
+        "promo": 0,
+        "product": 0
+      },
+      "digital": {
+        "image": 0,
+        "promo": 12,
+        "product": 0
+      }
+    },
+    {
+      "brand": "СЫРОБОГАТОВ",
+      "brandName": "Сыробогатов",
+      "tv": {
+        "image": 0,
+        "promo": 49,
+        "product": 3
+      },
+      "radio": {
+        "image": 1,
+        "promo": 0,
+        "product": 0
+      },
+      "outdoor": {
+        "image": 3,
+        "promo": 0,
+        "product": 0
+      },
+      "digital": {
+        "image": 3,
+        "promo": 4,
+        "product": 6
+      }
+    },
+    {
+      "brand": "РАДОСТЬВКУСА",
+      "brandName": "Радость Вкуса",
+      "tv": {
+        "image": 0,
+        "promo": 47,
+        "product": 2
+      },
+      "radio": {
+        "image": 0,
+        "promo": 1,
+        "product": 0
+      },
+      "outdoor": {
+        "image": 0,
+        "promo": 0,
+        "product": 0
+      },
+      "digital": {
+        "image": 0,
+        "promo": 3,
+        "product": 1
+      }
+    },
+    {
+      "brand": "ФЕТАКСА",
+      "brandName": "Фетакса",
+      "tv": {
+        "image": 0,
+        "promo": 4,
+        "product": 7
+      },
+      "radio": {
+        "image": 0,
+        "promo": 1,
+        "product": 1
+      },
+      "outdoor": {
+        "image": 1,
+        "promo": 1,
+        "product": 4
+      },
+      "digital": {
+        "image": 5,
+        "promo": 1,
+        "product": 17
+      }
+    },
+    {
+      "brand": "PRETTO",
+      "brandName": "Pretto",
+      "tv": {
+        "image": 0,
+        "promo": 3,
+        "product": 2
+      },
+      "radio": {
+        "image": 0,
+        "promo": 2,
+        "product": 0
+      },
+      "outdoor": {
+        "image": 0,
+        "promo": 0,
+        "product": 0
+      },
+      "digital": {
+        "image": 2,
+        "promo": 12,
+        "product": 22
+      }
+    },
+    {
+      "brand": "ЛАМБЕР",
+      "brandName": "Ламбер",
+      "tv": {
+        "image": 0,
+        "promo": 12,
+        "product": 0
+      },
+      "radio": {
+        "image": 0,
+        "promo": 24,
+        "product": 0
+      },
+      "outdoor": {
+        "image": 0,
+        "promo": 0,
+        "product": 0
+      },
+      "digital": {
+        "image": 0,
+        "promo": 7,
+        "product": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,833 @@
+{
+  "generated": "2026-05",
+  "brands": [
+    "Narzan",
+    "Borjomi",
+    "Senezhskaya",
+    "Svyatoy"
+  ],
+  "brandNames": {
+    "Narzan": "Нарзан",
+    "Borjomi": "Боржоми",
+    "Senezhskaya": "Сенежская",
+    "Svyatoy": "Святой источник"
+  },
+  "quarters": [
+    "Q1 2026",
+    "Q4 2025",
+    "Q3 2025",
+    "Q2 2025"
+  ],
+  "currentQuarter": "Q1 2026",
+  "metricKeys": [
+    "topOfMind",
+    "spontaneous",
+    "aided",
+    "consideration",
+    "consumption"
+  ],
+  "metricLabels": {
+    "topOfMind": "Первое упоминание",
+    "spontaneous": "Спонтанное",
+    "aided": "Подсказанное",
+    "consideration": "Рассмотрение",
+    "consumption": "Потребление"
+  },
+  "metrics": {
+    "topOfMind": [
+      {
+        "quarter": "Q2 2025",
+        "Narzan": 2052.1,
+        "Borjomi": 3231.1,
+        "Senezhskaya": 854.8,
+        "Svyatoy": 5272.1
+      },
+      {
+        "quarter": "Q3 2025",
+        "Narzan": 2065.6,
+        "Borjomi": 3331.1,
+        "Senezhskaya": 705.2,
+        "Svyatoy": 4973.8
+      },
+      {
+        "quarter": "Q4 2025",
+        "Narzan": 2020.9,
+        "Borjomi": 3471.4,
+        "Senezhskaya": 1004.2,
+        "Svyatoy": 4435.6
+      },
+      {
+        "quarter": "Q1 2026",
+        "Narzan": 1711.0,
+        "Borjomi": 3676.4,
+        "Senezhskaya": 764.8,
+        "Svyatoy": 4401.7
+      }
+    ],
+    "spontaneous": [
+      {
+        "quarter": "Q2 2025",
+        "Narzan": 5340.1,
+        "Borjomi": 9617.3,
+        "Senezhskaya": 2317.2,
+        "Svyatoy": 10589.2
+      },
+      {
+        "quarter": "Q3 2025",
+        "Narzan": 5637.4,
+        "Borjomi": 9089.4,
+        "Senezhskaya": 2313.6,
+        "Svyatoy": 10258.0
+      },
+      {
+        "quarter": "Q4 2025",
+        "Narzan": 5715.5,
+        "Borjomi": 9602.3,
+        "Senezhskaya": 2439.5,
+        "Svyatoy": 9646.3
+      },
+      {
+        "quarter": "Q1 2026",
+        "Narzan": 5523.7,
+        "Borjomi": 10057.5,
+        "Senezhskaya": 2364.9,
+        "Svyatoy": 9595.9
+      }
+    ],
+    "aided": [
+      {
+        "quarter": "Q2 2025",
+        "Narzan": 31557.9,
+        "Borjomi": 32568.5,
+        "Senezhskaya": 24921.9,
+        "Svyatoy": 34987.6
+      },
+      {
+        "quarter": "Q3 2025",
+        "Narzan": 31148.9,
+        "Borjomi": 32058.2,
+        "Senezhskaya": 25737.9,
+        "Svyatoy": 35205.2
+      },
+      {
+        "quarter": "Q4 2025",
+        "Narzan": 31160.0,
+        "Borjomi": 31588.7,
+        "Senezhskaya": 25441.0,
+        "Svyatoy": 34615.4
+      },
+      {
+        "quarter": "Q1 2026",
+        "Narzan": 29882.8,
+        "Borjomi": 30957.7,
+        "Senezhskaya": 24154.3,
+        "Svyatoy": 32683.8
+      }
+    ],
+    "consumption": [
+      {
+        "quarter": "Q2 2025",
+        "Narzan": 15020.6,
+        "Borjomi": 15404.0,
+        "Senezhskaya": 13614.3,
+        "Svyatoy": 27927.9
+      },
+      {
+        "quarter": "Q3 2025",
+        "Narzan": 14907.4,
+        "Borjomi": 16469.0,
+        "Senezhskaya": 14315.4,
+        "Svyatoy": 28455.3
+      },
+      {
+        "quarter": "Q4 2025",
+        "Narzan": 14270.7,
+        "Borjomi": 15406.4,
+        "Senezhskaya": 13932.3,
+        "Svyatoy": 27102.0
+      },
+      {
+        "quarter": "Q1 2026",
+        "Narzan": 13334.2,
+        "Borjomi": 14943.9,
+        "Senezhskaya": 12766.5,
+        "Svyatoy": 24976.9
+      }
+    ],
+    "consideration": [
+      {
+        "quarter": "Q2 2025",
+        "Narzan": 26542.3,
+        "Borjomi": 26725.1,
+        "Senezhskaya": 21194.7,
+        "Svyatoy": 32212.5
+      },
+      {
+        "quarter": "Q3 2025",
+        "Narzan": 25856.6,
+        "Borjomi": 26428.6,
+        "Senezhskaya": 21855.1,
+        "Svyatoy": 32328.8
+      },
+      {
+        "quarter": "Q4 2025",
+        "Narzan": 25814.0,
+        "Borjomi": 25741.2,
+        "Senezhskaya": 21691.2,
+        "Svyatoy": 31766.0
+      },
+      {
+        "quarter": "Q1 2026",
+        "Narzan": 24984.5,
+        "Borjomi": 25354.5,
+        "Senezhskaya": 20447.0,
+        "Svyatoy": 29981.2
+      }
+    ]
+  },
+  "funnel": {
+    "Q2 2025": [
+      {
+        "brand": "Narzan",
+        "brandName": "Нарзан",
+        "population": 37815.4,
+        "topOfMind": 5.43,
+        "spontaneous": 14.12,
+        "aided": 83.45,
+        "consumption": 39.72,
+        "consideration": 70.19
+      },
+      {
+        "brand": "Borjomi",
+        "brandName": "Боржоми",
+        "population": 37815.4,
+        "topOfMind": 8.54,
+        "spontaneous": 25.43,
+        "aided": 86.12,
+        "consumption": 40.73,
+        "consideration": 70.67
+      },
+      {
+        "brand": "Senezhskaya",
+        "brandName": "Сенежская",
+        "population": 37815.4,
+        "topOfMind": 2.26,
+        "spontaneous": 6.13,
+        "aided": 65.9,
+        "consumption": 36.0,
+        "consideration": 56.05
+      },
+      {
+        "brand": "Svyatoy",
+        "brandName": "Святой источник",
+        "population": 37815.4,
+        "topOfMind": 13.94,
+        "spontaneous": 28.0,
+        "aided": 92.52,
+        "consumption": 73.85,
+        "consideration": 85.18
+      }
+    ],
+    "Q3 2025": [
+      {
+        "brand": "Narzan",
+        "brandName": "Нарзан",
+        "population": 37815.4,
+        "topOfMind": 5.46,
+        "spontaneous": 14.91,
+        "aided": 82.37,
+        "consumption": 39.42,
+        "consideration": 68.38
+      },
+      {
+        "brand": "Borjomi",
+        "brandName": "Боржоми",
+        "population": 37815.4,
+        "topOfMind": 8.81,
+        "spontaneous": 24.04,
+        "aided": 84.78,
+        "consumption": 43.55,
+        "consideration": 69.89
+      },
+      {
+        "brand": "Senezhskaya",
+        "brandName": "Сенежская",
+        "population": 37815.4,
+        "topOfMind": 1.86,
+        "spontaneous": 6.12,
+        "aided": 68.06,
+        "consumption": 37.86,
+        "consideration": 57.79
+      },
+      {
+        "brand": "Svyatoy",
+        "brandName": "Святой источник",
+        "population": 37815.4,
+        "topOfMind": 13.15,
+        "spontaneous": 27.13,
+        "aided": 93.1,
+        "consumption": 75.25,
+        "consideration": 85.49
+      }
+    ],
+    "Q4 2025": [
+      {
+        "brand": "Narzan",
+        "brandName": "Нарзан",
+        "population": 37815.4,
+        "topOfMind": 5.34,
+        "spontaneous": 15.11,
+        "aided": 82.4,
+        "consumption": 37.74,
+        "consideration": 68.26
+      },
+      {
+        "brand": "Borjomi",
+        "brandName": "Боржоми",
+        "population": 37815.4,
+        "topOfMind": 9.18,
+        "spontaneous": 25.39,
+        "aided": 83.53,
+        "consumption": 40.74,
+        "consideration": 68.07
+      },
+      {
+        "brand": "Senezhskaya",
+        "brandName": "Сенежская",
+        "population": 37815.4,
+        "topOfMind": 2.66,
+        "spontaneous": 6.45,
+        "aided": 67.28,
+        "consumption": 36.84,
+        "consideration": 57.36
+      },
+      {
+        "brand": "Svyatoy",
+        "brandName": "Святой источник",
+        "population": 37815.4,
+        "topOfMind": 11.73,
+        "spontaneous": 25.51,
+        "aided": 91.54,
+        "consumption": 71.67,
+        "consideration": 84.0
+      }
+    ],
+    "Q1 2026": [
+      {
+        "brand": "Narzan",
+        "brandName": "Нарзан",
+        "population": 35674.7,
+        "topOfMind": 4.8,
+        "spontaneous": 15.48,
+        "aided": 83.76,
+        "consumption": 37.38,
+        "consideration": 70.03
+      },
+      {
+        "brand": "Borjomi",
+        "brandName": "Боржоми",
+        "population": 35674.7,
+        "topOfMind": 10.31,
+        "spontaneous": 28.19,
+        "aided": 86.78,
+        "consumption": 41.89,
+        "consideration": 71.07
+      },
+      {
+        "brand": "Senezhskaya",
+        "brandName": "Сенежская",
+        "population": 35674.7,
+        "topOfMind": 2.14,
+        "spontaneous": 6.63,
+        "aided": 67.71,
+        "consumption": 35.79,
+        "consideration": 57.32
+      },
+      {
+        "brand": "Svyatoy",
+        "brandName": "Святой источник",
+        "population": 35674.7,
+        "topOfMind": 12.34,
+        "spontaneous": 26.9,
+        "aided": 91.62,
+        "consumption": 70.01,
+        "consideration": 84.04
+      }
+    ]
+  },
+  "ageGroups": [
+    "Total",
+    "12-17",
+    "18-24",
+    "25-34",
+    "35-44",
+    "45-54",
+    "55-64"
+  ],
+  "freqCats": [
+    "daily",
+    "week23",
+    "week1",
+    "month23",
+    "less"
+  ],
+  "freqLabels": {
+    "daily": "Каждый день",
+    "week23": "2-3 раза в нед.",
+    "week1": "1 раз в нед.",
+    "month23": "2-3 раза в мес.",
+    "less": "Еще реже"
+  },
+  "penetrationByAge": {
+    "Q1 2026": [
+      {
+        "age": "Total",
+        "population": 35674.7,
+        "Borjomi": 14943.9,
+        "Narzan": 13334.2,
+        "Svyatoy": 24976.9,
+        "Senezhskaya": 12766.5,
+        "NarzanDelta": -936.5,
+        "BorjomiDelta": -462.5,
+        "SenezhskayaDelta": -1165.8,
+        "SvyatoyDelta": -2125.1
+      },
+      {
+        "age": "12-17",
+        "population": 1359.4,
+        "Borjomi": 327.9,
+        "Narzan": 177.0,
+        "Svyatoy": 838.2,
+        "Senezhskaya": 563.4,
+        "NarzanDelta": -56.6,
+        "BorjomiDelta": 21.6,
+        "SenezhskayaDelta": -156.6,
+        "SvyatoyDelta": -546.1
+      },
+      {
+        "age": "18-24",
+        "population": 4400.8,
+        "Borjomi": 1744.9,
+        "Narzan": 1105.6,
+        "Svyatoy": 3140.6,
+        "Senezhskaya": 1540.6,
+        "NarzanDelta": 136.1,
+        "BorjomiDelta": 259.7,
+        "SenezhskayaDelta": -39.2,
+        "SvyatoyDelta": -310.0
+      },
+      {
+        "age": "25-34",
+        "population": 6319.9,
+        "Borjomi": 2589.7,
+        "Narzan": 2000.0,
+        "Svyatoy": 4648.0,
+        "Senezhskaya": 2239.3,
+        "NarzanDelta": -181.0,
+        "BorjomiDelta": -341.9,
+        "SenezhskayaDelta": -127.9,
+        "SvyatoyDelta": -462.1
+      },
+      {
+        "age": "35-44",
+        "population": 9610.8,
+        "Borjomi": 4203.0,
+        "Narzan": 3824.2,
+        "Svyatoy": 7256.8,
+        "Senezhskaya": 3607.7,
+        "NarzanDelta": -372.9,
+        "BorjomiDelta": -93.6,
+        "SenezhskayaDelta": -355.2,
+        "SvyatoyDelta": 241.5
+      },
+      {
+        "age": "45-54",
+        "population": 7553.7,
+        "Borjomi": 3175.4,
+        "Narzan": 3367.7,
+        "Svyatoy": 4809.2,
+        "Senezhskaya": 2594.1,
+        "NarzanDelta": 39.2,
+        "BorjomiDelta": -122.3,
+        "SenezhskayaDelta": -447.0,
+        "SvyatoyDelta": -303.8
+      },
+      {
+        "age": "55-64",
+        "population": 6430.1,
+        "Borjomi": 2903.1,
+        "Narzan": 2859.8,
+        "Svyatoy": 4284.1,
+        "Senezhskaya": 2221.5,
+        "NarzanDelta": -501.3,
+        "BorjomiDelta": -185.8,
+        "SenezhskayaDelta": -39.8,
+        "SvyatoyDelta": -744.6
+      }
+    ],
+    "Q4 2025": [
+      {
+        "age": "Total",
+        "population": 37815.4,
+        "Borjomi": 15406.4,
+        "Narzan": 14270.7,
+        "Svyatoy": 27102.0,
+        "Senezhskaya": 13932.3
+      },
+      {
+        "age": "12-17",
+        "population": 1746.7,
+        "Borjomi": 306.3,
+        "Narzan": 233.6,
+        "Svyatoy": 1384.3,
+        "Senezhskaya": 720.0
+      },
+      {
+        "age": "18-24",
+        "population": 4239.8,
+        "Borjomi": 1485.2,
+        "Narzan": 969.5,
+        "Svyatoy": 3450.6,
+        "Senezhskaya": 1579.8
+      },
+      {
+        "age": "25-34",
+        "population": 7171.4,
+        "Borjomi": 2931.6,
+        "Narzan": 2181.0,
+        "Svyatoy": 5110.1,
+        "Senezhskaya": 2367.2
+      },
+      {
+        "age": "35-44",
+        "population": 10028.1,
+        "Borjomi": 4296.6,
+        "Narzan": 4197.1,
+        "Svyatoy": 7015.3,
+        "Senezhskaya": 3962.9
+      },
+      {
+        "age": "45-54",
+        "population": 7676.9,
+        "Borjomi": 3297.7,
+        "Narzan": 3328.5,
+        "Svyatoy": 5113.0,
+        "Senezhskaya": 3041.1
+      },
+      {
+        "age": "55-64",
+        "population": 6952.6,
+        "Borjomi": 3088.9,
+        "Narzan": 3361.1,
+        "Svyatoy": 5028.7,
+        "Senezhskaya": 2261.3
+      }
+    ],
+    "Q3 2025": [
+      {
+        "age": "Total",
+        "population": 37815.4,
+        "Borjomi": 16469.0,
+        "Narzan": 14907.4,
+        "Svyatoy": 28455.3,
+        "Senezhskaya": 14315.4
+      },
+      {
+        "age": "12-17",
+        "population": 1743.0,
+        "Borjomi": 541.9,
+        "Narzan": 306.8,
+        "Svyatoy": 1309.8,
+        "Senezhskaya": 794.1
+      },
+      {
+        "age": "18-24",
+        "population": 4243.5,
+        "Borjomi": 1577.7,
+        "Narzan": 946.6,
+        "Svyatoy": 3272.5,
+        "Senezhskaya": 1491.2
+      },
+      {
+        "age": "25-34",
+        "population": 7171.4,
+        "Borjomi": 3373.7,
+        "Narzan": 2307.7,
+        "Svyatoy": 5384.2,
+        "Senezhskaya": 2610.9
+      },
+      {
+        "age": "35-44",
+        "population": 10028.1,
+        "Borjomi": 4297.4,
+        "Narzan": 4450.0,
+        "Svyatoy": 8066.0,
+        "Senezhskaya": 4014.0
+      },
+      {
+        "age": "45-54",
+        "population": 7676.9,
+        "Borjomi": 3661.3,
+        "Narzan": 3636.8,
+        "Svyatoy": 5444.9,
+        "Senezhskaya": 3143.8
+      },
+      {
+        "age": "55-64",
+        "population": 6952.6,
+        "Borjomi": 3017.0,
+        "Narzan": 3259.4,
+        "Svyatoy": 4977.9,
+        "Senezhskaya": 2261.4
+      }
+    ],
+    "Q2 2025": [
+      {
+        "age": "Total",
+        "population": 37815.4,
+        "Borjomi": 15404.0,
+        "Narzan": 15020.6,
+        "Svyatoy": 27927.9,
+        "Senezhskaya": 13614.3
+      },
+      {
+        "age": "12-17",
+        "population": 1659.9,
+        "Borjomi": 462.8,
+        "Narzan": 281.9,
+        "Svyatoy": 1280.8,
+        "Senezhskaya": 612.4
+      },
+      {
+        "age": "18-24",
+        "population": 4326.6,
+        "Borjomi": 1644.2,
+        "Narzan": 877.6,
+        "Svyatoy": 3399.6,
+        "Senezhskaya": 1869.7
+      },
+      {
+        "age": "25-34",
+        "population": 7171.4,
+        "Borjomi": 2863.6,
+        "Narzan": 2539.9,
+        "Svyatoy": 5686.2,
+        "Senezhskaya": 2698.2
+      },
+      {
+        "age": "35-44",
+        "population": 10028.1,
+        "Borjomi": 4220.7,
+        "Narzan": 4320.3,
+        "Svyatoy": 7439.3,
+        "Senezhskaya": 3688.2
+      },
+      {
+        "age": "45-54",
+        "population": 7676.9,
+        "Borjomi": 3021.4,
+        "Narzan": 3561.4,
+        "Svyatoy": 5140.9,
+        "Senezhskaya": 2658.7
+      },
+      {
+        "age": "55-64",
+        "population": 6952.6,
+        "Borjomi": 3191.2,
+        "Narzan": 3439.4,
+        "Svyatoy": 4981.1,
+        "Senezhskaya": 2087.2
+      }
+    ]
+  },
+  "frequencyByBrand": {
+    "Q1 2026": [
+      {
+        "brand": "Borjomi",
+        "brandName": "Боржоми",
+        "population": 35674.7,
+        "total": 14943.9,
+        "daily": 3105.2,
+        "week23": 6557.9,
+        "week1": 2587.9,
+        "month23": 1985.3,
+        "less": 231.3,
+        "totalDelta": -462.5
+      },
+      {
+        "brand": "Narzan",
+        "brandName": "Нарзан",
+        "population": 35674.7,
+        "total": 13334.2,
+        "daily": 2492.4,
+        "week23": 6215.0,
+        "week1": 2271.8,
+        "month23": 1815.1,
+        "less": 113.7,
+        "totalDelta": -936.5
+      },
+      {
+        "brand": "Svyatoy",
+        "brandName": "Святой источник",
+        "population": 35674.7,
+        "total": 24976.9,
+        "daily": 4946.4,
+        "week23": 10308.6,
+        "week1": 4451.9,
+        "month23": 3565.8,
+        "less": 665.7,
+        "totalDelta": -2125.1
+      },
+      {
+        "brand": "Senezhskaya",
+        "brandName": "Сенежская",
+        "population": 35674.7,
+        "total": 12766.5,
+        "daily": 2736.8,
+        "week23": 5145.8,
+        "week1": 2308.9,
+        "month23": 1652.8,
+        "less": 399.6,
+        "totalDelta": -1165.8
+      }
+    ],
+    "Q4 2025": [
+      {
+        "brand": "Borjomi",
+        "brandName": "Боржоми",
+        "population": 37815.4,
+        "total": 15406.4,
+        "daily": 3949.9,
+        "week23": 6798.1,
+        "week1": 2396.7,
+        "month23": 1611.9,
+        "less": 200.7
+      },
+      {
+        "brand": "Narzan",
+        "brandName": "Нарзан",
+        "population": 37815.4,
+        "total": 14270.7,
+        "daily": 3418.3,
+        "week23": 5990.0,
+        "week1": 2597.9,
+        "month23": 1558.4,
+        "less": 226.8
+      },
+      {
+        "brand": "Svyatoy",
+        "brandName": "Святой источник",
+        "population": 37815.4,
+        "total": 27102.0,
+        "daily": 6126.1,
+        "week23": 10982.7,
+        "week1": 4439.5,
+        "month23": 3637.4,
+        "less": 807.4
+      },
+      {
+        "brand": "Senezhskaya",
+        "brandName": "Сенежская",
+        "population": 37815.4,
+        "total": 13932.3,
+        "daily": 3498.2,
+        "week23": 5844.4,
+        "week1": 2216.5,
+        "month23": 1616.9,
+        "less": 353.8
+      }
+    ],
+    "Q3 2025": [
+      {
+        "brand": "Borjomi",
+        "brandName": "Боржоми",
+        "population": 37815.4,
+        "total": 16469.0,
+        "daily": 3846.6,
+        "week23": 7818.7,
+        "week1": 2392.4,
+        "month23": 1658.1,
+        "less": 226.9
+      },
+      {
+        "brand": "Narzan",
+        "brandName": "Нарзан",
+        "population": 37815.4,
+        "total": 14907.4,
+        "daily": 3593.7,
+        "week23": 7184.4,
+        "week1": 2011.6,
+        "month23": 1664.6,
+        "less": 125.9
+      },
+      {
+        "brand": "Svyatoy",
+        "brandName": "Святой источник",
+        "population": 37815.4,
+        "total": 28455.3,
+        "daily": 6527.5,
+        "week23": 12471.7,
+        "week1": 4506.0,
+        "month23": 3280.9,
+        "less": 483.7
+      },
+      {
+        "brand": "Senezhskaya",
+        "brandName": "Сенежская",
+        "population": 37815.4,
+        "total": 14315.4,
+        "daily": 3851.2,
+        "week23": 6307.9,
+        "week1": 1883.7,
+        "month23": 1664.1,
+        "less": 230.5
+      }
+    ],
+    "Q2 2025": [
+      {
+        "brand": "Borjomi",
+        "brandName": "Боржоми",
+        "population": 37815.4,
+        "total": 15404.0,
+        "daily": 4038.8,
+        "week23": 7152.0,
+        "week1": 2191.5,
+        "month23": 1540.5,
+        "less": 152.2
+      },
+      {
+        "brand": "Narzan",
+        "brandName": "Нарзан",
+        "population": 37815.4,
+        "total": 15020.6,
+        "daily": 3572.6,
+        "week23": 7188.5,
+        "week1": 2796.7,
+        "month23": 1108.8,
+        "less": 0.0
+      },
+      {
+        "brand": "Svyatoy",
+        "brandName": "Святой источник",
+        "population": 37815.4,
+        "total": 27927.9,
+        "daily": 6407.9,
+        "week23": 11517.9,
+        "week1": 4776.4,
+        "month23": 3537.6,
+        "less": 529.1
+      },
+      {
+        "brand": "Senezhskaya",
+        "brandName": "Сенежская",
+        "population": 37815.4,
+        "total": 13614.3,
+        "daily": 3506.3,
+        "week23": 5969.1,
+        "week1": 1941.9,
+        "month23": 1490.6,
+        "less": 225.3
+      }
+    ]
+  }
+}

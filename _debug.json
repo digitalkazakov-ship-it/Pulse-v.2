@@ -1,0 +1,55 @@
+{
+  "ad_channels": {
+    "total": {
+      "first": "Янв '24",
+      "last": "Июн '26",
+      "count": 30
+    },
+    "digital": {
+      "first": "Янв '24",
+      "last": "Июн '26",
+      "count": 30
+    },
+    "outdoor": {
+      "first": "Янв '24",
+      "last": "Июн '26",
+      "count": 30
+    },
+    "radio": {
+      "first": "Янв '24",
+      "last": "Июн '26",
+      "count": 30
+    },
+    "tv": {
+      "first": "Янв '24",
+      "last": "Июн '26",
+      "count": 30
+    }
+  },
+  "ad_brands": [
+    "БРЕСТЛИТОВСК",
+    "СЕЛОЗЕЛЕНОЕ",
+    "БЕЛЕБЕЕВСКИЙ",
+    "СЫРОБОГАТОВ",
+    "HOCHLAND",
+    "ФЕТАКСА",
+    "NATURA",
+    "LIEBENDORF",
+    "SVEZAСЫР",
+    "РАДОСТЬВКУСА"
+  ],
+  "md_keys": [
+    "seasonality",
+    "regionality",
+    "trp",
+    "tvStrategy",
+    "clipDuration"
+  ],
+  "md_sample": {
+    "seasonality": "{'brands': ['СЕЛО ЗЕЛЕНОЕ', 'БЕЛЕБЕЕВСКИЙ', 'БРЕСТ-ЛИТОВСК', 'СЫРОБОГАТОВ', 'ФЕТАКСА', 'HOCHLAND', 'ALMETTE', 'SVEZA (СЫР)', 'АШАН', 'КЕЗСКИЙ СЫРЗАВОД', 'ЛЕНТА', 'BIBERLAND', 'БОНДЖОРНО', 'SPAR', 'UNA",
+    "regionality": "{'brands': ['ALMETTE', 'BIBERLAND', 'BURENKA CLUB', 'DE GALI (СОЧИ)', 'DELISSIR', 'DOLCE GRANTA, DOLCE GRANTO', 'DOLCE GRANTO', 'DOLCE GRANTO, ЗОЛОТО ЕВРОПЫ, СИРТАКИ', 'GUTENDORF', 'HOCHLAND', 'LAPLAN",
+    "trp": "{'brands': ['СЕЛО ЗЕЛЕНОЕ', 'ФЕТАКСА', 'СЫРОБОГАТОВ', 'ALMETTE', 'БЕЛЕБЕЕВСКИЙ', 'АШАН', 'HOCHLAND', 'ЛЕНТА', 'БОНДЖОРНО', 'БРЕСТ-ЛИТОВСК', 'КАРАТ (СЫР)', 'UNAGRANDE', 'УМАЛАТ', 'PRETTO', 'Nat TV база",
+    "tvStrategy": "{'brands': ['СЕЛО ЗЕЛЕНОЕ', 'БЕЛЕБЕЕВСКИЙ', 'СЫРОБОГАТОВ', 'ФЕТАКСА', 'УМАЛАТ', 'HOCHLAND', 'АШАН', 'ALMETTE', 'КАРАТ (СЫР)', 'БРЕСТ-ЛИТОВСК', 'ЛЕНТА', 'PRETTO', 'БОНДЖОРНО', 'UNAGRANDE'], 'placements",
+    "clipDuration": "{'brands': ['СЕЛО ЗЕЛЕНОЕ', 'БЕЛЕБЕЕВСКИЙ', 'ФЕТАКСА', 'СЫРОБОГАТОВ', 'УМАЛАТ', 'АШАН', 'ALMETTE', 'HOCHLAND', 'КАРАТ (СЫР)', 'ЛЕНТА', 'Nat TV база (Сетевое + Орбитальное размещение)', 'TRPs W 25-55',"
+  }
+}
