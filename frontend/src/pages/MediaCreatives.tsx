@@ -70,7 +70,13 @@ const BRAND_PALETTE = [
   'hsl(20,  90%, 55%)',
 ];
 
-function brandColor(idx: number): string {
+const BRAND_COLOR_OVERRIDES: Record<string, string> = {
+  'Biberland':   'hsl(0, 0%, 58%)',
+  'SupremeСыр': 'hsl(0, 0%, 12%)',
+};
+
+function brandColor(idx: number, brandKey?: string): string {
+  if (brandKey && BRAND_COLOR_OVERRIDES[brandKey]) return BRAND_COLOR_OVERRIDES[brandKey];
   return idx >= 0 ? BRAND_PALETTE[idx % BRAND_PALETTE.length] : 'hsl(var(--muted-foreground))';
 }
 
@@ -192,7 +198,7 @@ export default function MediaCreatives() {
                   type="monotone"
                   dataKey={b}
                   name={adData.brandNames[b]}
-                  stroke={brandColor(i)}
+                  stroke={brandColor(i, b)}
                   strokeWidth={1.5}
                   dot={{ r: 3 }}
                 />
@@ -247,7 +253,7 @@ export default function MediaCreatives() {
                 key={b}
                 name={adData.brandNames[b]}
                 data={scatterData.filter((d) => d.brand === b)}
-                fill={brandColor(i)}
+                fill={brandColor(i, b)}
               />
             ))}
           </ScatterChart>
@@ -313,7 +319,7 @@ export default function MediaCreatives() {
                     >
                       <td
                         className="p-3 font-medium"
-                        style={{ color: brandColor(cData.brands.indexOf(row.brand)) }}
+                        style={{ color: brandColor(cData.brands.indexOf(row.brand), row.brand) }}
                       >
                         {row.brandName}
                       </td>
@@ -380,7 +386,7 @@ export default function MediaCreatives() {
                       <tr className="border-b border-border">
                         <td
                           className="p-3 font-medium"
-                          style={{ color: brandColor(cData.brands.indexOf(row.brand)) }}
+                          style={{ color: brandColor(cData.brands.indexOf(row.brand), row.brand) }}
                         >
                           {row.brandName}
                         </td>
@@ -412,7 +418,7 @@ export default function MediaCreatives() {
                             <div className="text-xs text-muted-foreground mb-2">
                               <span
                                 className="font-medium"
-                                style={{ color: brandColor(cData.brands.indexOf(row.brand)) }}
+                                style={{ color: brandColor(cData.brands.indexOf(row.brand), row.brand) }}
                               >
                                 {row.brandName}
                               </span>
