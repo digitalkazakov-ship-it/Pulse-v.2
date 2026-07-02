@@ -28,7 +28,7 @@ app = FastAPI(title="Pulse API", version="2.0")
 
 _origins_env = os.environ.get("ALLOWED_ORIGINS", "")
 _origins = [o.strip() for o in _origins_env.split(",") if o.strip()] or [
-    "http://localhost:5173", "http://localhost:8080", "http://localhost:8081"
+    "http://localhost:5173", "http://localhost:8080", "http://localhost:8081", "http://localhost:8082",
 ]
 
 app.add_middleware(
