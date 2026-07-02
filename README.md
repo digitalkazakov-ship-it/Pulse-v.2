@@ -1,6 +1,10 @@
-# Competify Radar v2
+# Pulse — Brand Intelligence Dashboard
 
 Multi-tenant Brand Intelligence Dashboard — FastAPI backend + React frontend.
+
+**Production:**
+- Frontend: https://pulse-v2ro.netlify.app
+- Backend API: https://pulse-v2-production.up.railway.app
 
 ## Architecture
 
@@ -73,6 +77,9 @@ OPENROUTER_MODEL=deepseek/deepseek-v4-flash   # любая модель OpenRout
 
 OPENAI_API_KEY=sk-...
 OPENAI_MODEL=gpt-4o-mini                      # используется, если OpenRouter не задан
+
+# Опционально — для разрешения дополнительных портов (через запятую)
+ALLOWED_ORIGINS=http://localhost:8082,https://your-site.netlify.app
 ```
 
 API: http://localhost:8000 · Swagger UI: http://localhost:8000/docs
@@ -84,6 +91,25 @@ cd frontend
 npm install
 npm run dev   # http://localhost:8081
 ```
+
+Для подключения к нестандартному бэкенду создай `frontend/.env.local`:
+```ini
+VITE_API_URL=http://localhost:8000/api
+```
+
+## Deployment
+
+### Railway (backend)
+1. Подключи GitHub-репозиторий, оставь корневую директорию `/`
+2. Добавь Volume, смонтируй в `/data`, задай переменную `DATABASE_URL=sqlite:////data/pulse.db`
+3. Задай все переменные из `backend/.env` в Railway → Variables, плюс `ALLOWED_ORIGINS=https://your-site.netlify.app`
+4. Деплой запускается автоматически при пуше в `main`
+
+### Netlify (frontend)
+- Base directory: `frontend`
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Переменная окружения: `VITE_API_URL=https://your-railway-domain.up.railway.app/api`
 
 ## BHT processor formats
 
@@ -196,7 +222,15 @@ POST   /api/projects/{id}/insights/generate       — сгенерировать
 
 GET    /api/projects/{id}/conversations           — AI темы для встречи (кэш)
 POST   /api/projects/{id}/conversations/generate  — сгенерировать темы (OpenAI, требует client_brand)
+
+# Публичные read-only ссылки
+POST   /api/projects/{id}/share                   — создать share-токен (возвращает share_token)
+DELETE /api/projects/{id}/share                   — отозвать токен
+GET    /api/public/{token}                        — получить id и name проекта по токену
+GET    /api/public/{token}/data/{type}            — данные проекта (без авторизации)
 ```
+
+Публичный дашборд доступен по маршруту `/share/<token>` — коллеги видят все страницы, но кнопки генерации AI-выводов скрыты.
 
 ## Страницы дашборда
 
