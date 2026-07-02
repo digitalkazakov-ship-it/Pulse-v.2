@@ -113,10 +113,29 @@ function AnswerBlock({ id, q, answer }: { id: string; q: string; answer: unknown
           </div>
         ) : (
           <div className="ml-7 text-sm text-foreground leading-relaxed prose prose-sm prose-neutral dark:prose-invert max-w-none
-            prose-p:my-1 prose-ul:my-1 prose-li:my-0.5 prose-table:text-xs
-            prose-th:px-2 prose-th:py-1 prose-td:px-2 prose-td:py-1
+            prose-p:my-1 prose-ul:my-1 prose-li:my-0.5
             prose-strong:text-foreground prose-headings:text-foreground">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                table: ({ children }) => (
+                  <div className="overflow-x-auto my-2">
+                    <table className="border-collapse text-xs table-auto">{children}</table>
+                  </div>
+                ),
+                thead: ({ children }) => <thead className="bg-muted/60">{children}</thead>,
+                th: ({ children }) => (
+                  <th className="border border-border px-2 py-1 text-left font-semibold text-muted-foreground whitespace-nowrap">
+                    {children}
+                  </th>
+                ),
+                td: ({ children }) => (
+                  <td className="border border-border px-2 py-1 align-top">{children}</td>
+                ),
+              }}
+            >
+              {text}
+            </ReactMarkdown>
           </div>
         )
       ) : (
