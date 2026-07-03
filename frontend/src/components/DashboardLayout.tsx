@@ -17,7 +17,6 @@ import {
   Lightbulb,
   MessageSquare,
 } from 'lucide-react';
-import { FilterBar } from './FilterBar';
 import { useProject } from '@/contexts/ProjectContext';
 
 const NAV_ITEMS = [
@@ -139,7 +138,6 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           collapsed ? 'ml-16' : 'ml-60'
         }`}
       >
-        <FilterBar />
         <main className="flex-1 p-6 overflow-auto">{children}</main>
       </div>
     </div>
