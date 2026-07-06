@@ -112,7 +112,7 @@ function AnswerBlock({ id, q, answer }: { id: string; q: string; answer: unknown
             <span>{text}</span>
           </div>
         ) : (
-          <div className="ml-7 text-sm text-foreground leading-relaxed prose prose-sm prose-neutral dark:prose-invert max-w-none
+          <div className="ml-7 overflow-x-hidden text-sm text-foreground leading-relaxed prose prose-sm prose-neutral dark:prose-invert max-w-none
             prose-p:my-1 prose-ul:my-1 prose-li:my-0.5
             prose-strong:text-foreground prose-headings:text-foreground">
             <ReactMarkdown
