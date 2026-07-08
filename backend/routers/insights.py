@@ -1210,6 +1210,32 @@ def generate_insights(project_id: int, db: Session = Depends(get_db)):
     return answers
 
 
+@router.post("/{project_id}/insights/import")
+def import_insights(project_id: int, payload: dict, db: Session = Depends(get_db)):
+    _require_project(project_id, db)
+    existing = (
+        db.query(Snapshot)
+        .filter_by(project_id=project_id, data_type="insights")
+        .first()
+    )
+    from datetime import datetime
+    if existing:
+        existing.payload = json.dumps(payload, ensure_ascii=False)
+        existing.uploaded_at = datetime.utcnow()
+        db.commit()
+    else:
+        snap = Snapshot(
+            project_id=project_id,
+            data_type="insights",
+            payload=json.dumps(payload, ensure_ascii=False),
+            source_filename=None,
+            period=None,
+        )
+        db.add(snap)
+        db.commit()
+    return {"status": "imported"}
+
+
 def _require_project(project_id: int, db: Session) -> Project:
     project = db.get(Project, project_id)
     if not project:
