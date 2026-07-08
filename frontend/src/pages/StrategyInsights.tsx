@@ -114,28 +114,12 @@ function AnswerBlock({ id, q, answer }: { id: string; q: string; answer: unknown
         ) : (
           <div className="ml-7 max-w-full text-sm text-foreground leading-relaxed prose prose-sm prose-neutral dark:prose-invert max-w-none
             prose-p:my-1 prose-ul:my-1 prose-li:my-0.5
-            prose-strong:text-foreground prose-headings:text-foreground">
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                table: ({ children }) => (
-                  <div className="overflow-x-auto my-2">
-                    <table className="border-collapse text-xs table-auto">{children}</table>
-                  </div>
-                ),
-                thead: ({ children }) => <thead className="bg-muted/60">{children}</thead>,
-                th: ({ children }) => (
-                  <th className="border border-border px-2 py-1 text-left font-semibold text-muted-foreground whitespace-nowrap">
-                    {children}
-                  </th>
-                ),
-                td: ({ children }) => (
-                  <td className="border border-border px-2 py-1 align-top">{children}</td>
-                ),
-              }}
-            >
-              {text}
-            </ReactMarkdown>
+            prose-strong:text-foreground prose-headings:text-foreground
+            [&_table]:w-auto [&_table]:text-xs [&_table]:border-collapse
+            [&_th]:border [&_th]:border-border [&_th]:px-2 [&_th]:py-1 [&_th]:whitespace-nowrap [&_th]:bg-muted/60
+            [&_td]:border [&_td]:border-border [&_td]:px-2 [&_td]:py-1 [&_td]:align-top
+            [&_table]:block [&_table]:overflow-x-auto">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
           </div>
         )
       ) : (
