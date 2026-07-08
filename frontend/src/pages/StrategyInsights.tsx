@@ -1,7 +1,73 @@
 import { useState, useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import { ChevronDown, AlertCircle, Sparkles, RefreshCw, Clock9 } from 'lucide-react';
+
+// ── Markdown table parser ──────────────────────────────────────────────────────
+
+function renderInline(text: string) {
+  const parts = text.split(/\*\*(.+?)\*\*/g);
+  return parts.map((p, i) => i % 2 === 1 ? <strong key={i}>{p}</strong> : p);
+}
+
+function MdTable({ raw }: { raw: string }) {
+  const lines = raw.trim().split('\n').filter(l => l.trim().startsWith('|'));
+  if (lines.length < 2) return <pre className="text-xs">{raw}</pre>;
+  const parseRow = (l: string) => l.split('|').slice(1, -1).map(c => c.trim());
+  const headers = parseRow(lines[0]);
+  const rows = lines.slice(2).map(parseRow);
+  return (
+    <div className="overflow-x-auto my-2">
+      <table className="border-collapse text-xs table-auto">
+        <thead>
+          <tr>
+            {headers.map((h, i) => (
+              <th key={i} className="border border-border bg-muted/60 px-2 py-1 text-left font-semibold text-muted-foreground whitespace-nowrap">
+                {renderInline(h)}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i} className={i % 2 === 1 ? 'bg-muted/20' : ''}>
+              {row.map((cell, j) => (
+                <td key={j} className="border border-border px-2 py-1 align-top">{renderInline(cell)}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function MdContent({ text }: { text: string }) {
+  const blocks: { type: 'table' | 'prose'; content: string }[] = [];
+  let proseLines: string[] = [];
+  let tableLines: string[] = [];
+
+  for (const line of text.split('\n')) {
+    if (line.trim().startsWith('|')) {
+      if (proseLines.length) { blocks.push({ type: 'prose', content: proseLines.join('\n') }); proseLines = []; }
+      tableLines.push(line);
+    } else {
+      if (tableLines.length) { blocks.push({ type: 'table', content: tableLines.join('\n') }); tableLines = []; }
+      proseLines.push(line);
+    }
+  }
+  if (tableLines.length) blocks.push({ type: 'table', content: tableLines.join('\n') });
+  if (proseLines.length) blocks.push({ type: 'prose', content: proseLines.join('\n') });
+
+  return (
+    <>
+      {blocks.map((b, i) =>
+        b.type === 'table'
+          ? <MdTable key={i} raw={b.content} />
+          : <ReactMarkdown key={i}>{b.content}</ReactMarkdown>
+      )}
+    </>
+  );
+}
 import { api, type InsightsData } from '@/lib/api';
 import { useProject } from '@/contexts/ProjectContext';
 
@@ -119,7 +185,7 @@ function AnswerBlock({ id, q, answer }: { id: string; q: string; answer: unknown
             [&_th]:border [&_th]:border-border [&_th]:px-2 [&_th]:py-1 [&_th]:whitespace-nowrap [&_th]:bg-muted/60
             [&_td]:border [&_td]:border-border [&_td]:px-2 [&_td]:py-1 [&_td]:align-top
             [&_table]:block [&_table]:overflow-x-auto">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
+            <MdContent text={text} />
           </div>
         )
       ) : (
