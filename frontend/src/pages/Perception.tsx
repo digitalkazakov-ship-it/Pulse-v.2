@@ -190,7 +190,7 @@ export default function Perception() {
             <p className="text-xs text-muted-foreground mt-0.5">
               {matrixMode === 'absolute'
                 ? 'Кол-во упоминаний (абсолют)'
-                : 'Доля упоминаний в сравнении с медианой, %'}
+                : 'Доля упоминаний в сравнении с медианным значением упоминаний между всеми брендами, %'}
             </p>
           </div>
           <div className="inline-flex items-center gap-1 bg-secondary border border-border rounded-md p-1">
