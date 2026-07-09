@@ -254,10 +254,10 @@ export default function MediaCreatives() {
         </ResponsiveContainer>
       </ChartCard>
 
-      {/* ── Мониторинг креативов ──────────────────────────────────────── */}
+      {/* ── Коммуникация в креативах ──────────────────────────────────── */}
       <ChartCard
-        title="Мониторинг креативов"
-        subtitle={`Имидж / промо / продукт по каналам · ${cData ? cData.generated : '…'}`}
+        title="Коммуникация в креативах"
+        subtitle={`Тип коммуникации: имиджевая / промо / продуктовая · ${cData ? cData.generated : '…'}`}
       >
         {!cData ? (
           <div className="flex items-center justify-center h-24 text-muted-foreground text-sm">
