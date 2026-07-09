@@ -97,11 +97,16 @@ def _process_monthly_auto(wb) -> dict:
     # Penetration sheet: the first sheet whose name contains 'пенетрация'
     pen_ws = next((ws for ws in wb.worksheets if 'пенетрация' in ws.title.lower()), None)
 
-    # Month → column index from row 11 (0-indexed) of the voronki sheet
+    # Month → column index from row 11 (0-indexed) of the voronki sheet.
+    # The sheet repeats months for each age-group interval — stop at first repeated month
+    # so we only use the first (total) interval.
     month_col: dict = {}
     for ci, v in enumerate(rows0[11]):
         if isinstance(v, _dt):
-            month_col[f'{v.year}-{v.month:02d}'] = ci
+            key = f'{v.year}-{v.month:02d}'
+            if key in month_col:
+                break  # second interval starts here
+            month_col[key] = ci
     months_sorted = sorted(month_col.keys())
 
     def _qlabel(ym: str) -> str:
