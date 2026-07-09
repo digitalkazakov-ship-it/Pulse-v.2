@@ -178,7 +178,7 @@ export default function Sales() {
       {/* ── Динамика продаж YoY ───────────────────────────────────────── */}
       <ChartCard
         title="Динамика продаж"
-        subtitle="Год к году, % (объём в штуках)"
+        subtitle="Отношение объёма продаж к объёму продаж за аналогичный период минус единица"
         headerExtra={yearTabs}
       >
         <ResponsiveContainer width="100%" height={280}>
