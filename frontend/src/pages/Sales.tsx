@@ -89,8 +89,9 @@ function YearTabs({ years, value, onChange }: {
 
 export default function Sales() {
   const { projectId } = useProject();
-  const [data, setData]   = useState<SalesData | null>(null);
-  const [year, setYear]   = useState<number | null>(null);
+  const [data, setData]        = useState<SalesData | null>(null);
+  const [year, setYear]        = useState<number | null>(null);
+  const [showCategory, setShowCategory] = useState(false);
 
   useEffect(() => {
     if (projectId === null) return;
@@ -140,7 +141,21 @@ export default function Sales() {
       <ChartCard
         title="Индекс продаж"
         subtitle="Объём продаж (уп.) / средний объём категории 2020"
-        headerExtra={yearTabs}
+        headerExtra={
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setShowCategory(v => !v)}
+              className={`px-3 py-1.5 text-xs font-medium rounded border transition-colors ${
+                showCategory
+                  ? 'bg-primary text-primary-foreground border-transparent'
+                  : 'bg-secondary text-muted-foreground border-border hover:text-foreground'
+              }`}
+            >
+              Категория
+            </button>
+            {yearTabs}
+          </div>
+        }
       >
         <ResponsiveContainer width="100%" height={280}>
           <BarChart data={byYear(data.salesIndex)} barCategoryGap="18%" barGap={2}>
@@ -152,7 +167,7 @@ export default function Sales() {
               formatter={(v: number) => [v.toFixed(5), '']}
             />
             <ReferenceLine y={0} stroke="hsl(var(--foreground))" strokeOpacity={0.35} strokeWidth={1} />
-            {brands.map(b => (
+            {brands.filter(b => showCategory || !isCatBrand(b)).map(b => (
               <Bar key={b} dataKey={b} name={label(b)} fill={color(b)} radius={[2, 2, 0, 0]} />
             ))}
             <Legend wrapperStyle={{ fontSize: 11 }} />
