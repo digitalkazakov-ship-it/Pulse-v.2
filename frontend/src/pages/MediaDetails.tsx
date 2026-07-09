@@ -307,7 +307,13 @@ export default function MediaDetails() {
 
   const seasonData = useMemo(() => {
     if (!data || !seasonYear) return [];
-    return data.seasonality.data[seasonYear] ?? [];
+    return (data.seasonality.data[seasonYear] ?? []).map(row => {
+      const out: Record<string, unknown> = { month: row.month };
+      for (const b of data.seasonality.brands) {
+        out[b] = (row[b] as number | null) ?? 0;
+      }
+      return out;
+    });
   }, [data, seasonYear]);
 
   const regionData = useMemo(() => {
@@ -417,9 +423,8 @@ export default function MediaDetails() {
                   dataKey={b}
                   name={b}
                   stroke={brandColor(b)}
-                  strokeWidth={2}
-                  dot={false}
-                  connectNulls={false}
+                  strokeWidth={1.5}
+                  dot={{ r: 3 }}
                 />
               ))}
               <Legend wrapperStyle={{ fontSize: 10 }} />
