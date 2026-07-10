@@ -5,7 +5,7 @@ import { ChevronRight } from 'lucide-react';
 import { ChartCard } from '@/components/ChartCard';
 import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend,
-  ScatterChart, Scatter, LineChart, Line,
+  ScatterChart, Scatter, BarChart, Bar,
 } from 'recharts';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -70,8 +70,17 @@ const BRAND_PALETTE = [
   'hsl(0,   0%,  58%)',
 ];
 
-function brandColor(idx: number, _brandKey?: string): string {
+// Brand code → fixed color overrides (checked before palette index)
+const BRAND_COLOR_OVERRIDES: Record<string, string> = {};
+
+function brandColor(idx: number, brandKey?: string): string {
+  if (brandKey && BRAND_COLOR_OVERRIDES[brandKey]) return BRAND_COLOR_OVERRIDES[brandKey];
   return idx >= 0 ? BRAND_PALETTE[idx % BRAND_PALETTE.length] : 'hsl(var(--muted-foreground))';
+}
+
+function yearFromLabel(month: string): number {
+  const m = month.match(/'(\d{2})$/);
+  return m ? 2000 + parseInt(m[1], 10) : 0;
 }
 
 type AdChannel = 'total' | 'tv' | 'radio' | 'outdoor' | 'digital';
@@ -100,6 +109,7 @@ export default function MediaCreatives() {
   const { projectId } = useProject();
   const [expanded, setExpanded] = useState<{ brand: string; channel: Channel } | null>(null);
   const [adChannel, setAdChannel] = useState<AdChannel>('total');
+  const [yearFilter, setYearFilter] = useState<string>('Все');
   const [cData, setCData] = useState<CreativesData | null>(null);
   const [adData, setAdData] = useState<AdSpendData | null>(null);
   const [salesData, setSalesData] = useState<SalesIndexData | null>(null);
@@ -110,6 +120,14 @@ export default function MediaCreatives() {
     api.getProjectData(projectId, 'ad_spend').then(d => setAdData(d as AdSpendData)).catch(console.error);
     api.getProjectData(projectId, 'sales').then(d => setSalesData(d as SalesIndexData)).catch(console.error);
   }, [projectId]);
+
+  useEffect(() => {
+    if (!adData) return;
+    const years = [...new Set(
+      adData.channels.total.map(r => yearFromLabel(r.month as string)).filter(Boolean)
+    )].sort() as number[];
+    setYearFilter(years.length > 0 ? String(years[years.length - 1]) : 'Все');
+  }, [adData]);
 
   const scatterData: ScatterPoint[] = (() => {
     if (!adData || !salesData) return [];
@@ -147,61 +165,85 @@ export default function MediaCreatives() {
       </div>
 
       {/* ── Рекламные расходы ─────────────────────────────────────────── */}
-      <ChartCard
-        title="Рекламные расходы"
-        subtitle="Последние 6 месяцев, млн ₽"
-        headerExtra={
-          <div className="inline-flex items-center gap-1 bg-secondary border border-border rounded-md p-1">
-            {AD_CHANNEL_TABS.map((t) => (
-              <button
-                key={t.value}
-                onClick={() => setAdChannel(t.value)}
-                className={`px-3 py-1.5 text-xs font-medium rounded transition-colors ${
-                  adChannel === t.value
-                    ? 'bg-primary text-primary-foreground'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
-        }
-      >
-        {!adData ? (
-          <div className="flex items-center justify-center h-[300px] text-muted-foreground text-sm">
-            Загрузка данных…
-          </div>
-        ) : (
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={adData.channels[adChannel]}>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-              <XAxis dataKey="month" tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }} />
-              <YAxis tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }} />
-              <Tooltip
-                contentStyle={{
-                  background: 'hsl(var(--card))',
-                  border: '1px solid hsl(var(--border))',
-                  borderRadius: 8,
-                  fontSize: 11,
-                }}
-              />
-              {adData.brands.map((b, i) => (
-                <Line
-                  key={b}
-                  type="monotone"
-                  dataKey={b}
-                  name={adData.brandNames[b]}
-                  stroke={brandColor(i, adData.brandNames[b] ?? b)}
-                  strokeWidth={1.5}
-                  dot={{ r: 3 }}
-                />
-              ))}
-              <Legend wrapperStyle={{ fontSize: 11 }} />
-            </LineChart>
-          </ResponsiveContainer>
-        )}
-      </ChartCard>
+      {(() => {
+        const adYears = adData
+          ? ([...new Set(adData.channels.total.map(r => yearFromLabel(r.month as string)).filter(Boolean))].sort() as number[])
+          : [];
+        const adChartData = adData
+          ? (yearFilter === 'Все'
+              ? adData.channels[adChannel]
+              : adData.channels[adChannel].filter(r => yearFromLabel(r.month as string) === Number(yearFilter)))
+          : [];
+        return (
+          <ChartCard
+            title="Рекламные расходы"
+            subtitle="млн ₽"
+            headerExtra={
+              <div className="flex items-center gap-2 flex-wrap">
+                <div className="inline-flex items-center gap-1 bg-secondary border border-border rounded-md p-1">
+                  <button
+                    onClick={() => setYearFilter('Все')}
+                    className={`px-3 py-1.5 text-xs font-medium rounded transition-colors ${yearFilter === 'Все' ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'}`}
+                  >Все</button>
+                  {adYears.map(y => (
+                    <button
+                      key={y}
+                      onClick={() => setYearFilter(String(y))}
+                      className={`px-3 py-1.5 text-xs font-medium rounded transition-colors ${yearFilter === String(y) ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'}`}
+                    >{y}</button>
+                  ))}
+                </div>
+                <div className="inline-flex items-center gap-1 bg-secondary border border-border rounded-md p-1">
+                  {AD_CHANNEL_TABS.map((t) => (
+                    <button
+                      key={t.value}
+                      onClick={() => setAdChannel(t.value)}
+                      className={`px-3 py-1.5 text-xs font-medium rounded transition-colors ${
+                        adChannel === t.value
+                          ? 'bg-primary text-primary-foreground'
+                          : 'text-muted-foreground hover:text-foreground'
+                      }`}
+                    >
+                      {t.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            }
+          >
+            {!adData ? (
+              <div className="flex items-center justify-center h-[300px] text-muted-foreground text-sm">
+                Загрузка данных…
+              </div>
+            ) : (
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={adChartData} barCategoryGap="0%" barGap={0}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+                  <XAxis dataKey="month" tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }} />
+                  <YAxis tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }} />
+                  <Tooltip
+                    contentStyle={{
+                      background: 'hsl(var(--card))',
+                      border: '1px solid hsl(var(--border))',
+                      borderRadius: 8,
+                      fontSize: 11,
+                    }}
+                  />
+                  {adData.brands.map((b, i) => (
+                    <Bar
+                      key={b}
+                      dataKey={b}
+                      name={adData.brandNames[b]}
+                      fill={brandColor(i, b)}
+                    />
+                  ))}
+                  <Legend wrapperStyle={{ fontSize: 11 }} />
+                </BarChart>
+              </ResponsiveContainer>
+            )}
+          </ChartCard>
+        );
+      })()}
 
       {/* ── Media Spend vs Sales ──────────────────────────────────────── */}
       <ChartCard title="Media Spend vs Sales" subtitle="Рекламные расходы (млн ₽) vs индекс продаж · дек 2025 – апр 2026">
