@@ -235,17 +235,27 @@ function TvGantt({ yearData, brands, placements }: {
                       if (!val || val <= 0) return null;
                       const w = pt.week as number;
                       const opacity = 0.35 + 0.65 * (val / maxVal);
+                      const cx = LABEL_W + (w - 1) * weekW + weekW / 2;
+                      const cy = rowY + ROW_H / 2;
                       return (
-                        <rect
-                          key={w}
-                          x={LABEL_W + (w - 1) * weekW + 0.5}
-                          y={rowY + 1}
-                          width={Math.max(weekW - 1, 1)}
-                          height={ROW_H - 2}
-                          fill={color} opacity={opacity} rx={1}
-                        >
-                          <title>{`${brand} · ${PLACEMENT_SHORT[placement] ?? placement} · W${w}: ${val.toFixed(0)}`}</title>
-                        </rect>
+                        <g key={w}>
+                          <rect
+                            x={LABEL_W + (w - 1) * weekW + 0.5}
+                            y={rowY + 1}
+                            width={Math.max(weekW - 1, 1)}
+                            height={ROW_H - 2}
+                            fill={color} opacity={opacity} rx={1}
+                          >
+                            <title>{`${brand} · ${PLACEMENT_SHORT[placement] ?? placement} · W${w}: ${val.toFixed(0)}`}</title>
+                          </rect>
+                          <text
+                            x={cx} y={cy + 3.5}
+                            textAnchor="middle" fontSize={7} fontWeight="600"
+                            fill="white" style={{ pointerEvents: 'none', userSelect: 'none' }}
+                          >
+                            {Math.round(val)}
+                          </text>
+                        </g>
                       );
                     })}
                   </g>
