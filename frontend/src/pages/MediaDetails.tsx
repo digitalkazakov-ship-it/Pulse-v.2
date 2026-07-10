@@ -162,14 +162,15 @@ function TvGantt({ yearData, brands, placements }: {
     ...placements.flatMap(p => (yearData[p] ?? []).map(pt => (pt.week as number) ?? 0))
   );
 
-  const ROW_H = 13;
+  const ROW_H = 21;
+  const CELL_W = 32;
   const GROUP_GAP = 5;
   const BRAND_LABEL_W = 110;
   const PLACE_LABEL_W = 52;
   const LABEL_W = BRAND_LABEL_W + PLACE_LABEL_W;
-  const CHART_W = 620;
+  const CHART_W = maxWeek * CELL_W;
   const AXIS_H = 20;
-  const weekW = CHART_W / maxWeek;
+  const weekW = CELL_W;
   const n = placements.length;
   const brandH = n * ROW_H + GROUP_GAP;
   const svgH = activeBrands.length * brandH - GROUP_GAP + AXIS_H;
@@ -246,7 +247,7 @@ function TvGantt({ yearData, brands, placements }: {
                             height={ROW_H - 2}
                             fill={color} opacity={opacity} rx={1}
                           >
-                            <title>{`${brand} · ${PLACEMENT_SHORT[placement] ?? placement} · W${w}: ${val.toFixed(0)}`}</title>
+                            <title>{`${brand} · ${PLACEMENT_SHORT[placement] ?? placement} · W${w}: ${val.toFixed(1)}`}</title>
                           </rect>
                           <text
                             x={cx} y={cy + 3.5}
