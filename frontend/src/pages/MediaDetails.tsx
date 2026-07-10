@@ -250,10 +250,10 @@ function TvGantt({ yearData, brands, placements }: {
                           </rect>
                           <text
                             x={cx} y={cy + 3.5}
-                            textAnchor="middle" fontSize={7} fontWeight="600"
+                            textAnchor="middle" fontSize={9} fontWeight="600"
                             fill="white" style={{ pointerEvents: 'none', userSelect: 'none' }}
                           >
-                            {Math.round(val)}
+                            {val.toFixed(1)}
                           </text>
                         </g>
                       );
