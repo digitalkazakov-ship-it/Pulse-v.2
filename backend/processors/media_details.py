@@ -74,6 +74,25 @@ def _parse_regionality(ws):
     agg: dict = {str(yr): defaultdict(lambda: defaultdict(lambda: defaultdict(float)))
                  for yr, _, _ in yr_ranges}
 
+    # Monthly totals per brand, summed across ALL media + regions ("All media" view).
+    # Column ranges can be partial for the most recent year (e.g. Jan-Jul only) —
+    # preserved here (unlike agg above) so the frontend can detect that and show
+    # a matching same-months-prior-year comparison column.
+    year_months = {str(yr): ec - sc + 1 for yr, sc, ec in yr_ranges}
+    # NOTE: `n=year_months[str(yr)]` default-arg binds the value at lambda-creation
+    # time — without it, the closure would capture `yr` by reference and every
+    # year's defaultdict would size its lists using whatever `yr` ends up being
+    # after the loop finishes (a classic late-binding bug).
+    monthly_agg: dict = {str(yr): defaultdict(lambda n=year_months[str(yr)]: [0.0] * n)
+                          for yr, _, _ in yr_ranges}
+
+    # Monthly totals per brand, kept SEPARATE per media type but summed across
+    # regions — for a chart that cares about (brand, media, month) and ignores
+    # region entirely. monthly_by_media[media][yr_str][brand] = [v1..vN].
+    # Built with plain dicts (not defaultdict-with-lambda) to sidestep the same
+    # late-binding closure bug that hit monthly_agg above.
+    monthly_by_media: dict = {}
+
     for r in rows[3:]:
         brand, media, region = r[1], r[2], r[3]
         if not brand or not media or not region:
@@ -90,6 +109,18 @@ def _parse_regionality(ws):
         for yr, sc, ec in yr_ranges:
             total = sum(v for ci in range(sc, ec + 1) if isinstance((v := r[ci]), (int, float)))
             agg[str(yr)][media][region][brand] += total
+            yr_str = str(yr)
+            month_vals = monthly_agg[yr_str][brand]
+
+            media_years = monthly_by_media.setdefault(media, {})
+            media_year_brands = media_years.setdefault(yr_str, {})
+            media_month_vals = media_year_brands.setdefault(brand, [0.0] * year_months[yr_str])
+
+            for idx, ci in enumerate(range(sc, ec + 1)):
+                v = r[ci]
+                if isinstance(v, (int, float)):
+                    month_vals[idx] += v
+                    media_month_vals[idx] += v
 
     brands = sorted(brands_set)
     media_types = sorted(media_set)
@@ -117,12 +148,47 @@ def _parse_regionality(ws):
     # Prepend 'Все' to each media's region list
     regions = {media: ['Все'] + regs for media, regs in regions_by_media.items()}
 
+    # monthlyTotal[year] = [{'month': 'Янв', brand: value, ...}, ...] — same
+    # brand-totals as `data[year][media]['Все']` above, but per month, summed
+    # across ALL media too, so a partial year (e.g. Jan-Jul) is visible as such
+    # instead of silently rolling up into a misleadingly "full-looking" year sum.
+    monthly_total: dict = {}
+    for yr_str, n in year_months.items():
+        series = []
+        for m in range(n):
+            pt: dict = {'month': RU_MONTHS_SHORT[m + 1]}
+            for b in brands:
+                vals = monthly_agg[yr_str].get(b)
+                pt[b] = int(round(vals[m])) if vals else 0
+            series.append(pt)
+        monthly_total[yr_str] = series
+
+    # monthlyByMedia[media][year] = [{'month': 'Янв', brand: value, ...}, ...] —
+    # same shape as monthlyTotal, but kept separate per media type (region still
+    # summed away). Lets the frontend offer a per-media-type channel switcher
+    # over month-by-month brand budgets.
+    monthly_by_media_out: dict = {}
+    for media, yr_dict in monthly_by_media.items():
+        monthly_by_media_out[media] = {}
+        for yr_str, brand_dict in yr_dict.items():
+            n = year_months[yr_str]
+            series = []
+            for m in range(n):
+                pt: dict = {'month': RU_MONTHS_SHORT[m + 1]}
+                for b in brands:
+                    vals = brand_dict.get(b)
+                    pt[b] = int(round(vals[m])) if vals else 0
+                series.append(pt)
+            monthly_by_media_out[media][yr_str] = series
+
     return {
         'brands': brands,
         'mediaTypes': media_types,
         'years': years,
         'regions': regions,
         'data': data,
+        'monthlyTotal': monthly_total,
+        'monthlyByMedia': monthly_by_media_out,
     }
 
 

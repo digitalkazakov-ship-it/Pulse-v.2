@@ -79,6 +79,27 @@ export function ShareProjectProvider({ token, children }: { token: string; child
   );
 }
 
+export function ArchiveProjectProvider({ project, availableTypes, children }: {
+  project: { id: number; name: string };
+  availableTypes: string[];
+  children: ReactNode;
+}) {
+  return (
+    <ProjectContext.Provider value={{
+      projectId: project.id,
+      setProjectId: () => {},
+      projects: [{ id: project.id, name: project.name, client_brand: null, client_brand_alias: null, share_token: null, created_at: '' }],
+      loading: false,
+      refresh: () => {},
+      isReadonly: true,
+      availableTypes: new Set(availableTypes),
+      refreshAvailableTypes: () => {},
+    }}>
+      {children}
+    </ProjectContext.Provider>
+  );
+}
+
 export function useProject() {
   const ctx = useContext(ProjectContext);
   if (!ctx) throw new Error('useProject must be used inside ProjectProvider');

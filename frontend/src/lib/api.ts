@@ -1,5 +1,14 @@
 const API_BASE = (import.meta.env.VITE_API_URL as string | undefined) ?? 'http://localhost:8000/api';
 
+// Offline single-file archive build: page components call api.getProjectData/getInsights
+// exactly as normal, but data comes from a bundled JS object instead of a network request.
+// ArchiveApp calls setArchiveSource() once at startup; everywhere else is unaware of the difference.
+let archiveSource: { data: Record<string, unknown>; insights: Record<string, unknown> } | null = null;
+
+export function setArchiveSource(source: { data: Record<string, unknown>; insights: Record<string, unknown> }) {
+  archiveSource = source;
+}
+
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, init);
   if (!res.ok) {
@@ -81,8 +90,13 @@ export const api = {
   deleteProject: (id: number): Promise<void> =>
     request(`/projects/${id}`, { method: 'DELETE' }),
 
-  getProjectData: (projectId: number, dataType: string): Promise<unknown> =>
-    request(`/projects/${projectId}/data/${dataType}`),
+  getProjectData: (projectId: number, dataType: string): Promise<unknown> => {
+    if (archiveSource) {
+      const d = archiveSource.data[dataType];
+      return d !== undefined ? Promise.resolve(d) : Promise.reject(new Error(`No archived data for ${dataType}`));
+    }
+    return request(`/projects/${projectId}/data/${dataType}`);
+  },
 
   getSnapshots: (projectId: number): Promise<Snapshot[]> =>
     request(`/projects/${projectId}/snapshots`),
@@ -97,7 +111,9 @@ export const api = {
   },
 
   getInsights: (projectId: number): Promise<InsightsData> =>
-    request(`/projects/${projectId}/insights`),
+    archiveSource
+      ? Promise.resolve(archiveSource.insights as InsightsData)
+      : request(`/projects/${projectId}/insights`),
 
   generateInsights: (projectId: number): Promise<InsightsData> =>
     request(`/projects/${projectId}/insights/generate`, { method: 'POST' }),

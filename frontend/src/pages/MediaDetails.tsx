@@ -3,7 +3,8 @@ import { ChartCard } from '@/components/ChartCard';
 import { api } from '@/lib/api';
 import { useProject } from '@/contexts/ProjectContext';
 import {
-  LineChart, Line, BarChart, Bar, Cell,
+  LineChart, Line, BarChart, Bar, LabelList,
+  ScatterChart, Scatter,
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend,
 } from 'recharts';
 
@@ -21,6 +22,8 @@ interface RegionalityData {
   years: number[];
   regions: Record<string, string[]>;
   data: Record<string, Record<string, Record<string, Array<{ brand: string; value: number }>>>>;
+  monthlyTotal: Record<string, Array<Record<string, string | number>>>;
+  monthlyByMedia: Record<string, Record<string, Array<Record<string, string | number>>>>;
 }
 interface TrpData {
   brands: string[];
@@ -48,33 +51,66 @@ interface MediaDetailsData {
   clipDuration: ClipDurationData;
 }
 
+interface AdSpendData {
+  generated: string;
+  brands: string[];
+  brandNames: Record<string, string>;
+  channels: Record<string, Array<Record<string, string | number>>>;
+}
+
+interface SalesIndexData {
+  brands: string[];
+  salesIndex: Array<Record<string, string | number>>;
+}
+
+interface ScatterPoint {
+  brand: string;
+  brandName: string;
+  month: string;
+  mediaSpend: number;
+  salesVolume: number;
+}
+
+interface EcomRevenueData {
+  brands: string[];
+  brandNames: Record<string, string>;
+  charts: { revenue: Record<string, Array<Record<string, string | number | null>>> };
+}
+
+interface EcomScatterPoint {
+  brand: string;
+  brandName: string;
+  month: string;
+  mediaSpend: number;
+  ecomRevenue: number;
+}
+
 // ── Constants ─────────────────────────────────────────────────────────────────
 
-const BRAND_COLORS: Record<string, string> = {
-  'СЕЛО ЗЕЛЕНОЕ':  'hsl(217, 91%, 60%)',
-  'БЕЛЕБЕЕВСКИЙ':  'hsl(142, 76%, 36%)',
-  'БРЕСТ-ЛИТОВСК': 'hsl(38,  92%, 50%)',
-  'СЫРОБОГАТОВ':   'hsl(280, 65%, 60%)',
-  'ФЕТАКСА':       'hsl(0,   70%, 55%)',
-  'HOCHLAND':      'hsl(180, 60%, 40%)',
-  'ALMETTE':       'hsl(320, 60%, 50%)',
-  'УМАЛАТ':        'hsl(55,  85%, 42%)',
-  'АШАН':          'hsl(200, 70%, 50%)',
-  'КАРАТ (СЫР)':   'hsl(15,  80%, 50%)',
-  'ЛЕНТА':         'hsl(240, 60%, 55%)',
-  'UNAGRANDE':     'hsl(160, 60%, 40%)',
-  'PRETTO':        'hsl(340, 70%, 55%)',
-  'БОНДЖОРНО':     'hsl(25,  75%, 48%)',
-};
-const FALLBACK_PALETTE = [
-  'hsl(207,70%,53%)', 'hsl(134,55%,40%)', 'hsl(27,85%,52%)',
-  'hsl(271,55%,58%)', 'hsl(353,65%,52%)', 'hsl(185,55%,42%)',
-  'hsl(45,80%,48%)',  'hsl(315,55%,52%)', 'hsl(100,50%,42%)',
+// Core palette — assigned first, one clearly distinct hue per client.
+const CORE_PALETTE = [
+  'hsl(355,70%,52%)', // красный
+  'hsl(145,60%,38%)', // зелёный
+  'hsl(27,88%,52%)',  // оранжевый
+  'hsl(42,90%,50%)',  // жёлтый
+  'hsl(217,80%,56%)', // синий
+  'hsl(271,55%,58%)', // фиолетовый
+  'hsl(340,70%,60%)', // розовый
+  'hsl(195,75%,48%)', // голубой
+  'hsl(210,8%,55%)',  // серый
 ];
 
-const PERIOD_COLORS = [
-  'hsl(217,91%,60%)', 'hsl(142,76%,36%)', 'hsl(38,92%,50%)', 'hsl(280,65%,60%)',
+// Extended palette — only reached once there are more clients than CORE_PALETTE covers.
+const EXTENDED_PALETTE = [
+  'hsl(95,85%,42%)',  // кислотно-зелёный
+  'hsl(65,100%,50%)', // кислотно-жёлтый
+  'hsl(0,0%,30%)',    // тёмно-серый
+  'hsl(305,75%,55%)', // фуксия
+  'hsl(174,65%,42%)', // бирюзовый
 ];
+
+const FALLBACK_PALETTE = [...CORE_PALETTE, ...EXTENDED_PALETTE];
+
 const DURATION_COLORS: Record<number, string> = {
   5:  'hsl(142,76%,36%)',
   10: 'hsl(38,92%,50%)',
@@ -82,6 +118,7 @@ const DURATION_COLORS: Record<number, string> = {
   20: 'hsl(217,91%,60%)',
   25: 'hsl(280,65%,60%)',
 };
+
 
 const tooltipStyle = {
   background: 'hsl(var(--card))',
@@ -97,7 +134,6 @@ const axisTickSm = { fontSize: 10, fill: 'hsl(var(--muted-foreground))' };
 let _colorIdx = 0;
 const _assignedColors: Record<string, string> = {};
 function brandColor(b: string): string {
-  if (BRAND_COLORS[b]) return BRAND_COLORS[b];
   if (!_assignedColors[b]) {
     _assignedColors[b] = FALLBACK_PALETTE[_colorIdx % FALLBACK_PALETTE.length];
     _colorIdx++;
@@ -105,10 +141,108 @@ function brandColor(b: string): string {
   return _assignedColors[b];
 }
 
+const OTHERS_KEY = 'Остальные';
+
+// Separate color cache for non-brand stack segments (channels, regions) so it
+// doesn't share/consume slots from the brand color cache above.
+let _chColorIdx = 0;
+const _assignedChColors: Record<string, string> = {};
+function channelColor(k: string): string {
+  if (!_assignedChColors[k]) {
+    _assignedChColors[k] = FALLBACK_PALETTE[_chColorIdx % FALLBACK_PALETTE.length];
+    _chColorIdx++;
+  }
+  return _assignedChColors[k];
+}
+
+// Given the set of keys shown together in one chart (its stack + legend), returns each
+// key's usual color, but reassigns any collision (two keys landing on the same palette
+// entry once more brands have appeared on the page than the palette has slots) to another
+// entry unused within this same set — so no two segments visible together share a color.
+function distinctColorsFor(keys: string[], colorFn: (k: string) => string): Record<string, string> {
+  const result: Record<string, string> = {};
+  const used = new Set<string>();
+  const unresolved: string[] = [];
+  for (const k of keys) {
+    const c = colorFn(k);
+    if (!used.has(c)) {
+      result[k] = c;
+      used.add(c);
+    } else {
+      unresolved.push(k);
+    }
+  }
+  // Golden-angle hue steps stay well spread out even past the curated palette's size,
+  // so a chart with more brands than FALLBACK_PALETTE covers still gets no exact repeats.
+  const GOLDEN_ANGLE = 137.508;
+  let extra = 0;
+  for (const k of unresolved) {
+    let color = FALLBACK_PALETTE.find(c => !used.has(c));
+    while (!color) {
+      const candidate = `hsl(${Math.round((GOLDEN_ANGLE * (FALLBACK_PALETTE.length + extra)) % 360)},70%,45%)`;
+      extra++;
+      if (!used.has(candidate)) color = candidate;
+    }
+    result[k] = color;
+    used.add(color);
+  }
+  return result;
+}
+
+function sortClientNames(names: string[]): string[] {
+  return [...names].sort((a, b) => {
+    const na = Number(/(\d+)$/.exec(a)?.[1]);
+    const nb = Number(/(\d+)$/.exec(b)?.[1]);
+    if (!Number.isNaN(na) && !Number.isNaN(nb)) return na - nb;
+    return a.localeCompare(b);
+  });
+}
+
+function buildTop10Stack(entries: { key: string; value: number }[]): { rows: Record<string, string | number>[]; keys: string[] } {
+  const top10 = entries.slice(0, 10);
+  const restSum = entries.slice(10).reduce((s, e) => s + e.value, 0);
+  const row: Record<string, string | number> = { name: 'total' };
+  const keys: string[] = [];
+  top10.forEach(e => { row[e.key] = e.value; keys.push(e.key); });
+  if (restSum > 0) { row[OTHERS_KEY] = restSum; keys.push(OTHERS_KEY); }
+  return { rows: [row], keys };
+}
+
+function parsePeriod(p: string): { label: string; year: number; isPartial: boolean; monthRange: string | null } {
+  const fullMatch = /^(\d{4})$/.exec(p);
+  if (fullMatch) return { label: p, year: Number(fullMatch[1]), isPartial: false, monthRange: null };
+  const partialMatch = /^(.+?)\s+(\d{4})$/.exec(p);
+  if (partialMatch) return { label: p, year: Number(partialMatch[2]), isPartial: true, monthRange: partialMatch[1] };
+  return { label: p, year: 0, isPartial: false, monthRange: null };
+}
+
+function periodDisplayLabel(p: { year: number; isPartial: boolean; monthRange: string | null }): string {
+  if (!p.isPartial || !p.monthRange) return String(p.year);
+  const range = p.monthRange.charAt(0).toUpperCase() + p.monthRange.slice(1);
+  return `${range} ${p.year}`;
+}
+
 function formatRub(v: number): string {
   if (v >= 1_000_000) return `${(v / 1_000_000).toFixed(1)} М`;
   if (v >= 1_000) return `${(v / 1_000).toFixed(0)} К`;
   return String(v);
+}
+
+// Precise "X млн Y тыс" breakdown for tooltips, given a value already expressed in млн ₽
+// (e.g. 11.478 → "11 млн 478 тыс"; 0.247967 → "248 тыс").
+function formatPreciseRub(millions: number): string {
+  const roundedThousands = Math.round(millions * 1000);
+  const wholeMillions = Math.floor(roundedThousands / 1000);
+  const thousands = roundedThousands - wholeMillions * 1000;
+  if (wholeMillions > 0) {
+    return thousands > 0 ? `${wholeMillions} млн ${thousands} тыс` : `${wholeMillions} млн`;
+  }
+  return `${thousands} тыс`;
+}
+
+function yearFromLabel(month: string): number {
+  const m = month.match(/'(\d{2})$/);
+  return m ? 2000 + parseInt(m[1], 10) : 0;
 }
 
 function Tabs({
@@ -138,13 +272,24 @@ function Tabs({
 const PLACEMENT_SHORT: Record<string, string> = {
   'Ролик': 'Ролик',
   'Спонсорская заставка': 'Спонс.',
-  'Анонс: спонсорская заставка': 'Анонс',
+  'Анонс: спонсорская заставка': 'Интеграция в анонс',
 };
 
-function TvGantt({ yearData, brands, placements }: {
+const PLACEMENT_TOGGLE_LABEL: Record<string, string> = {
+  'Ролик': 'Ролик',
+  'Спонсорская заставка': 'Спонсорство',
+  'Анонс: спонсорская заставка': 'Анонсы',
+};
+
+function formatTvVal(v: number): string {
+  return v < 1 ? v.toFixed(1) : Math.round(v).toString();
+}
+
+function TvGantt({ yearData, brands, placements, colors }: {
   yearData: Record<string, Array<Record<string, number | null>>>;
   brands: string[];
   placements: string[];
+  colors: Record<string, string>;
 }) {
   const activeBrands = brands.filter(b =>
     placements.some(p => (yearData[p] ?? []).some(pt => ((pt[b] as number) ?? 0) > 0))
@@ -162,15 +307,15 @@ function TvGantt({ yearData, brands, placements }: {
     ...placements.flatMap(p => (yearData[p] ?? []).map(pt => (pt.week as number) ?? 0))
   );
 
-  const ROW_H = 21;
-  const CELL_W = 32;
+  const ROW_H = 23;
   const GROUP_GAP = 5;
   const BRAND_LABEL_W = 110;
-  const PLACE_LABEL_W = 52;
+  const PLACE_LABEL_W = 100;
   const LABEL_W = BRAND_LABEL_W + PLACE_LABEL_W;
-  const CHART_W = maxWeek * CELL_W;
+  const WEEK_W = 33;
   const AXIS_H = 20;
-  const weekW = CELL_W;
+  const weekW = WEEK_W;
+  const chartW = maxWeek * weekW;
   const n = placements.length;
   const brandH = n * ROW_H + GROUP_GAP;
   const svgH = activeBrands.length * brandH - GROUP_GAP + AXIS_H;
@@ -178,15 +323,15 @@ function TvGantt({ yearData, brands, placements }: {
 
   return (
     <div className="overflow-x-auto">
-      <svg width={LABEL_W + CHART_W} height={svgH} style={{ display: 'block' }}>
-        {/* Alternating brand backgrounds */}
+      <svg width={LABEL_W + chartW} height={svgH} style={{ display: 'block' }}>
+        {/* Alternating brand backgrounds: white / light grey */}
         {activeBrands.map((brand, bi) =>
           bi % 2 === 1 ? (
             <rect
               key={`bg_${brand}`}
               x={0} y={bi * brandH}
-              width={LABEL_W + CHART_W} height={n * ROW_H}
-              fill="hsl(var(--muted))" opacity={0.25}
+              width={LABEL_W + chartW} height={n * ROW_H}
+              fill="hsl(var(--muted))"
             />
           ) : null
         )}
@@ -204,7 +349,7 @@ function TvGantt({ yearData, brands, placements }: {
 
         {/* Brand groups */}
         {activeBrands.map((brand, bi) => {
-          const color = brandColor(brand);
+          const color = colors[brand] ?? brandColor(brand);
           const brandY = bi * brandH;
           return (
             <g key={brand}>
@@ -212,7 +357,7 @@ function TvGantt({ yearData, brands, placements }: {
               <text
                 x={BRAND_LABEL_W - 4}
                 y={brandY + (n * ROW_H) / 2 + 4}
-                textAnchor="end" fontSize={10} fontWeight="500"
+                textAnchor="end" fontSize={11} fontWeight="500"
                 fill="hsl(var(--foreground))"
               >
                 {brand.length > 14 ? brand.slice(0, 13) + '…' : brand}
@@ -226,7 +371,7 @@ function TvGantt({ yearData, brands, placements }: {
                   <g key={placement}>
                     <text
                       x={LABEL_W - 4} y={rowY + ROW_H / 2 + 4}
-                      textAnchor="end" fontSize={8}
+                      textAnchor="end" fontSize={9}
                       fill="hsl(var(--muted-foreground))"
                     >
                       {PLACEMENT_SHORT[placement] ?? placement}
@@ -236,25 +381,30 @@ function TvGantt({ yearData, brands, placements }: {
                       if (!val || val <= 0) return null;
                       const w = pt.week as number;
                       const opacity = 0.35 + 0.65 * (val / maxVal);
-                      const cx = LABEL_W + (w - 1) * weekW + weekW / 2;
-                      const cy = rowY + ROW_H / 2;
+                      const cellW = Math.max(weekW - 1, 1);
+                      const cellH = ROW_H - 2;
                       return (
                         <g key={w}>
                           <rect
                             x={LABEL_W + (w - 1) * weekW + 0.5}
                             y={rowY + 1}
-                            width={Math.max(weekW - 1, 1)}
-                            height={ROW_H - 2}
-                            fill={color} opacity={opacity} rx={1}
+                            width={cellW}
+                            height={cellH}
+                            fill={color} opacity={opacity} rx={2}
                           >
-                            <title>{`${brand} · ${PLACEMENT_SHORT[placement] ?? placement} · W${w}: ${val.toFixed(1)}`}</title>
+                            <title>{`${brand} · ${PLACEMENT_SHORT[placement] ?? placement} · W${w}: ${formatTvVal(val)}`}</title>
                           </rect>
                           <text
-                            x={cx} y={cy + 3.5}
-                            textAnchor="middle" fontSize={9} fontWeight="600"
-                            fill="white" style={{ pointerEvents: 'none', userSelect: 'none' }}
+                            x={LABEL_W + (w - 1) * weekW + 0.5 + cellW / 2}
+                            y={rowY + 1 + cellH / 2}
+                            textAnchor="middle"
+                            dominantBaseline="central"
+                            fontSize={9}
+                            fontWeight="600"
+                            fill="#fff"
+                            pointerEvents="none"
                           >
-                            {val.toFixed(1)}
+                            {formatTvVal(val)}
                           </text>
                         </g>
                       );
@@ -270,20 +420,88 @@ function TvGantt({ yearData, brands, placements }: {
   );
 }
 
+// ── Reusable single-stack horizontal bar (top-10 + «Остальные») ────────────────
+
+function SingleStackBar({ rows, keys, colorFor, valueFormatter, onSegmentClick, height = 140 }: {
+  rows: Record<string, string | number>[];
+  keys: string[];
+  colorFor: (key: string) => string;
+  valueFormatter: (v: number) => string;
+  onSegmentClick?: (key: string) => void;
+  height?: number;
+}) {
+  const distinctColors = distinctColorsFor(keys.filter(k => k !== OTHERS_KEY), colorFor);
+  return (
+    <ResponsiveContainer width="100%" height={height}>
+      <BarChart data={rows} layout="vertical" barCategoryGap="0%">
+        <XAxis type="number" hide domain={[0, 'dataMax']} />
+        <YAxis type="category" dataKey="name" hide />
+        <Tooltip
+          contentStyle={tooltipStyle}
+          formatter={(v: number, name: string) => [valueFormatter(v), name]}
+        />
+        {keys.map(key => (
+          <Bar
+            key={key}
+            dataKey={key}
+            name={key}
+            stackId="stack"
+            fill={key === OTHERS_KEY ? 'hsl(var(--muted-foreground))' : distinctColors[key]}
+            onClick={onSegmentClick && key !== OTHERS_KEY ? () => onSegmentClick(key) : undefined}
+            cursor={onSegmentClick && key !== OTHERS_KEY ? 'pointer' : undefined}
+          >
+            <LabelList
+              dataKey={key}
+              position="center"
+              content={(props) => {
+                const { x, y, width, height: h, value } = props as { x: number; y: number; width: number; height: number; value: number };
+                if (width < 34) return null;
+                return (
+                  <text
+                    x={x + width / 2}
+                    y={y + h / 2}
+                    fill="#fff"
+                    fontSize={10}
+                    textAnchor="middle"
+                    dominantBaseline="central"
+                    pointerEvents="none"
+                  >
+                    {valueFormatter(value)}
+                  </text>
+                );
+              }}
+            />
+          </Bar>
+        ))}
+        <Legend wrapperStyle={{ fontSize: 11 }} />
+      </BarChart>
+    </ResponsiveContainer>
+  );
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function MediaDetails() {
-  const { projectId } = useProject();
+  const { projectId, isReadonly } = useProject();
   const [data, setData] = useState<MediaDetailsData | null>(null);
   const [noData, setNoData] = useState(false);
+  const [adData, setAdData] = useState<AdSpendData | null>(null);
+  const [salesData, setSalesData] = useState<SalesIndexData | null>(null);
+  const [ecomData, setEcomData] = useState<EcomRevenueData | null>(null);
+  const [adChannel, setAdChannel] = useState('Тотал');
+  const [adYear, setAdYear] = useState('Все');
 
   const [seasonYear, setSeasonYear]     = useState('');
   const [seasonBrands, setSeasonBrands] = useState<string[]>([]);
   const [regionYear, setRegionYear]     = useState('');
   const [regionMedia, setRegionMedia]   = useState('');
   const [regionName, setRegionName]     = useState('Все');
+  const [shareYear, setShareYear]               = useState('');
+  const [shareClient, setShareClient]           = useState('');
+  const [shareDrillChannel, setShareDrillChannel] = useState<string | null>(null);
   const [trpMetric, setTrpMetric]       = useState<'trp20' | 'trps'>('trp20');
   const [tvYear, setTvYear]             = useState('');
+  const [tvPlacements, setTvPlacements] = useState<string[]>([]);
   const [clipPeriod, setClipPeriod]     = useState('');
 
   useEffect(() => {
@@ -297,11 +515,166 @@ export default function MediaDetails() {
         setSeasonBrands([...md.seasonality.defaultBrands]);
         setRegionYear(lastYear);
         setRegionMedia(md.regionality.mediaTypes[0] ?? '');
+        setShareYear(lastYear);
+        setShareClient(sortClientNames(md.regionality.brands)[0] ?? '');
+        setAdYear(lastYear);
         setTvYear(lastYear);
+        setTvPlacements([...md.tvStrategy.placements]);
         setClipPeriod(md.clipDuration.periods[md.clipDuration.periods.length - 1] ?? '');
       })
       .catch(() => setNoData(true));
+    api.getProjectData(projectId, 'ad_spend').then(d => setAdData(d as AdSpendData)).catch(console.error);
+    api.getProjectData(projectId, 'sales').then(d => setSalesData(d as SalesIndexData)).catch(console.error);
+    api.getProjectData(projectId, 'ecom').then(d => setEcomData(d as EcomRevenueData)).catch(console.error);
   }, [projectId]);
+
+  const adYears = useMemo(
+    () => (data ? data.regionality.years.map(String) : []),
+    [data],
+  );
+
+  const adMonthlyStack = useMemo(() => {
+    if (!data || !adYear) return { rows: [] as Record<string, string | number>[], keys: [] as string[] };
+    const source = adChannel === 'Тотал'
+      ? data.regionality.monthlyTotal
+      : data.regionality.monthlyByMedia[adChannel];
+    if (!source) return { rows: [], keys: [] };
+
+    const years = adYear === 'Все' ? data.regionality.years.map(String) : [adYear];
+    const allKeys = new Set<string>();
+    const rows: Record<string, string | number>[] = [];
+    years.forEach(yr => {
+      (source[yr] ?? []).forEach(monthRow => {
+        // Regionality values are raw rubles; convert to млн ₽ to match the rest of the page.
+        const entries = data.regionality.brands
+          .map(b => ({ key: b, value: ((monthRow[b] as number) || 0) / 1_000_000 }))
+          .filter(e => e.value > 0)
+          .sort((a, b) => b.value - a.value);
+        const top10 = entries.slice(0, 10);
+        const restSum = entries.slice(10).reduce((s, e) => s + e.value, 0);
+        const row: Record<string, string | number> = {
+          period: years.length > 1 ? `${monthRow.month} '${yr.slice(2)}` : (monthRow.month as string),
+        };
+        top10.forEach(e => { row[e.key] = e.value; allKeys.add(e.key); });
+        if (restSum > 0) { row[OTHERS_KEY] = restSum; allKeys.add(OTHERS_KEY); }
+        rows.push(row);
+      });
+    });
+
+    return { rows, keys: [...allKeys] };
+  }, [data, adChannel, adYear]);
+
+  const adMonthlyColors = useMemo(
+    () => distinctColorsFor(adMonthlyStack.keys.filter(k => k !== OTHERS_KEY), brandColor),
+    [adMonthlyStack.keys],
+  );
+
+  const adYearsStack = useMemo(() => {
+    if (!data) return { rows: [] as Record<string, string | number>[], keys: [] as string[] };
+    const monthlyTotal = data.regionality.monthlyTotal;
+    const years = Object.keys(monthlyTotal).map(Number).sort((a, b) => a - b);
+    if (!years.length) return { rows: [], keys: [] };
+
+    const maxYear = years[years.length - 1];
+    const maxYearRows = monthlyTotal[String(maxYear)];
+    const isPartial = maxYearRows.length > 0 && maxYearRows.length < 12;
+
+    type Col = { label: string; rows: Array<Record<string, string | number>> };
+    let columns: Col[];
+    if (isPartial) {
+      const monthAbbrs = maxYearRows.map(r => r.month as string);
+      const prevYearRows = (monthlyTotal[String(maxYear - 1)] ?? [])
+        .filter(r => monthAbbrs.includes(r.month as string));
+      const rangeLabel = monthAbbrs.length > 1
+        ? `${monthAbbrs[0]}-${monthAbbrs[monthAbbrs.length - 1]}`
+        : monthAbbrs[0];
+      const fullYearCols: Col[] = years
+        .filter(y => y < maxYear)
+        .map(y => ({ label: String(y), rows: monthlyTotal[String(y)] }));
+      columns = [
+        ...fullYearCols,
+        { label: `${rangeLabel} ${maxYear - 1}`, rows: prevYearRows },
+        { label: `${rangeLabel} ${maxYear}`, rows: maxYearRows },
+      ];
+    } else {
+      columns = years.map(y => ({ label: String(y), rows: monthlyTotal[String(y)] }));
+    }
+
+    const allKeys = new Set<string>();
+    const rows = columns.map(col => {
+      // Regionality values are raw rubles; convert to млн ₽ to match the rest of the page.
+      const entries = data.regionality.brands
+        .map(b => ({ key: b, value: col.rows.reduce((s, r) => s + ((r[b] as number) || 0), 0) / 1_000_000 }))
+        .filter(e => e.value > 0)
+        .sort((a, b) => b.value - a.value);
+      const top10 = entries.slice(0, 10);
+      const restSum = entries.slice(10).reduce((s, e) => s + e.value, 0);
+      const row: Record<string, string | number> = { period: col.label };
+      top10.forEach(e => { row[e.key] = e.value; allKeys.add(e.key); });
+      if (restSum > 0) { row[OTHERS_KEY] = restSum; allKeys.add(OTHERS_KEY); }
+      return row;
+    });
+
+    return { rows, keys: [...allKeys] };
+  }, [data]);
+
+  const adYearsColors = useMemo(
+    () => distinctColorsFor(adYearsStack.keys.filter(k => k !== OTHERS_KEY), brandColor),
+    [adYearsStack.keys],
+  );
+
+  const scatterData: ScatterPoint[] = useMemo(() => {
+    if (!adData || !salesData) return [];
+    const salesMap = new Map(salesData.salesIndex.map((r) => [r.month as string, r]));
+    const points: ScatterPoint[] = [];
+    for (const row of adData.channels.total) {
+      const month = row.month as string;
+      const salesRow = salesMap.get(month);
+      if (!salesRow) continue;
+      for (const brand of adData.brands) {
+        points.push({
+          brand,
+          brandName: adData.brandNames[brand],
+          month,
+          mediaSpend:  row[brand]     as number,
+          salesVolume: salesRow[brand] as number,
+        });
+      }
+    }
+    return points;
+  }, [adData, salesData]);
+
+  const scatterMonthRange = scatterData.length
+    ? `${scatterData[0].month} – ${scatterData[scatterData.length - 1].month}`
+    : '';
+
+  const ecomScatterData: EcomScatterPoint[] = useMemo(() => {
+    if (!adData || !ecomData) return [];
+    const revenueSeries = ecomData.charts.revenue['all'] ?? [];
+    const revenueMap = new Map(revenueSeries.map((r) => [r.month as string, r]));
+    const points: EcomScatterPoint[] = [];
+    for (const row of adData.channels.total) {
+      const month = row.month as string;
+      const revenueRow = revenueMap.get(month);
+      if (!revenueRow) continue;
+      for (const brand of adData.brands) {
+        const ecomRevenue = revenueRow[brand];
+        if (ecomRevenue == null) continue;
+        points.push({
+          brand,
+          brandName: adData.brandNames[brand],
+          month,
+          mediaSpend: row[brand] as number,
+          ecomRevenue: ecomRevenue as number,
+        });
+      }
+    }
+    return points;
+  }, [adData, ecomData]);
+
+  const ecomScatterMonthRange = ecomScatterData.length
+    ? `${ecomScatterData[0].month} – ${ecomScatterData[ecomScatterData.length - 1].month}`
+    : '';
 
   const handleMediaChange = (media: string) => {
     setRegionMedia(media);
@@ -318,14 +691,10 @@ export default function MediaDetails() {
 
   const seasonData = useMemo(() => {
     if (!data || !seasonYear) return [];
-    return (data.seasonality.data[seasonYear] ?? []).map(row => {
-      const out: Record<string, unknown> = { month: row.month };
-      for (const b of data.seasonality.brands) {
-        out[b] = (row[b] as number | null) ?? 0;
-      }
-      return out;
-    });
+    return data.seasonality.data[seasonYear] ?? [];
   }, [data, seasonYear]);
+
+  const seasonColors = useMemo(() => distinctColorsFor(seasonBrands, brandColor), [seasonBrands]);
 
   const regionData = useMemo(() => {
     if (!data || !regionYear || !regionMedia || !regionName) return [];
@@ -334,18 +703,86 @@ export default function MediaDetails() {
       .sort((a: { brand: string; value: number }, b: { brand: string; value: number }) => b.value - a.value);
   }, [data, regionYear, regionMedia, regionName]);
 
-  const trpChartData = useMemo(() => {
-    if (!data) return [];
+  const regionStack = useMemo(
+    () => buildTop10Stack(regionData.map(d => ({ key: d.brand, value: d.value }))),
+    [regionData],
+  );
+
+  const shareClientOptions = useMemo(
+    () => (data ? sortClientNames(data.regionality.brands) : []),
+    [data],
+  );
+
+  const shareChannelStack = useMemo(() => {
+    if (!data || !shareYear || !shareClient) return { rows: [], keys: [] };
+    const entries = data.regionality.mediaTypes
+      .map(media => ({
+        key: media,
+        value: data.regionality.data[shareYear]?.[media]?.['Все']?.find(e => e.brand === shareClient)?.value ?? 0,
+      }))
+      .filter(e => e.value > 0)
+      .sort((a, b) => b.value - a.value);
+    return buildTop10Stack(entries);
+  }, [data, shareYear, shareClient]);
+
+  const shareRegionStack = useMemo(() => {
+    if (!data || !shareYear || !shareClient || !shareDrillChannel) return { rows: [], keys: [] };
+    const regions = (data.regionality.regions[shareDrillChannel] ?? []).filter(r => r !== 'Все');
+    const entries = regions
+      .map(region => ({
+        key: region,
+        value: data.regionality.data[shareYear]?.[shareDrillChannel]?.[region]?.find(e => e.brand === shareClient)?.value ?? 0,
+      }))
+      .filter(e => e.value > 0)
+      .sort((a, b) => b.value - a.value);
+    return buildTop10Stack(entries);
+  }, [data, shareYear, shareClient, shareDrillChannel]);
+
+  const regionTotal = useMemo(() => regionData.reduce((s, d) => s + d.value, 0), [regionData]);
+
+  const trpStack = useMemo(() => {
+    if (!data) return { rows: [] as Record<string, string | number>[], keys: [] as string[] };
     const metric = data.trp[trpMetric];
     const { brands, periods } = data.trp;
-    return brands
-      .filter(b => periods.some(p => (metric[b]?.[p] ?? 0) > 0))
-      .map(b => {
-        const pt: Record<string, string | number | null> = { brand: b };
-        periods.forEach(p => { pt[p] = metric[b]?.[p] ?? null; });
-        return pt;
-      });
+
+    const parsed = periods.map(parsePeriod);
+    const maxYear = Math.max(...parsed.map(p => p.year));
+    const latestFull = parsed.some(p => p.year === maxYear && !p.isPartial);
+
+    let displayPeriods: typeof parsed;
+    if (latestFull) {
+      displayPeriods = parsed.filter(p => !p.isPartial);
+    } else {
+      const currentPartial = parsed.find(p => p.year === maxYear && p.isPartial);
+      const prevPartial = currentPartial
+        ? parsed.find(p => p.isPartial && p.monthRange === currentPartial.monthRange && p.year === maxYear - 1)
+        : undefined;
+      const fullYears = parsed.filter(p => !p.isPartial && p.year < maxYear);
+      displayPeriods = [...fullYears, ...(prevPartial ? [prevPartial] : []), ...(currentPartial ? [currentPartial] : [])];
+    }
+    displayPeriods.sort((a, b) => a.year - b.year || Number(a.isPartial) - Number(b.isPartial));
+
+    const allKeys = new Set<string>();
+    const rows = displayPeriods.map(p => {
+      const entries = brands
+        .map(b => ({ brand: b, value: metric[b]?.[p.label] ?? 0 }))
+        .filter(e => e.value > 0)
+        .sort((a, b) => b.value - a.value);
+      const top10 = entries.slice(0, 10);
+      const restSum = entries.slice(10).reduce((s, e) => s + e.value, 0);
+      const row: Record<string, string | number> = { period: periodDisplayLabel(p) };
+      top10.forEach(e => { row[e.brand] = e.value; allKeys.add(e.brand); });
+      if (restSum > 0) { row[OTHERS_KEY] = restSum; allKeys.add(OTHERS_KEY); }
+      return row;
+    });
+
+    return { rows, keys: [...allKeys] };
   }, [data, trpMetric]);
+
+  const trpColors = useMemo(
+    () => distinctColorsFor(trpStack.keys.filter(k => k !== OTHERS_KEY), brandColor),
+    [trpStack.keys],
+  );
 
   const tvYearData = useMemo(() => {
     if (!data || !tvYear) return {};
@@ -375,21 +812,156 @@ export default function MediaDetails() {
     );
   }
 
-  const { seasonality, regionality, trp, tvStrategy, clipDuration } = data;
+  const { seasonality, regionality, tvStrategy, clipDuration } = data;
+  const tvGanttColors = distinctColorsFor(tvStrategy.brands, brandColor);
+  const scatterColors = distinctColorsFor(adData?.brands ?? [], brandColor);
 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-foreground">Media Details</h1>
+        <h1 className="text-2xl font-bold text-foreground">Медиа</h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Сезонность, регионы, ТВ-рейтинги и структура медиаразмещения
+          Источники: Mediascope
         </p>
       </div>
 
-      {/* ── Сезонность ──────────────────────────────────────────────────── */}
+      {/* ── Рекламные расходы (по годам) ──────────────────────────────── */}
+      <ChartCard
+        title="Рекламные расходы"
+        subtitle="млн ₽ · Regionality, все медиа · топ-10 брендов + «Остальные»"
+      >
+        {!data ? (
+          <div className="flex items-center justify-center h-[340px] text-muted-foreground text-sm">
+            Загрузка данных…
+          </div>
+        ) : (
+          <ResponsiveContainer width="100%" height={340}>
+            <BarChart data={adYearsStack.rows} barCategoryGap="30%">
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+              <XAxis dataKey="period" tick={axisTick} />
+              <YAxis tick={axisTick} tickFormatter={formatRub} />
+              <Tooltip
+                contentStyle={tooltipStyle}
+                formatter={(v: number, name: string) => [formatPreciseRub(v), name]}
+              />
+              {adYearsStack.keys.map(key => (
+                <Bar
+                  key={key}
+                  dataKey={key}
+                  name={key}
+                  stackId="adYears"
+                  fill={key === OTHERS_KEY ? 'hsl(var(--muted-foreground))' : adYearsColors[key]}
+                >
+                  <LabelList
+                    dataKey={key}
+                    position="center"
+                    content={(props) => {
+                      const { x, y, width, height, value } = props as { x: number; y: number; width: number; height: number; value: number };
+                      if (height < 14) return null;
+                      return (
+                        <text
+                          x={x + width / 2}
+                          y={y + height / 2}
+                          fill="#fff"
+                          fontSize={10}
+                          textAnchor="middle"
+                          dominantBaseline="central"
+                        >
+                          {Math.round(value)}
+                        </text>
+                      );
+                    }}
+                  />
+                </Bar>
+              ))}
+              <Legend wrapperStyle={{ fontSize: 11 }} />
+            </BarChart>
+          </ResponsiveContainer>
+        )}
+      </ChartCard>
+
+      {/* ── Рекламные расходы по каналам ──────────────────────────────── */}
+      <ChartCard
+        title="Рекламные расходы по каналам"
+        subtitle="млн ₽ · Regionality · топ-10 брендов + «Остальные»"
+        headerExtra={
+          <div className="flex items-center gap-2 flex-wrap">
+            <div className="inline-flex items-center gap-1 bg-secondary border border-border rounded-md p-1 flex-wrap">
+              {['Тотал', ...(data?.regionality.mediaTypes ?? [])].map((m) => (
+                <button
+                  key={m}
+                  onClick={() => setAdChannel(m)}
+                  className={`px-3 py-1.5 text-xs font-medium rounded transition-colors ${
+                    adChannel === m
+                      ? 'bg-primary text-primary-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  {m}
+                </button>
+              ))}
+            </div>
+            {adYears.length > 1 && (
+              <Tabs options={['Все', ...adYears]} value={adYear} onChange={setAdYear} />
+            )}
+          </div>
+        }
+      >
+        {!data ? (
+          <div className="flex items-center justify-center h-[300px] text-muted-foreground text-sm">
+            Загрузка данных…
+          </div>
+        ) : (
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={adMonthlyStack.rows} barCategoryGap="10%">
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+              <XAxis dataKey="period" tick={axisTickSm} interval={0} angle={adYear === 'Все' ? -45 : 0} textAnchor={adYear === 'Все' ? 'end' : 'middle'} height={adYear === 'Все' ? 50 : 30} />
+              <YAxis tick={axisTick} tickFormatter={formatRub} />
+              <Tooltip
+                contentStyle={tooltipStyle}
+                formatter={(v: number, name: string) => [formatPreciseRub(v), name]}
+              />
+              {adMonthlyStack.keys.map(key => (
+                <Bar
+                  key={key}
+                  dataKey={key}
+                  name={key}
+                  stackId="adMonthly"
+                  fill={key === OTHERS_KEY ? 'hsl(var(--muted-foreground))' : adMonthlyColors[key]}
+                >
+                  <LabelList
+                    dataKey={key}
+                    position="center"
+                    content={(props) => {
+                      const { x, y, width, height, value } = props as { x: number; y: number; width: number; height: number; value: number };
+                      if (height < 12) return null;
+                      return (
+                        <text
+                          x={x + width / 2}
+                          y={y + height / 2}
+                          fill="#fff"
+                          fontSize={9}
+                          textAnchor="middle"
+                          dominantBaseline="central"
+                        >
+                          {Math.round(value)}
+                        </text>
+                      );
+                    }}
+                  />
+                </Bar>
+              ))}
+              <Legend wrapperStyle={{ fontSize: 11 }} />
+            </BarChart>
+          </ResponsiveContainer>
+        )}
+      </ChartCard>
+
+      {/* ── Сезонность (скрыт) ────────────────────────────────────────────── */}
+      {false && (
       <ChartCard
         title="Сезонность"
-        subtitle="Общий рекламный бюджет по месяцам, ₽"
+        subtitle="Общий рекламный бюджет по годам"
       >
         <div className="space-y-3">
           <div className="flex items-center gap-4">
@@ -409,7 +981,7 @@ export default function MediaDetails() {
                   onClick={() => toggleSeasonBrand(b)}
                   className="px-2 py-0.5 rounded text-xs font-medium border transition-colors"
                   style={seasonBrands.includes(b)
-                    ? { backgroundColor: brandColor(b), color: '#fff', borderColor: 'transparent' }
+                    ? { backgroundColor: seasonColors[b], color: '#fff', borderColor: 'transparent' }
                     : { backgroundColor: 'transparent', borderColor: 'hsl(var(--border))', color: 'hsl(var(--muted-foreground))' }
                   }
                 >
@@ -433,9 +1005,10 @@ export default function MediaDetails() {
                   type="monotone"
                   dataKey={b}
                   name={b}
-                  stroke={brandColor(b)}
-                  strokeWidth={1.5}
-                  dot={{ r: 3 }}
+                  stroke={seasonColors[b]}
+                  strokeWidth={2}
+                  dot={false}
+                  connectNulls={true}
                 />
               ))}
               <Legend wrapperStyle={{ fontSize: 10 }} />
@@ -443,11 +1016,12 @@ export default function MediaDetails() {
           </ResponsiveContainer>
         </div>
       </ChartCard>
+      )}
 
       {/* ── Региональность ──────────────────────────────────────────────── */}
       <ChartCard
-        title="Региональность"
-        subtitle="Рекламный бюджет по брендам, ₽"
+        title="Доля в медиа (Share of spend)"
+        subtitle={`Рекламный бюджет по брендам, ₽ · Итого: ${formatRub(regionTotal)} ₽`}
       >
         <div className="space-y-3">
           <div className="flex flex-wrap items-center gap-4">
@@ -481,32 +1055,74 @@ export default function MediaDetails() {
               ))}
             </select>
           </div>
-          <ResponsiveContainer width="100%" height={Math.max(240, regionData.length * 26)}>
-            <BarChart data={regionData} layout="vertical" barCategoryGap="18%">
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" horizontal={false} />
-              <XAxis
-                type="number"
-                tick={axisTickSm}
-                tickFormatter={formatRub}
+          <SingleStackBar
+            rows={regionStack.rows}
+            keys={regionStack.keys}
+            colorFor={brandColor}
+            valueFormatter={v => `${formatRub(v)} ₽`}
+          />
+        </div>
+      </ChartCard>
+
+      {/* ── Доля в медиа: по клиенту ──────────────────────────────────────── */}
+      <ChartCard
+        title="Доля в медиа по клиенту"
+        subtitle={
+          shareDrillChannel
+            ? `${shareClient} · разбивка по регионам в канале «${shareDrillChannel}», ₽`
+            : `${shareClient} · распределение бюджета по каналам, ₽`
+        }
+      >
+        <div className="space-y-3">
+          <div className="flex flex-wrap items-center gap-4">
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-muted-foreground shrink-0">Год:</span>
+              <Tabs
+                options={regionality.years.map(String)}
+                value={shareYear}
+                onChange={v => { setShareYear(v); setShareDrillChannel(null); }}
               />
-              <YAxis
-                type="category"
-                dataKey="brand"
-                tick={axisTickSm}
-                width={140}
-                interval={0}
-              />
-              <Tooltip
-                contentStyle={tooltipStyle}
-                formatter={(v: number) => [`${formatRub(v)} ₽`, '']}
-              />
-              <Bar dataKey="value" name="Бюджет, ₽" radius={[0, 3, 3, 0]}>
-                {regionData.map((entry: { brand: string; value: number }) => (
-                  <Cell key={entry.brand} fill={brandColor(entry.brand)} />
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-muted-foreground shrink-0">Клиент:</span>
+              <select
+                value={shareClient}
+                onChange={e => { setShareClient(e.target.value); setShareDrillChannel(null); }}
+                className="text-xs border border-border rounded px-2 py-1 bg-card text-foreground"
+              >
+                {shareClientOptions.map(b => (
+                  <option key={b} value={b}>{b}</option>
                 ))}
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
+              </select>
+            </div>
+            {shareDrillChannel && (
+              <button
+                onClick={() => setShareDrillChannel(null)}
+                className="text-xs px-2.5 py-1 rounded border border-border text-muted-foreground hover:text-foreground transition-colors"
+              >
+                ← Назад к каналам
+              </button>
+            )}
+          </div>
+          {shareDrillChannel ? (
+            <SingleStackBar
+              rows={shareRegionStack.rows}
+              keys={shareRegionStack.keys}
+              colorFor={channelColor}
+              valueFormatter={v => `${formatRub(v)} ₽`}
+            />
+          ) : (
+            <SingleStackBar
+              rows={shareChannelStack.rows}
+              keys={shareChannelStack.keys}
+              colorFor={channelColor}
+              valueFormatter={v => `${formatRub(v)} ₽`}
+              onSegmentClick={setShareDrillChannel}
+            />
+          )}
+          {!shareDrillChannel && (
+            <p className="text-xs text-muted-foreground">Кликните на канал, чтобы увидеть разбивку по регионам</p>
+          )}
         </div>
       </ChartCard>
 
@@ -524,29 +1140,47 @@ export default function MediaDetails() {
               onChange={v => setTrpMetric(v as 'trp20' | 'trps')}
             />
           </div>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={trpChartData} barCategoryGap="22%" barGap={2}>
+          <ResponsiveContainer width="100%" height={340}>
+            <BarChart data={trpStack.rows} barCategoryGap="30%">
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
               <XAxis
-                dataKey="brand"
-                tick={{ fontSize: 10, fill: 'hsl(var(--muted-foreground))', textAnchor: 'end' }}
-                angle={-30}
-                height={60}
-                interval={0}
+                dataKey="period"
+                tick={axisTick}
               />
               <YAxis tick={axisTick} tickFormatter={v => v.toFixed(0)} />
               <Tooltip
                 contentStyle={tooltipStyle}
-                formatter={(v: number) => [v.toFixed(1), '']}
+                formatter={(v: number, name: string) => [v.toFixed(1), name]}
               />
-              {trp.periods.map((p, i) => (
+              {trpStack.keys.map(key => (
                 <Bar
-                  key={p}
-                  dataKey={p}
-                  name={p}
-                  fill={PERIOD_COLORS[i % PERIOD_COLORS.length]}
-                  radius={[2, 2, 0, 0]}
-                />
+                  key={key}
+                  dataKey={key}
+                  name={key}
+                  stackId="trp"
+                  fill={key === OTHERS_KEY ? 'hsl(var(--muted-foreground))' : trpColors[key]}
+                >
+                  <LabelList
+                    dataKey={key}
+                    position="center"
+                    content={(props) => {
+                      const { x, y, width, height, value } = props as { x: number; y: number; width: number; height: number; value: number };
+                      if (height < 14) return null;
+                      return (
+                        <text
+                          x={x + width / 2}
+                          y={y + height / 2}
+                          fill="#fff"
+                          fontSize={10}
+                          textAnchor="middle"
+                          dominantBaseline="central"
+                        >
+                          {value.toFixed(0)}
+                        </text>
+                      );
+                    }}
+                  />
+                </Bar>
               ))}
               <Legend wrapperStyle={{ fontSize: 11 }} />
             </BarChart>
@@ -568,15 +1202,43 @@ export default function MediaDetails() {
               onChange={setTvYear}
             />
           </div>
-          <TvGantt yearData={tvYearData} brands={tvStrategy.brands} placements={tvStrategy.placements} />
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-muted-foreground shrink-0">Показать:</span>
+            <div className="flex flex-wrap gap-1.5">
+              {tvStrategy.placements.map(p => {
+                const active = tvPlacements.includes(p);
+                return (
+                  <button
+                    key={p}
+                    onClick={() => setTvPlacements(cur =>
+                      active ? cur.filter(x => x !== p) : [...cur, p]
+                    )}
+                    className={`px-2.5 py-1 rounded text-xs font-medium border transition-colors ${
+                      active
+                        ? 'bg-primary text-primary-foreground border-transparent'
+                        : 'bg-transparent text-muted-foreground border-border'
+                    }`}
+                  >
+                    {PLACEMENT_TOGGLE_LABEL[p] ?? p}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <TvGantt
+            yearData={tvYearData}
+            brands={tvStrategy.brands}
+            colors={tvGanttColors}
+            placements={tvStrategy.placements.filter(p => tvPlacements.includes(p))}
+          />
           <div className="flex flex-wrap gap-2 mt-1">
             {tvStrategy.brands
-              .filter(b => tvStrategy.placements.some(p => (tvYearData[p] ?? []).some((pt: Record<string, number | null>) => (pt[b] ?? 0) > 0)))
+              .filter(b => tvStrategy.placements.filter(p => tvPlacements.includes(p)).some(p => (tvYearData[p] ?? []).some((pt: Record<string, number | null>) => (pt[b] ?? 0) > 0)))
               .map(b => (
                 <span key={b} className="flex items-center gap-1 text-xs text-muted-foreground">
                   <span
                     className="inline-block w-3 h-3 rounded-sm"
-                    style={{ backgroundColor: brandColor(b) }}
+                    style={{ backgroundColor: tvGanttColors[b] }}
                   />
                   {b}
                 </span>
@@ -635,6 +1297,108 @@ export default function MediaDetails() {
           </ResponsiveContainer>
         </div>
       </ChartCard>
+
+      {!isReadonly && (
+        <>
+          {/* ── Media Spend vs Sales ──────────────────────────────────────── */}
+          <ChartCard
+            title="Media Spend vs Sales"
+            subtitle={`Рекламные расходы (млн ₽) vs индекс продаж${scatterMonthRange ? ` · ${scatterMonthRange}` : ''}`}
+          >
+            <ResponsiveContainer width="100%" height={300}>
+              <ScatterChart margin={{ bottom: 20 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                <XAxis
+                  type="number"
+                  dataKey="mediaSpend"
+                  name="Рекл. расходы"
+                  tick={axisTick}
+                  label={{
+                    value: 'Рекл. расходы (млн ₽)',
+                    position: 'bottom',
+                    fontSize: 11,
+                    fill: 'hsl(var(--muted-foreground))',
+                  }}
+                />
+                <YAxis
+                  type="number"
+                  dataKey="salesVolume"
+                  name="Индекс продаж"
+                  tick={axisTick}
+                  width={52}
+                />
+                <Tooltip
+                  contentStyle={tooltipStyle}
+                  formatter={(v: number, name: string) =>
+                    name === 'Рекл. расходы'
+                      ? [`${v.toFixed(2)} млн ₽`, name]
+                      : [`${v.toFixed(5)}`, name]
+                  }
+                  labelFormatter={(_, payload) => payload?.[0]?.payload?.month ?? ''}
+                />
+                <Legend wrapperStyle={{ fontSize: 11 }} />
+                {adData?.brands.map((b) => (
+                  <Scatter
+                    key={b}
+                    name={adData.brandNames[b]}
+                    data={scatterData.filter((d) => d.brand === b)}
+                    fill={scatterColors[b]}
+                  />
+                ))}
+              </ScatterChart>
+            </ResponsiveContainer>
+          </ChartCard>
+
+          {/* ── Media Spend vs E-com Revenue ─────────────────────────────────── */}
+          <ChartCard
+            title="Media Spend vs E-com Revenue"
+            subtitle={`Рекламные расходы (млн ₽) vs выручка в e-com (млн ₽)${ecomScatterMonthRange ? ` · ${ecomScatterMonthRange}` : ''}`}
+          >
+            <ResponsiveContainer width="100%" height={300}>
+              <ScatterChart margin={{ bottom: 20 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                <XAxis
+                  type="number"
+                  dataKey="mediaSpend"
+                  name="Рекл. расходы"
+                  tick={axisTick}
+                  label={{
+                    value: 'Рекл. расходы (млн ₽)',
+                    position: 'bottom',
+                    fontSize: 11,
+                    fill: 'hsl(var(--muted-foreground))',
+                  }}
+                />
+                <YAxis
+                  type="number"
+                  dataKey="ecomRevenue"
+                  name="Выручка e-com"
+                  tick={axisTick}
+                  width={52}
+                />
+                <Tooltip
+                  contentStyle={tooltipStyle}
+                  formatter={(v: number, name: string) =>
+                    name === 'Рекл. расходы'
+                      ? [`${v.toFixed(2)} млн ₽`, name]
+                      : [`${v.toFixed(2)} млн ₽`, name]
+                  }
+                  labelFormatter={(_, payload) => payload?.[0]?.payload?.month ?? ''}
+                />
+                <Legend wrapperStyle={{ fontSize: 11 }} />
+                {adData?.brands.map((b) => (
+                  <Scatter
+                    key={b}
+                    name={adData.brandNames[b]}
+                    data={ecomScatterData.filter((d) => d.brand === b)}
+                    fill={scatterColors[b]}
+                  />
+                ))}
+              </ScatterChart>
+            </ResponsiveContainer>
+          </ChartCard>
+        </>
+      )}
     </div>
   );
 }
