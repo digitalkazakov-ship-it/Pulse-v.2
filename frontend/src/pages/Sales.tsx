@@ -95,7 +95,14 @@ export default function Sales() {
 
   useEffect(() => {
     if (projectId === null) return;
-    api.getProjectData(projectId, 'sales').then(d => setData(d as SalesData)).catch(console.error);
+    api.getProjectData(projectId, 'sales').then(d => {
+      const sd = d as SalesData;
+      setData(sd);
+      const years = [...new Set(
+        sd.salesIndex.map(pt => yearFromLabel(pt.month as string)).filter(Boolean)
+      )].sort() as number[];
+      if (years.length > 0) setYear(years[years.length - 1]);
+    }).catch(console.error);
   }, [projectId]);
 
   if (!data) {
@@ -182,7 +189,7 @@ export default function Sales() {
         headerExtra={yearTabs}
       >
         <ResponsiveContainer width="100%" height={280}>
-          <BarChart data={byYear(data.salesYoY)} barCategoryGap="18%" barGap={2}>
+          <LineChart data={byYear(data.salesYoY)}>
             <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
             <XAxis dataKey="month" tick={axisTick} />
             <YAxis
@@ -196,10 +203,10 @@ export default function Sales() {
             />
             <ReferenceLine y={0} stroke="hsl(var(--foreground))" strokeOpacity={0.35} strokeWidth={1} />
             {brands.map(b => (
-              <Bar key={b} dataKey={b} name={label(b)} fill={color(b)} radius={[2, 2, 0, 0]} />
+              <Line key={b} type="monotone" dataKey={b} name={label(b)} stroke={color(b)} strokeWidth={1.5} dot={{ r: 3 }} />
             ))}
             <Legend wrapperStyle={{ fontSize: 11 }} />
-          </BarChart>
+          </LineChart>
         </ResponsiveContainer>
       </ChartCard>
 
