@@ -21,12 +21,19 @@ interface MonitoringRow {
   digital: ChannelCount;
 }
 
+interface StoryDetail {
+  tone: string;
+  functional: string;
+  emotional: string;
+}
+
 interface CreativesData {
   generated: string;
   brands: string[];
   brandNames: Record<string, string>;
   monitoring: MonitoringRow[];
   stories: Record<string, Record<string, string[]>>;
+  storyDetails: Record<string, Record<string, Record<string, StoryDetail>>>;
 }
 
 interface AdSpendData {
@@ -158,14 +165,14 @@ export default function MediaCreatives() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-foreground">Media & Creatives</h1>
+        <h1 className="text-2xl font-bold text-foreground">Креативы</h1>
         <p className="text-sm text-muted-foreground mt-1">
           Рекламные расходы, медиа-давление и мониторинг креативов
         </p>
       </div>
 
-      {/* ── Рекламные расходы ─────────────────────────────────────────── */}
-      {(() => {
+      {/* ── Рекламные расходы (скрыт) ─────────────────────────────────── */}
+      {false && (() => {
         const adYears = adData
           ? ([...new Set(adData.channels.total.map(r => yearFromLabel(r.month as string)).filter(Boolean))].sort() as number[])
           : [];
@@ -245,7 +252,8 @@ export default function MediaCreatives() {
         );
       })()}
 
-      {/* ── Media Spend vs Sales ──────────────────────────────────────── */}
+      {/* ── Media Spend vs Sales (скрыт) ──────────────────────────────── */}
+      {false && (
       <ChartCard title="Media Spend vs Sales" subtitle="Рекламные расходы (млн ₽) vs индекс продаж · дек 2025 – апр 2026">
         <ResponsiveContainer width="100%" height={300}>
           <ScatterChart margin={{ bottom: 20 }}>
@@ -295,6 +303,7 @@ export default function MediaCreatives() {
           </ScatterChart>
         </ResponsiveContainer>
       </ChartCard>
+      )}
 
       {/* ── Коммуникация в креативах ──────────────────────────────────── */}
       <ChartCard
@@ -414,9 +423,11 @@ export default function MediaCreatives() {
               <tbody>
                 {cData.monitoring.map((row) => {
                   const brandStories = cData.stories[row.brand] ?? {};
+                  const brandStoryDetails = cData.storyDetails?.[row.brand] ?? {};
                   const isOpenRow = expanded?.brand === row.brand;
                   const openChannel = isOpenRow ? expanded!.channel : null;
                   const openStories = openChannel ? (brandStories[openChannel] ?? []) : [];
+                  const openDetails = openChannel ? (brandStoryDetails[openChannel] ?? {}) : {};
                   return (
                     <Fragment key={row.brand}>
                       <tr className="border-b border-border">
@@ -468,19 +479,43 @@ export default function MediaCreatives() {
                                   <p className="text-[11px] font-semibold text-foreground uppercase tracking-wide">
                                     Топ сюжеты
                                   </p>
-                                  {topStories(openStories).map(({ text, count }, i) => (
-                                    <div key={i} className="flex items-start gap-2">
-                                      <span className="shrink-0 w-4 h-4 rounded-full bg-primary/10 text-primary text-[10px] font-bold flex items-center justify-center mt-0.5">
-                                        {i + 1}
-                                      </span>
-                                      <span className="text-xs text-foreground leading-relaxed flex-1">
-                                        {text}
-                                      </span>
-                                      <span className="shrink-0 text-[10px] text-muted-foreground tabular-nums">
-                                        ×{count}
-                                      </span>
-                                    </div>
-                                  ))}
+                                  {topStories(openStories).map(({ text, count }, i) => {
+                                    const detail = openDetails[text];
+                                    return (
+                                      <div key={i} className="space-y-1">
+                                        <div className="flex items-start gap-2">
+                                          <span className="shrink-0 w-4 h-4 rounded-full bg-primary/10 text-primary text-[10px] font-bold flex items-center justify-center mt-0.5">
+                                            {i + 1}
+                                          </span>
+                                          <span className="text-xs text-foreground leading-relaxed flex-1">
+                                            {text}
+                                          </span>
+                                          <span className="shrink-0 text-[10px] text-muted-foreground tabular-nums">
+                                            ×{count}
+                                          </span>
+                                        </div>
+                                        {detail && (detail.tone || detail.functional || detail.emotional) && (
+                                          <div className="ml-6 space-y-0.5">
+                                            {detail.tone && (
+                                              <p className="text-[10px] text-muted-foreground leading-relaxed">
+                                                <span className="font-medium text-foreground/70">Тональность:</span> {detail.tone}
+                                              </p>
+                                            )}
+                                            {detail.functional && (
+                                              <p className="text-[10px] text-muted-foreground leading-relaxed">
+                                                <span className="font-medium text-foreground/70">Функц. преимущества:</span> {detail.functional}
+                                              </p>
+                                            )}
+                                            {detail.emotional && (
+                                              <p className="text-[10px] text-muted-foreground leading-relaxed">
+                                                <span className="font-medium text-foreground/70">Эмоц. преимущества:</span> {detail.emotional}
+                                              </p>
+                                            )}
+                                          </div>
+                                        )}
+                                      </div>
+                                    );
+                                  })}
                                 </div>
                                 {/* Full list */}
                                 <ul className="space-y-1.5 text-xs text-muted-foreground list-disc pl-5">

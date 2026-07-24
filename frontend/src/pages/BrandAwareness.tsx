@@ -521,16 +521,16 @@ export default function BrandAwareness() {
             }
           >
             <ResponsiveContainer width="100%" height={360}>
-              <BarChart data={cheeseFunnelData}>
+              <BarChart data={cheeseFunnelData} layout="vertical">
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                <XAxis dataKey="brandName" tick={axisTick} />
-                <YAxis tick={axisTick} unit="%" domain={[0, 100]} />
+                <XAxis type="number" tick={axisTick} unit="%" domain={[0, 100]} />
+                <YAxis type="category" dataKey="brandName" tick={axisTick} width={90} />
                 <Tooltip
                   contentStyle={tooltipStyle}
                   formatter={(v: number, name: string) => [`${v.toFixed(1)}%`, name]}
                 />
                 {cheeseData.metricKeys.map((k, i) => (
-                  <Bar key={k} dataKey={k} name={cheeseData.metricLabels[k]} fill={STAGE_COLORS[i]} radius={[3, 3, 0, 0]} />
+                  <Bar key={k} dataKey={k} name={cheeseData.metricLabels[k]} fill={STAGE_COLORS[i]} radius={[0, 3, 3, 0]} />
                 ))}
                 <Legend wrapperStyle={{ fontSize: 11 }} />
               </BarChart>
@@ -662,13 +662,13 @@ export default function BrandAwareness() {
             headerExtra={<QuarterTabs value={funnelQ} onChange={setFunnelQ} />}
           >
             <ResponsiveContainer width="100%" height={360}>
-              <BarChart data={mineralData?.funnel[funnelQ] ?? []}>
+              <BarChart data={mineralData?.funnel[funnelQ] ?? []} layout="vertical">
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                <XAxis dataKey="brandName" tick={axisTick} />
-                <YAxis tick={axisTick} unit="%" domain={[0, 100]} />
+                <XAxis type="number" tick={axisTick} unit="%" domain={[0, 100]} />
+                <YAxis type="category" dataKey="brandName" tick={axisTick} width={90} />
                 <Tooltip contentStyle={tooltipStyle} formatter={(v: number) => [`${v.toFixed(1)}%`, '']} />
                 {metricKeys.map((k, i) => (
-                  <Bar key={k} dataKey={k} name={metricLabels[k] ?? k} fill={STAGE_COLORS[i]} radius={[3, 3, 0, 0]} />
+                  <Bar key={k} dataKey={k} name={metricLabels[k] ?? k} fill={STAGE_COLORS[i]} radius={[0, 3, 3, 0]} />
                 ))}
                 <Legend wrapperStyle={{ fontSize: 11 }} />
               </BarChart>
@@ -798,7 +798,11 @@ export default function BrandAwareness() {
             <NeuroShareBars summary={neuroApiData.summary} engine={neuroEngine} />
             {neuroApiData.queries[neuroEngine]?.length > 0 && (
               <div className="mt-6">
-                <h4 className="text-sm font-semibold mb-3">По запросам</h4>
+                <h4 className="text-sm font-semibold">По запросам</h4>
+                <p className="text-xs text-muted-foreground mb-3">
+                  Первое число — количество нейроответов с указанием бренда по соответствующему запросу.<br />
+                  Второе число — количество суммарных итераций каждого запроса (т.е. сколько раз запрос был запущен).
+                </p>
                 <div className="overflow-x-auto">
                   <table className="w-full text-xs border-collapse">
                     <thead>

@@ -26,8 +26,8 @@ const NAV_ITEMS = [
   { path: '/digital', label: 'Site stats', icon: Globe },
   { path: '/availability', label: 'Availability & E-com', icon: ShoppingCart },
   { path: '/sales', label: 'Sales', icon: TrendingUp },
-  { path: '/media', label: 'Media & Creatives', icon: Megaphone },
-  { path: '/media-details', label: 'Media Details', icon: Film },
+  { path: '/media', label: 'Креативы', icon: Megaphone },
+  { path: '/media-details', label: 'Медиа', icon: Film },
   { path: '/insights', label: 'Стратег. выводы', icon: Lightbulb },
   { path: '/conversations', label: 'Темы для встречи', icon: MessageSquare },
 ];

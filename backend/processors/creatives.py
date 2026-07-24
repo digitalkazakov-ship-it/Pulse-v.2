@@ -12,6 +12,9 @@ Column layout (auto-detected from header, with index fallbacks):
   col 13 'Список категорий 3'    — level-3 categories (brand classification)
   col 16 'Сюжет'                 — creative story text
   col 19 'Тип коммуникации'      — Промо / Имиджевая / Продуктовая
+  col 21 'Тональность'
+  col 24 'Функциональные преимущества'
+  col 25 'Эмоциональные преимущества'
 """
 import re
 import datetime
@@ -123,6 +126,18 @@ def process(file_path: str) -> dict:
     if col_comm is None:
         col_comm = 19
 
+    col_tone = _find_col(header, 'тональност')
+    if col_tone is None:
+        col_tone = 21
+
+    col_func = _find_col(header, 'функциональн', 'преимущест')
+    if col_func is None:
+        col_func = 24
+
+    col_emo = _find_col(header, 'эмоциональн', 'преимущест')
+    if col_emo is None:
+        col_emo = 25
+
     # Pass 1: classify each brand as product vs retailer
     brand_stats: dict[str, dict] = {}
 
@@ -189,6 +204,7 @@ def process(file_path: str) -> dict:
         for bk in brand_keys
     }
     stories: dict[str, dict] = {bk: {ch: [] for ch in CHANNELS} for bk in brand_keys}
+    story_details: dict[str, dict] = {bk: {ch: {} for ch in CHANNELS} for bk in brand_keys}
     dates: list[datetime.datetime] = []
 
     # Pass 2: accumulate monitoring counts and stories for top product brands
@@ -214,6 +230,9 @@ def process(file_path: str) -> dict:
         comm_key = next((v for k, v in COMM_KW if k in comm_raw), None)
 
         story = str(r[col_story]).strip() if col_story < len(r) and r[col_story] else ''
+        tone = str(r[col_tone]).strip() if col_tone < len(r) and r[col_tone] else ''
+        func = str(r[col_func]).strip() if col_func < len(r) and r[col_func] else ''
+        emo  = str(r[col_emo]).strip()  if col_emo  < len(r) and r[col_emo]  else ''
 
         dt = r[col_date] if col_date < len(r) else None
         if isinstance(dt, datetime.datetime):
@@ -227,6 +246,12 @@ def process(file_path: str) -> dict:
                 monitoring[bk][channel][comm_key] += 1
             if story and story not in ('N/A', 'None'):
                 stories[bk][channel].append(story)
+                if story not in story_details[bk][channel]:
+                    story_details[bk][channel][story] = {
+                        'tone': tone if tone not in ('N/A', 'None') else '',
+                        'functional': func if func not in ('N/A', 'None') else '',
+                        'emotional': emo if emo not in ('N/A', 'None') else '',
+                    }
 
     generated = max(dates).strftime('%Y-%m') if dates else ''
 
@@ -239,4 +264,5 @@ def process(file_path: str) -> dict:
             for bk in brand_keys
         ],
         'stories': stories,
+        'storyDetails': story_details,
     }

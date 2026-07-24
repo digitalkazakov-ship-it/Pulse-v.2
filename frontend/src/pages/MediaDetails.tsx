@@ -828,7 +828,7 @@ export default function MediaDetails() {
       {/* ── Рекламные расходы (по годам) ──────────────────────────────── */}
       <ChartCard
         title="Рекламные расходы"
-        subtitle="млн ₽ · Regionality, все медиа · топ-10 брендов + «Остальные»"
+        subtitle="млн ₽, все медиа · топ-10 брендов + «Остальные»"
       >
         {!data ? (
           <div className="flex items-center justify-center h-[340px] text-muted-foreground text-sm">
@@ -1298,9 +1298,9 @@ export default function MediaDetails() {
         </div>
       </ChartCard>
 
-      {!isReadonly && (
+      {false && (
         <>
-          {/* ── Media Spend vs Sales ──────────────────────────────────────── */}
+          {/* ── Media Spend vs Sales (скрыт) ──────────────────────────────── */}
           <ChartCard
             title="Media Spend vs Sales"
             subtitle={`Рекламные расходы (млн ₽) vs индекс продаж${scatterMonthRange ? ` · ${scatterMonthRange}` : ''}`}

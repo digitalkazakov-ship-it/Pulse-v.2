@@ -98,15 +98,13 @@ def _process_monthly_auto(wb) -> dict:
     pen_ws = next((ws for ws in wb.worksheets if 'пенетрация' in ws.title.lower()), None)
 
     # Month → column index from row 11 (0-indexed) of the voronki sheet.
-    # The sheet repeats months for each age-group interval — stop at first repeated month
-    # so we only use the first (total) interval.
+    # The date row can repeat multiple times horizontally — one block per
+    # audience-age interval (see row 9 headers) — so keep only the FIRST
+    # occurrence of each month, i.e. the first (all-audience) interval.
     month_col: dict = {}
     for ci, v in enumerate(rows0[11]):
         if isinstance(v, _dt):
-            key = f'{v.year}-{v.month:02d}'
-            if key in month_col:
-                break  # second interval starts here
-            month_col[key] = ci
+            month_col.setdefault(f'{v.year}-{v.month:02d}', ci)
     months_sorted = sorted(month_col.keys())
 
     def _qlabel(ym: str) -> str:
@@ -146,7 +144,11 @@ def _process_monthly_auto(wb) -> dict:
                 if isinstance(lbl, str):
                     mk = _METRIC_LABEL_TO_KEY.get(lbl.strip())
                     if mk:
-                        brand_metric_rows[bk][mk] = sub_ri
+                        # First match within the window wins — blocks are only 11 rows
+                        # apart but the window is 12 rows, so it overlaps one row into
+                        # the next brand's block, whose "Первое упоминание" start row
+                        # would otherwise overwrite this brand's own topOfMind row.
+                        brand_metric_rows[bk].setdefault(mk, sub_ri)
 
     all_metric_set: set = set()
     for bk in brands_order:

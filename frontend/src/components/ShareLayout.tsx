@@ -24,8 +24,8 @@ function ShareSidebar({ token, collapsed, setCollapsed }: {
     { path: `${base}/digital`,       label: 'Site stats',           icon: Globe },
     { path: `${base}/availability`,  label: 'Availability & E-com', icon: ShoppingCart },
     { path: `${base}/sales`,         label: 'Sales',                icon: TrendingUp },
-    { path: `${base}/media`,         label: 'Media & Creatives',    icon: Megaphone },
-    { path: `${base}/media-details`, label: 'Media Details',        icon: Film },
+    { path: `${base}/media`,         label: 'Креативы',             icon: Megaphone },
+    { path: `${base}/media-details`, label: 'Медиа',                icon: Film },
     { path: `${base}/insights`,      label: 'Стратег. выводы',      icon: Lightbulb },
     { path: `${base}/conversations`, label: 'Темы для встречи',     icon: MessageSquare },
   ];
